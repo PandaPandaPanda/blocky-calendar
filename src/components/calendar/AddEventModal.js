@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 import { addEvent } from "../../actions/eventActions";
+
 import M from "materialize-css/dist/js/materialize.min.js";
+
+import moment from "moment";
 
 const AddLogModal = ({
   event: {
@@ -14,12 +17,43 @@ const AddLogModal = ({
   // _id, title, start, end, estimate hours (optional)
   const [title, setTitle] = useState("");
   const [hour, setHour] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  useEffect(() => {
+    // Set values
+    setStartDate(moment(start).format("MMM DD, YYYY"));
+
+    var elem = document.getElementsByName("startDate")[0];
+    elem.focus();
+    var instance = M.Datepicker.init(elem);
+    // Highlight instance
+    instance.setDate(new Date(start));
+  }, [start]);
+
+  useEffect(() => {
+    // Set values
+    setEndDate(moment(end).format("MMM DD, YYYY"));
+
+    var elem = document.getElementsByName("endDate")[0];
+    elem.focus();
+    var instance = M.Datepicker.init(elem);
+    // Highlight instance
+    instance.setDate(new Date(end));
+  }, [end]);
 
   const onSubmit = () => {
     if (title === "") {
       M.toast({ html: "Please enter a title" });
     } else {
-      const newEvent = { title, start, end, hour: hour ? hour : null };
+      // Check if startDate is before endDate
+
+      const newEvent = {
+        title,
+        start: moment(startDate, "MMM DD, YYYY").toDate(),
+        end: moment(endDate, "MMM DD, YYYY").toDate(),
+        hour: hour ? hour : null,
+      };
       addEvent(newEvent);
 
       M.toast({ html: `Event added` });
@@ -47,6 +81,7 @@ const AddLogModal = ({
             </label>
           </div>
         </div>
+
         <div className="row">
           <div className="input-field">
             <input
@@ -57,6 +92,40 @@ const AddLogModal = ({
             />
             <label htmlFor="hour" className="active">
               Estimate Hours to Complete (Optional)
+            </label>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field">
+            <input
+              id="startDate"
+              type="text"
+              name="startDate"
+              value={startDate}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                console.log(startDate);
+              }}
+              className="datepicker"
+            />
+            <label htmlFor="startDate" className="active">
+              Start Date
+            </label>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field">
+            <input
+              type="text"
+              name="endDate"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="datepicker"
+            />
+            <label htmlFor="endDate" className="active">
+              End Date
             </label>
           </div>
         </div>

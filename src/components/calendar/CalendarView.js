@@ -42,24 +42,9 @@ const CalendarView = ({ event: { events }, resizeEvent, setEventDuration }) => {
 
   // New Event
   const newEvent = (event) => {
-    console.log(event.start + " " + event.end);
-
     setEventDuration(event);
 
     document.getElementById("addEventModalTrigger").click();
-
-    // let idList = this.state.events.map(a => a.id)
-    // let newId = Math.max(...idList) + 1
-    // let hour = {
-    //   id: newId,
-    //   title: 'New Event',
-    //   allDay: event.slots.length == 1,
-    //   start: event.start,
-    //   end: event.end,
-    // }
-    // this.setState({
-    //   events: this.state.events.concat([hour]),
-    // })
   };
 
   return (
