@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "materialize-css": "^1.0.0",
     "moment": "2.26.0",
     "react": "16.13.1",
     "react-big-calendar": "0.24.6",
