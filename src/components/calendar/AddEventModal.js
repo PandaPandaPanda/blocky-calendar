@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
 
@@ -17,29 +17,29 @@ const AddLogModal = ({
   // _id, title, start, end, estimate hours (optional)
   const [title, setTitle] = useState("");
   const [hour, setHour] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const refStart = useRef("");
+  const refEnd = useRef("");
 
   useEffect(() => {
-    // Set values
-    setStartDate(moment(start).format("MMM DD, YYYY"));
-
+    var options = {
+      defaultDate: new Date(moment(start).format("MMM DD, YYYY")),
+      setDefaultDate: true,
+    };
     var elem = document.getElementsByName("startDate")[0];
-    elem.focus();
-    var instance = M.Datepicker.init(elem);
-    // Highlight instance
-    instance.setDate(new Date(start));
+    var instance = M.Datepicker.init(elem, options);
+    // instance.open();
+    instance.setDate(new Date(moment(start).format("MMM DD, YYYY")));
   }, [start]);
 
   useEffect(() => {
-    // Set values
-    setEndDate(moment(end).format("MMM DD, YYYY"));
-
+    var options = {
+      defaultDate: new Date(moment(end).format("MMM DD, YYYY")),
+      setDefaultDate: true,
+    };
     var elem = document.getElementsByName("endDate")[0];
-    elem.focus();
-    var instance = M.Datepicker.init(elem);
-    // Highlight instance
-    instance.setDate(new Date(end));
+    var instance = M.Datepicker.init(elem, options);
+    // instance.open();
+    instance.setDate(new Date(moment(end).format("MMM DD, YYYY")));
   }, [end]);
 
   const onSubmit = () => {
@@ -50,8 +50,10 @@ const AddLogModal = ({
 
       const newEvent = {
         title,
-        start: moment(startDate, "MMM DD, YYYY").toDate(),
-        end: moment(endDate, "MMM DD, YYYY").toDate(),
+        start: moment(refStart.current.value, "MMM DD, YYYY").toDate(),
+        end: moment(refEnd.current.value, "MMM DD, YYYY")
+          .add(1, "days")
+          .toDate(),
         hour: hour ? hour : null,
       };
       addEvent(newEvent);
@@ -63,10 +65,6 @@ const AddLogModal = ({
       setHour("");
     }
   };
-
-  useEffect(() => {
-    console.log(startDate);
-  });
 
   return (
     <div id="add-event-modal" className="modal" style={modalStyle}>
@@ -103,11 +101,11 @@ const AddLogModal = ({
         <div className="row">
           <div className="input-field">
             <input
-              id="startDate"
+              ref={refStart}
               type="text"
               name="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              // value={startDate}
+              // onChange={(e) => setStartDate(e.target.value)}
               className="datepicker"
             />
             <label htmlFor="startDate" className="active">
@@ -119,10 +117,11 @@ const AddLogModal = ({
         <div className="row">
           <div className="input-field">
             <input
+              ref={refEnd}
               type="text"
               name="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              // value={endDate}
+              // onChange={(e) => setEndDate(e.target.value)}
               className="datepicker"
             />
             <label htmlFor="endDate" className="active">
