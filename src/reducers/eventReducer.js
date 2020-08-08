@@ -7,7 +7,8 @@ import {
   UPDATE_EVENT_ERROR,
   RESIZE_EVENT,
   RESIZE_ERROR,
-  SET_EVENT_DURATION,
+  SET_CURRENT_EVENT,
+  SET_EDITING,
 } from "../actions/types";
 
 import moment from "moment";
@@ -31,6 +32,7 @@ const initialState = {
 
   // selected event
   event: {},
+  editing: false,
 };
 
 export default (state = initialState, action) => {
@@ -40,15 +42,21 @@ export default (state = initialState, action) => {
         ...state,
         events: [...state.events, { ...action.payload }],
         event: {},
+        editing: false,
       };
-    case SET_EVENT_DURATION:
+    case UPDATE_EVENT:
       return {
         ...state,
-        event: {
-          ...state.event,
-          start: action.payload.start,
-          end: action.payload.end,
-        },
+        events: state.events.map((event) =>
+          event._id === action.payload._id ? action.payload : event
+        ),
+        event: {},
+        editing: false,
+      };
+    case SET_CURRENT_EVENT:
+      return {
+        ...state,
+        event: action.payload,
       };
     case RESIZE_EVENT:
       return {
@@ -57,11 +65,16 @@ export default (state = initialState, action) => {
           event._id === action.payload._id ? action.payload : event
         ),
       };
-    case (RESIZE_ERROR, ADD_EVENT_ERROR):
+    case (RESIZE_ERROR, ADD_EVENT_ERROR, UPDATE_EVENT_ERROR):
       console.log(action.payload);
       return {
         ...state,
         error: action.payload,
+      };
+    case SET_EDITING:
+      return {
+        ...state,
+        editing: true,
       };
     default:
       return state;

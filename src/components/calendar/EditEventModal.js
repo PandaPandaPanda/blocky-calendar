@@ -2,23 +2,36 @@ import React, { useState, useEffect, useRef } from "react";
 // import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
 
-import { addEvent } from "../../actions/eventActions";
+import { updateEvent } from "../../actions/eventActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import moment from "moment";
 
-const AddEventModal = ({
+const EditEventModal = ({
   event: {
-    event: { start, end },
+    event: { _id, title, hour, start, end },
+    editing,
   },
-  addEvent,
+  updateEvent,
 }) => {
   // _id, title, start, end, estimate hours (optional)
-  const [title, setTitle] = useState("");
-  const [hour, setHour] = useState("");
+  const [titleState, setTitle] = useState("");
+  const [hourState, setHour] = useState("");
   const refStart = useRef("");
   const refEnd = useRef("");
+
+  // ComponentDidMount
+  useEffect(() => {
+    setTitle(title);
+    setHour(hour);
+
+    var els = document.getElementsByClassName("input-field");
+    Array.prototype.forEach.call(els, function (el) {
+      // Do stuff here
+      el.focus();
+    });
+  }, [editing]);
 
   useEffect(() => {
     var options = {
@@ -29,7 +42,7 @@ const AddEventModal = ({
     var instance = M.Datepicker.init(elem, options);
     // instance.open();
     instance.setDate(new Date(moment(start).format("MMM DD, YYYY")));
-  }, [start]);
+  }, [start, editing]);
 
   useEffect(() => {
     var options = {
@@ -40,7 +53,7 @@ const AddEventModal = ({
     var instance = M.Datepicker.init(elem, options);
     // instance.open();
     instance.setDate(new Date(moment(end).format("MMM DD, YYYY")));
-  }, [end]);
+  }, [end, editing]);
 
   const onSubmit = () => {
     if (title === "") {
@@ -49,14 +62,15 @@ const AddEventModal = ({
       // Check if startDate is before endDate
 
       const newEvent = {
-        title,
+        titleState,
+
         start: moment(refStart.current.value, "MMM DD, YYYY").toDate(),
         end: moment(refEnd.current.value, "MMM DD, YYYY")
           .add(1, "days")
           .toDate(),
-        hour: hour ? hour : null,
+        hour: hourState ? hourState : null,
       };
-      addEvent(newEvent);
+      updateEvent(newEvent);
 
       M.toast({ html: `Event added` });
 
@@ -67,9 +81,9 @@ const AddEventModal = ({
   };
 
   return (
-    <div id="add-event-modal" className="modal" style={modalStyle}>
+    <div id="edit-event-modal" className="modal" style={modalStyle}>
       <div className="modal-content">
-        <h4>Enter A New Event</h4>
+        <h4>Edit Event</h4>
         <div className="row">
           <div className="input-field">
             <input
@@ -157,4 +171,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addEvent })(AddEventModal);
+export default connect(mapStateToProps, { updateEvent })(EditEventModal);

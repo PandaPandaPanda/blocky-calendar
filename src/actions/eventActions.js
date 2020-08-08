@@ -7,7 +7,8 @@ import {
   UPDATE_EVENT_ERROR,
   RESIZE_EVENT,
   RESIZE_ERROR,
-  SET_EVENT_DURATION,
+  SET_CURRENT_EVENT,
+  SET_EDITING,
 } from "./types";
 
 import { v4 as uuid } from "uuid"; //Dev use only
@@ -31,6 +32,31 @@ export const addEvent = ({ title, hour, start, end }) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ADD_EVENT_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
+// Update existing event
+export const updateEvent = ({ _id, title, hour, start, end }) => async (
+  dispatch
+) => {
+  try {
+    // Implement REST API Here
+
+    // const res = await fetch("./logs");
+    // const data = await res.json();
+
+    // uuid as placeholder
+    const content = { title, hour, start, end, _id };
+    console.log(content);
+    dispatch({
+      type: UPDATE_EVENT,
+      payload: content,
+    });
+  } catch (err) {
+    dispatch({
+      type: UPDATE_EVENT_ERROR,
       payload: err.response,
     });
   }
@@ -61,11 +87,15 @@ export const resizeEvent = ({ event, start, end }) => async (dispatch) => {
 };
 
 // Set event duration on monthly calendar for newly added event
-export const setEventDuration = ({ start, end }) => {
-  const duration = { start, end };
-
+export const setCurrentEvent = (currentEvent) => {
   return {
-    type: SET_EVENT_DURATION,
-    payload: duration,
+    type: SET_CURRENT_EVENT,
+    payload: currentEvent,
+  };
+};
+
+export const setEditing = () => {
+  return {
+    type: SET_EDITING,
   };
 };

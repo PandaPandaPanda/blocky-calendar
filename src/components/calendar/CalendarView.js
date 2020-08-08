@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { resizeEvent, setEventDuration } from "../../actions/eventActions";
+import {
+  resizeEvent,
+  setCurrentEvent,
+  setEditing,
+} from "../../actions/eventActions";
 
 import AddEventModal from "./AddEventModal";
+import EditEventModal from "./EditEventModal";
 
 import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -18,7 +23,12 @@ import "./styles.css";
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
-const CalendarView = ({ event: { events }, resizeEvent, setEventDuration }) => {
+const CalendarView = ({
+  event: { events, event },
+  resizeEvent,
+  setCurrentEvent,
+  setEditing,
+}) => {
   // const [draggedEvent, setdraggedEvent] = useState();
 
   // const handleDragStart = (event) => {
@@ -42,9 +52,18 @@ const CalendarView = ({ event: { events }, resizeEvent, setEventDuration }) => {
 
   // New Event
   const newEvent = (event) => {
-    setEventDuration(event);
+    setCurrentEvent(event);
 
     document.getElementById("addEventModalTrigger").click();
+  };
+
+  // Update selected event
+  const onSelectEvent = (event) => {
+    setCurrentEvent(event);
+
+    setEditing();
+
+    document.getElementById("editEventModalTrigger").click();
   };
 
   return (
@@ -57,6 +76,7 @@ const CalendarView = ({ event: { events }, resizeEvent, setEventDuration }) => {
         onEventDrop={onEventDrop}
         onEventResize={onEventResize}
         onSelectSlot={newEvent}
+        onSelectEvent={onSelectEvent}
         resizable
         selectable
         style={{ height: "100vh" }}
@@ -75,7 +95,13 @@ const CalendarView = ({ event: { events }, resizeEvent, setEventDuration }) => {
         href="#add-event-modal"
         className="modal-trigger"
       ></a>
+      <a
+        id="editEventModalTrigger"
+        href="#edit-event-modal"
+        className="modal-trigger"
+      ></a>
       <AddEventModal />
+      <EditEventModal />
     </div>
   );
 };
@@ -86,6 +112,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { resizeEvent, setEventDuration })(
-  CalendarView
-);
+export default connect(mapStateToProps, {
+  resizeEvent,
+  setCurrentEvent,
+  setEditing,
+})(CalendarView);
