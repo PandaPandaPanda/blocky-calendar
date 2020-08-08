@@ -64,6 +64,10 @@ const AddLogModal = ({
     }
   };
 
+  useEffect(() => {
+    console.log(startDate);
+  });
+
   return (
     <div id="add-event-modal" className="modal" style={modalStyle}>
       <div className="modal-content">
@@ -103,10 +107,7 @@ const AddLogModal = ({
               type="text"
               name="startDate"
               value={startDate}
-              onChange={(e) => {
-                setStartDate(e.target.value);
-                console.log(startDate);
-              }}
+              onChange={(e) => setStartDate(e.target.value)}
               className="datepicker"
             />
             <label htmlFor="startDate" className="active">
