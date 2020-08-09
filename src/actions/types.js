@@ -1,3 +1,4 @@
+// eventActions
 export const ADD_EVENT = "ADD_EVENT";
 export const ADD_EVENT_ERROR = "ADD_EVENT_ERROR";
 export const DELETE_EVENT = "DELETE_EVENT";

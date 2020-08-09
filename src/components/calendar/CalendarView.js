@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   resizeEvent,
@@ -29,11 +29,7 @@ const CalendarView = ({
   setCurrentEvent,
   setEditing,
 }) => {
-  // const [draggedEvent, setdraggedEvent] = useState();
-
-  // const handleDragStart = (event) => {
-  //   setDraggedEvent(event);
-  // };
+  const [day, setDay] = useState(new Date(moment().format()));
 
   useEffect(() => {
     // Initializes Materialize js
@@ -71,16 +67,21 @@ const CalendarView = ({
       <DnDCalendar
         defaultDate={moment().toDate()}
         defaultView="month"
-        // views={["month", "agenda"]}
+        views={["month", "agenda"]}
         events={events}
         localizer={localizer}
         onEventDrop={onEventDrop}
         onEventResize={onEventResize}
         onSelectSlot={newEvent}
         onSelectEvent={onSelectEvent}
+        // components={{ toolbar: CustomToolbar }}
+        date={new Date(moment(day).format())}
+        onNavigate={(day) => {
+          setDay(day);
+        }}
         resizable
         selectable
-        style={{ height: "100vh" }}
+        style={{ height: "91vh" }}
 
         //         onSelectSlot={this.newEvent}
         //         onDragStart={console.log}
@@ -118,3 +119,36 @@ export default connect(mapStateToProps, {
   setCurrentEvent,
   setEditing,
 })(CalendarView);
+
+class CustomToolbar extends React.Component {
+  render() {
+    const navigate = {
+      PREVIOUS: "PREV",
+      NEXT: "NEXT",
+      TODAY: "TODAY",
+      DATE: "DATE",
+    };
+    return (
+      <div className="rbc-toolbar" style={{ display: "none" }}>
+        <span className="rbc-btn-group">
+          <button type="button" onClick={() => this.navigate("TODAY")}>
+            today
+          </button>
+          <button type="button" onClick={() => this.navigate("PREV")}>
+            back
+          </button>
+          <button type="button" onClick={() => this.navigate("NEXT")}>
+            next
+          </button>
+        </span>
+        <span className="rbc-toolbar-label">{this.props.label}</span>
+      </div>
+    );
+  }
+
+  navigate = (action) => {
+    console.log(action);
+
+    this.props.onNavigate(action);
+  };
+}
