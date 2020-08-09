@@ -8,52 +8,52 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 import moment from "moment";
 
-const EditEventModal = ({
-  event: {
-    event: { _id, title, hour, start, end },
-    editing,
-  },
-  updateEvent,
-}) => {
+const EditEventModal = ({ event: { event, editing }, updateEvent }) => {
   // _id, title, start, end, estimate hours (optional)
-  const [titleState, setTitle] = useState("");
-  const [hourState, setHour] = useState("");
+  const [title, setTitle] = useState("");
+  const [hour, setHour] = useState("");
   const refStart = useRef("");
   const refEnd = useRef("");
 
   // ComponentDidMount
   useEffect(() => {
-    setTitle(title);
-    setHour(hour);
+    if (editing === true) {
+      const { start, end } = event;
 
-    var els = document.getElementsByClassName("input-field");
-    Array.prototype.forEach.call(els, function (el) {
-      // Do stuff here
-      el.focus();
-    });
+      document.getElementsByName("title")[1].focus();
+      setTitle(event.title);
+      // Preload hour input-field only if it exists
+      if (event.hour) {
+        document.getElementsByName("hour")[1].focus();
+        setHour(event.hour);
+      }
+
+      var options = {
+        defaultDate: new Date(moment(start).format("MMM DD, YYYY")),
+        setDefaultDate: true,
+      };
+      var elem = document.getElementsByName("startDate")[1];
+      var instance = M.Datepicker.init(elem, options);
+      // instance.open();
+      instance.setDate(new Date(moment(start).format("MMM DD, YYYY")));
+
+      var els = document.getElementsByClassName("input-field");
+      Array.prototype.forEach.call(els, function (el) {
+        // Do stuff here
+        el.focus();
+      });
+
+      var options = {
+        defaultDate: new Date(moment(end).format("MMM DD, YYYY")),
+        setDefaultDate: true,
+      };
+      // First on the list is AddEvenModal, then its EditEventModal
+      var elem = document.getElementsByName("endDate")[1];
+      var instance = M.Datepicker.init(elem, options);
+      // instance.open();
+      instance.setDate(new Date(moment(end).format("MMM DD, YYYY")));
+    }
   }, [editing]);
-
-  useEffect(() => {
-    var options = {
-      defaultDate: new Date(moment(start).format("MMM DD, YYYY")),
-      setDefaultDate: true,
-    };
-    var elem = document.getElementsByName("startDate")[0];
-    var instance = M.Datepicker.init(elem, options);
-    // instance.open();
-    instance.setDate(new Date(moment(start).format("MMM DD, YYYY")));
-  }, [start, editing]);
-
-  useEffect(() => {
-    var options = {
-      defaultDate: new Date(moment(end).format("MMM DD, YYYY")),
-      setDefaultDate: true,
-    };
-    var elem = document.getElementsByName("endDate")[0];
-    var instance = M.Datepicker.init(elem, options);
-    // instance.open();
-    instance.setDate(new Date(moment(end).format("MMM DD, YYYY")));
-  }, [end, editing]);
 
   const onSubmit = () => {
     if (title === "") {
@@ -62,17 +62,15 @@ const EditEventModal = ({
       // Check if startDate is before endDate
 
       const newEvent = {
-        titleState,
-
+        _id: event._id,
+        title,
         start: moment(refStart.current.value, "MMM DD, YYYY").toDate(),
-        end: moment(refEnd.current.value, "MMM DD, YYYY")
-          .add(1, "days")
-          .toDate(),
-        hour: hourState ? hourState : null,
+        end: moment(refEnd.current.value, "MMM DD, YYYY").toDate(),
+        hour: hour ? hour : null,
       };
       updateEvent(newEvent);
 
-      M.toast({ html: `Event added` });
+      M.toast({ html: `Event Updated` });
 
       // Clear Fields
       setTitle("");

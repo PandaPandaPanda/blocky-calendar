@@ -51,6 +51,7 @@ const AddEventModal = ({
       const newEvent = {
         title,
         start: moment(refStart.current.value, "MMM DD, YYYY").toDate(),
+        // Calendar always select the start of the day, add one to makeup for the end date
         end: moment(refEnd.current.value, "MMM DD, YYYY")
           .add(1, "days")
           .toDate(),

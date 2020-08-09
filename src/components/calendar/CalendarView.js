@@ -71,6 +71,7 @@ const CalendarView = ({
       <DnDCalendar
         defaultDate={moment().toDate()}
         defaultView="month"
+        // views={["month", "agenda"]}
         events={events}
         localizer={localizer}
         onEventDrop={onEventDrop}
