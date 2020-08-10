@@ -25,16 +25,19 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 const CalendarView = ({
   event: { events, event },
+  navbar: { date },
   resizeEvent,
   setCurrentEvent,
   setEditing,
 }) => {
-  const [day, setDay] = useState(new Date(moment().format()));
-
   useEffect(() => {
     // Initializes Materialize js
     M.AutoInit();
   }, []);
+
+  useEffect(() => {
+    console.log(moment(date).toDate());
+  }, [date]);
 
   // Resize event
   const onEventResize = ({ event, start, end }) => {
@@ -49,7 +52,6 @@ const CalendarView = ({
   // New Event
   const newEvent = (event) => {
     setCurrentEvent(event);
-
     document.getElementById("addEventModalTrigger").click();
   };
 
@@ -67,21 +69,21 @@ const CalendarView = ({
       <DnDCalendar
         defaultDate={moment().toDate()}
         defaultView="month"
-        views={["month", "agenda"]}
+        // views={["month", "agenda"]}
         events={events}
         localizer={localizer}
         onEventDrop={onEventDrop}
         onEventResize={onEventResize}
         onSelectSlot={newEvent}
         onSelectEvent={onSelectEvent}
+        toolbar={false}
         // components={{ toolbar: CustomToolbar }}
-        date={new Date(moment(day).format())}
-        onNavigate={(day) => {
-          setDay(day);
-        }}
+        date={moment(date).toDate()}
+        // No use, just to dismiss the alert, date selection is handled by datepicker
+        onNavigate={() => {}}
         resizable
         selectable
-        style={{ height: "91vh" }}
+        style={{ height: "90vh" }}
 
         //         onSelectSlot={this.newEvent}
         //         onDragStart={console.log}
@@ -111,6 +113,7 @@ const CalendarView = ({
 const mapStateToProps = (state) => {
   return {
     event: state.event,
+    navbar: state.navbar,
   };
 };
 
@@ -129,7 +132,7 @@ class CustomToolbar extends React.Component {
       DATE: "DATE",
     };
     return (
-      <div className="rbc-toolbar" style={{ display: "none" }}>
+      <div className="rbc-toolbar">
         <span className="rbc-btn-group">
           <button type="button" onClick={() => this.navigate("TODAY")}>
             today

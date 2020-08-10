@@ -9,3 +9,6 @@ export const RESIZE_EVENT = "RESIZE_EVENT";
 export const RESIZE_ERROR = "RESIZE_ERROR";
 export const SET_CURRENT_EVENT = "SET_CURRENT_EVENT";
 export const SET_EDITING = "SET_EDITING";
+
+// navbarActions
+export const SET_DATE = "SET_DATE";

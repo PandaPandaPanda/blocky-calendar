@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { setDate } from "../../actions/navbarActions";
 
 import moment from "moment";
 
@@ -8,8 +11,8 @@ import { ReactDatez, ReduxReactDatez } from "react-datez";
 
 import PropTypes from "prop-types";
 
-const Navbar = () => {
-  const [day, setDay] = useState(new Date(moment().format()));
+const Navbar = ({ setDate }) => {
+  const [day, setDay] = useState(moment().format());
 
   return (
     <Fragment>
@@ -19,7 +22,12 @@ const Navbar = () => {
             allowPast
             dateFormat="MMM DD, YYYY"
             name="dateInput"
-            handleChange={(date) => setDay(date)}
+            handleChange={(date) => {
+              // Local useState
+              setDay(date);
+              // Set date for redux
+              setDate(date);
+            }}
             value={day}
             wrapperStyle={{
               display: "inline-block",
@@ -63,4 +71,4 @@ const Navbar = () => {
 
 Navbar.propTypes = {};
 
-export default Navbar;
+export default connect(null, { setDate })(Navbar);
