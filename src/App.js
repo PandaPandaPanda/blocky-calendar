@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import store from "./store";
 
 import Navbar from "./components/layout/Navbar";
-import CalendarView from "./components/calendar/CalendarView";
+import CalendarView from "./components/calendar";
+import DayBlocks from "./components/dayBlocks";
 
 class App extends Component {
   render() {
@@ -23,7 +24,15 @@ class App extends Component {
                   </Fragment>
                 )}
               />
-              <Route exact path="/day" render={() => <Fragment></Fragment>} />
+              <Route
+                exact
+                path="/day"
+                render={() => (
+                  <Fragment>
+                    <DayBlocks />
+                  </Fragment>
+                )}
+              />
             </Switch>
           </div>
         </Router>

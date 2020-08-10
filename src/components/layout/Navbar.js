@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import { setDate } from "../../actions/navbarActions";
 
 import moment from "moment";
-
 import "react-datez/dist/css/react-datez.css";
 import { ReactDatez, ReduxReactDatez } from "react-datez";
 
+import "./style.css";
 import PropTypes from "prop-types";
 
 const Navbar = ({ setDate }) => {
@@ -16,7 +16,7 @@ const Navbar = ({ setDate }) => {
 
   return (
     <Fragment>
-      <nav>
+      <nav className="" style={{ position: "relative", zIndex: "100" }}>
         <div className="nav-wrapper">
           <ReactDatez
             allowPast

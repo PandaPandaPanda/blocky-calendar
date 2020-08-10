@@ -1,0 +1,67 @@
+/* index.js */
+.days-wrapper {
+  overflow-y: scroll;
+  height: 90vh;
+  width: 27rem;
+}
+
+/* DayWrapper.js */
+.day-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+}
+
+.date-label {
+  position: relative;
+  width: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.time-label {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 0.5%;
+  height: 90vh;
+  width: 2.5rem;
+  position: relative;
+  text-align: right;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+}
+
+.block-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5%;
+  height: 90vh;
+  width: 20rem;
+  position: relative;
+}
+
+/* .day-wrapper:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: repeating-linear-gradient(
+    grey 0%,
+    grey 0.15%,
+    white 0.15%,
+    white 0.55%,
+    transparent 0.55%,
+    transparent 4.167%
+  );
+  z-index: 2;
+} */
+
+.block-container {
+  /* display: block; */
+  /* border: 2rem white; */
+  background-color: #ececec;
+  border-bottom: 1px solid #d6d6d6;
+}
