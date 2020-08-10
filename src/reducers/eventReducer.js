@@ -53,6 +53,13 @@ export default (state = initialState, action) => {
         event: {},
         editing: false,
       };
+    case DELETE_EVENT:
+      return {
+        ...state,
+        events: state.events.filter((events) => events._id !== action.payload),
+        event: {},
+        editing: false,
+      };
     case SET_CURRENT_EVENT:
       return {
         ...state,
@@ -65,7 +72,10 @@ export default (state = initialState, action) => {
           event._id === action.payload._id ? action.payload : event
         ),
       };
-    case (RESIZE_ERROR, ADD_EVENT_ERROR, UPDATE_EVENT_ERROR):
+    case (RESIZE_ERROR,
+    ADD_EVENT_ERROR,
+    UPDATE_EVENT_ERROR,
+    DELETE_EVENT_ERROR):
       console.log(action.payload);
       return {
         ...state,

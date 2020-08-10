@@ -2,13 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 // import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
 
-import { updateEvent } from "../../actions/eventActions";
+import { updateEvent, deleteEvent } from "../../actions/eventActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import moment from "moment";
 
-const EditEventModal = ({ event: { event, editing }, updateEvent }) => {
+const EditEventModal = ({
+  event: { event, editing },
+  updateEvent,
+  deleteEvent,
+}) => {
   // _id, title, start, end, estimate hours (optional)
   const [title, setTitle] = useState("");
   const [hour, setHour] = useState("");
@@ -54,6 +58,10 @@ const EditEventModal = ({ event: { event, editing }, updateEvent }) => {
       instance.setDate(new Date(moment(end).format("MMM DD, YYYY")));
     }
   }, [editing]);
+
+  const onDelete = () => {
+    deleteEvent(event._id);
+  };
 
   const onSubmit = () => {
     if (title === "") {
@@ -146,6 +154,13 @@ const EditEventModal = ({ event: { event, editing }, updateEvent }) => {
       <div className="modal-footer">
         <a
           href="#!"
+          onClick={onDelete}
+          className="modal-close waves-effect waves-green btn-flat"
+        >
+          Delete
+        </a>
+        <a
+          href="#!"
           onClick={onSubmit}
           className="modal-close waves-effect waves btn"
         >
@@ -169,4 +184,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { updateEvent })(EditEventModal);
+export default connect(mapStateToProps, { updateEvent, deleteEvent })(
+  EditEventModal
+);

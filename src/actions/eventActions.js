@@ -62,6 +62,26 @@ export const updateEvent = ({ _id, title, hour, start, end }) => async (
   }
 };
 
+// Update existing event
+export const deleteEvent = (_id) => async (dispatch) => {
+  try {
+    // Implement REST API Here
+
+    // const res = await fetch("./logs");
+    // const data = await res.json();
+
+    dispatch({
+      type: DELETE_EVENT,
+      payload: _id,
+    });
+  } catch (err) {
+    dispatch({
+      type: DELETE_EVENT_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
 // Resize the selected event
 export const resizeEvent = ({ event, start, end }) => async (dispatch) => {
   try {
