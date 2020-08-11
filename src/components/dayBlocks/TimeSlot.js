@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // index ranges from 0 to 95 representing different times in a day
-const Block = ({ index }) => {
+const Block = ({}) => {
   const [ticked, setTicked] = useState(false);
 
   const onTicked = () => {
@@ -11,9 +11,11 @@ const Block = ({ index }) => {
 
   return (
     <div
-      className={`block-container ${ticked && "tick"}`}
+      className={`timeslot-container ${ticked && "tick"}`}
       onClick={() => onTicked()}
-    ></div>
+    >
+      a
+    </div>
   );
 };
 
