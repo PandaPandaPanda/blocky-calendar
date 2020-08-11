@@ -17,7 +17,7 @@ const DayWrapper = ({ date }) => {
 
   // Individual 15min time blocks
   for (var i = 0; i < 96; i++) {
-    blocks.push(<Block key={i} />);
+    blocks.push(<Block key={i} index={i} />);
   }
 
   return (
