@@ -5,7 +5,7 @@ import store from "./store";
 
 import Navbar from "./components/layout/Navbar";
 import CalendarView from "./components/calendar";
-import DayBlocks from "./components/dayBlocks";
+import TimeGrids from "./components/timeGrids";
 
 class App extends Component {
   render() {
@@ -29,7 +29,7 @@ class App extends Component {
                 path="/day"
                 render={() => (
                   <Fragment>
-                    <DayBlocks />
+                    <TimeGrids />
                   </Fragment>
                 )}
               />

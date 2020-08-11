@@ -122,36 +122,3 @@ export default connect(mapStateToProps, {
   setCurrentEvent,
   setEditing,
 })(CalendarView);
-
-class CustomToolbar extends React.Component {
-  render() {
-    const navigate = {
-      PREVIOUS: "PREV",
-      NEXT: "NEXT",
-      TODAY: "TODAY",
-      DATE: "DATE",
-    };
-    return (
-      <div className="rbc-toolbar">
-        <span className="rbc-btn-group">
-          <button type="button" onClick={() => this.navigate("TODAY")}>
-            today
-          </button>
-          <button type="button" onClick={() => this.navigate("PREV")}>
-            back
-          </button>
-          <button type="button" onClick={() => this.navigate("NEXT")}>
-            next
-          </button>
-        </span>
-        <span className="rbc-toolbar-label">{this.props.label}</span>
-      </div>
-    );
-  }
-
-  navigate = (action) => {
-    console.log(action);
-
-    this.props.onNavigate(action);
-  };
-}
