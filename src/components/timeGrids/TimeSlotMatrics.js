@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 import TimeSlot from "./TimeSlot";
 
@@ -7,13 +7,15 @@ import TimeSlot from "./TimeSlot";
 import PropTypes from "prop-types";
 import { Collapsible } from "materialize-css";
 
-const TimeSlotMatrics = ({ date }) => {
+const TimeSlotMatrics = ({ date, setCurrentView }) => {
   const d = date.format("DD"),
     m = date.format("MMM"),
     y = date.format("YYYY");
 
   var times = [],
     timeslots = [];
+
+  const positionRef = useRef();
 
   // Display the time in a day
   for (let i = 0; i < 24; i++) {
@@ -22,8 +24,28 @@ const TimeSlotMatrics = ({ date }) => {
 
   // Individual 15min timeslots
   for (let j = 0; j < 96; j++) {
-    timeslots.push(<TimeSlot index={j} date={date} />);
+    if (j === 96 / 2) {
+      timeslots.push(<TimeSlot index={j} date={date} ref={positionRef} />);
+    } else {
+      timeslots.push(<TimeSlot index={j} date={date} />);
+    }
   }
+
+  // Check if this is the current page
+  window.onscroll = () => {
+    if (checkVisible(positionRef.current)) {
+      setCurrentView(date);
+    }
+  };
+
+  const checkVisible = (elm) => {
+    var rect = elm.getBoundingClientRect();
+    var viewHeight = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight
+    );
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  };
 
   return (
     <div className="day-wrapper">

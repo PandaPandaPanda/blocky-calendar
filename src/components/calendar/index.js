@@ -24,7 +24,7 @@ const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
 const CalendarView = ({
-  event: { events, event },
+  event: { events },
   navbar: { date },
   resizeEvent,
   setCurrentEvent,
@@ -34,10 +34,6 @@ const CalendarView = ({
     // Initializes Materialize js
     M.AutoInit();
   }, []);
-
-  useEffect(() => {
-    console.log(moment(date).toDate());
-  }, [date]);
 
   // Resize event
   const onEventResize = ({ event, start, end }) => {
