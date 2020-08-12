@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 
 import TimeSlot from "./TimeSlot";
 
+import VisibilitySensor from "react-visibility-sensor";
+
 // import DragSelect from "../../utils/DragSelect";
 
 import PropTypes from "prop-types";
@@ -32,33 +34,31 @@ const TimeSlotMatrics = ({ date, setCurrentView }) => {
   }
 
   // Check if this is the current page
-  window.onscroll = () => {
-    if (checkVisible(positionRef.current)) {
-      setCurrentView(date);
-    }
+  const onVisibilityChange = (isVisible) => {
+    console.log("Element is now " + isVisible + " " + date.format("YYYYMMDD"));
   };
-
-  const checkVisible = (elm) => {
-    var rect = elm.getBoundingClientRect();
-    var viewHeight = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight
-    );
-    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  window.onscroll = () => {
+    setCurrentView(date);
   };
 
   return (
-    <div className="day-wrapper">
-      <div className="date-label">
-        <span>{m}</span>
-        <span>{d}</span>
-        <span>{y}</span>
+    <VisibilitySensor
+      onChange={onVisibilityChange}
+      scrollCheck="true"
+      intervalCheck="false"
+    >
+      <div className="day-wrapper">
+        <div className="date-label">
+          <span>{m}</span>
+          <span>{d}</span>
+          <span>{y}</span>
+        </div>
+        <div className="time-label">{times.map((time) => time)}</div>
+        <div id={date.format("YYYYMMDD")} className="timeslots-wrapper">
+          {timeslots.map((timeslot) => timeslot)}
+        </div>
       </div>
-      <div className="time-label">{times.map((time) => time)}</div>
-      <div id={date.format("YYYYMMDD")} className="timeslots-wrapper">
-        {timeslots.map((timeslot) => timeslot)}
-      </div>
-    </div>
+    </VisibilitySensor>
   );
 };
 

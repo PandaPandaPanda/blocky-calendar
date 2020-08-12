@@ -28,15 +28,18 @@ const DayBlocks = ({
 
   // Auto Scroll to center
   useEffect(() => {
-    wrapperRef.current.scrollTop = containerRef.current.clientHeight / 3 + 4;
+    wrapperRef.current.scrollTop =
+      (4 * containerRef.current.clientHeight) / 5 + 4;
   }, [containerRef, selectedDate]);
 
   // Handle dat changes
   useEffect(() => {
     setDayMatrics([
+      <TimeSlotMatrics date={moment(selectedDate).subtract(2, "day")} />,
       <TimeSlotMatrics date={moment(selectedDate).subtract(1, "day")} />,
       <TimeSlotMatrics date={moment(selectedDate)} />,
       <TimeSlotMatrics date={moment(selectedDate).add(1, "day")} />,
+      <TimeSlotMatrics date={moment(selectedDate).add(2, "day")} />,
     ]);
   }, [selectedDate]);
 

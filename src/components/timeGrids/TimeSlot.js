@@ -1,6 +1,6 @@
 import React, { useState, Component } from "react";
 import { connect } from "react-redux";
-import { setDrag, setTimeStart, setTimeEnd } from "../../actions/timeActions";
+import { setTimeStart, setTimeEnd } from "../../actions/timeActions";
 
 import PropTypes from "prop-types";
 
