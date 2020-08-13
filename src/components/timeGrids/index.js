@@ -21,7 +21,6 @@ const DayBlocks = ({
   const setCurrentView = (viewingDate) => {
     if (viewingDate !== currentViewingDate) {
       setCurrentViewingDate(viewingDate);
-      console.log(moment(viewingDate).startOf("day"));
       setDate(moment(viewingDate).startOf("day"));
     }
   };
@@ -117,7 +116,6 @@ const DayBlocks = ({
           el.classList.add("tick");
           selectedSlots.push(el);
         }
-        console.log();
       } else {
       }
     }

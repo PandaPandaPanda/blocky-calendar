@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import { setDate } from "../../actions/navbarActions";
 
@@ -11,18 +11,12 @@ import { ReactDatez, ReduxReactDatez } from "react-datez";
 import "./style.css";
 import PropTypes from "prop-types";
 
-const Navbar = ({ setDate }) => {
+const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
   const [day, setDay] = useState(moment().format());
-  const selectedDate = useSelector((state) => state.date);
 
-  useEffect(
-    (selectedDate) => {
-      console.log(selectedDate);
-      console.log(moment(selectedDate).format());
-      setDay(moment(selectedDate).format());
-    },
-    [selectedDate]
-  );
+  useEffect(() => {
+    setDay(selectedDate);
+  }, [selectedDate]);
 
   return (
     <Fragment>
@@ -81,12 +75,12 @@ const Navbar = ({ setDate }) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     navbar: state.navbar,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    navbar: state.navbar,
+  };
+};
 
 Navbar.propTypes = {};
 
-export default connect(null, { setDate })(Navbar);
+export default connect(mapStateToProps, { setDate })(Navbar);

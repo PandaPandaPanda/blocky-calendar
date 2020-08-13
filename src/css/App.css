@@ -1,8 +1,8 @@
 @font-face {
-  font-family: "cubicfive";
-  src: url("./cubicfive/cubicfive10.ttf") format("truetype");
+  font-family: "Gamepixies";
+  src: url("./Gamepixies-8MO6n.ttf");
 }
-
 body {
-  font-family: cubicfive;
+  font-family: "Gamepixies";
+  font-size: 1.1rem;
 }
