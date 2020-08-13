@@ -27,7 +27,7 @@ const TimeSlotMatrics = ({ date, setCurrentView }) => {
   // Individual 15min timeslots
   for (let j = 0; j < 96; j++) {
     if (j === 96 / 2) {
-      timeslots.push(<TimeSlot index={j} date={date} ref={positionRef} />);
+      timeslots.push(<TimeSlot index={j} date={date} />);
     } else {
       timeslots.push(<TimeSlot index={j} date={date} />);
     }
@@ -35,10 +35,10 @@ const TimeSlotMatrics = ({ date, setCurrentView }) => {
 
   // Check if this is the current page
   const onVisibilityChange = (isVisible) => {
+    if (isVisible) {
+      setCurrentView(date);
+    }
     console.log("Element is now " + isVisible + " " + date.format("YYYYMMDD"));
-  };
-  window.onscroll = () => {
-    setCurrentView(date);
   };
 
   return (
@@ -46,6 +46,7 @@ const TimeSlotMatrics = ({ date, setCurrentView }) => {
       onChange={onVisibilityChange}
       scrollCheck="true"
       intervalCheck="false"
+      delayedCall="true"
     >
       <div className="day-wrapper">
         <div className="date-label">

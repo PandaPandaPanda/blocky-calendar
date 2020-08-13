@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import { setDate } from "../../actions/navbarActions";
 
@@ -13,6 +13,16 @@ import PropTypes from "prop-types";
 
 const Navbar = ({ setDate }) => {
   const [day, setDay] = useState(moment().format());
+  const selectedDate = useSelector((state) => state.date);
+
+  useEffect(
+    (selectedDate) => {
+      console.log(selectedDate);
+      console.log(moment(selectedDate).format());
+      setDay(moment(selectedDate).format());
+    },
+    [selectedDate]
+  );
 
   return (
     <Fragment>
@@ -23,10 +33,12 @@ const Navbar = ({ setDate }) => {
             dateFormat="MMM DD, YYYY"
             name="dateInput"
             handleChange={(date) => {
-              // Local useState
-              setDay(date);
-              // Set date for redux
-              setDate(date);
+              if (date !== "") {
+                // Local useState
+                setDay(date);
+                // Set date for redux
+                setDate(date);
+              }
             }}
             value={day}
             wrapperStyle={{
@@ -68,6 +80,12 @@ const Navbar = ({ setDate }) => {
     </Fragment>
   );
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     navbar: state.navbar,
+//   };
+// };
 
 Navbar.propTypes = {};
 

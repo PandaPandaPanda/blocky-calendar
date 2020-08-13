@@ -7,13 +7,22 @@ import Navbar from "./components/layout/Navbar";
 import CalendarView from "./components/calendar";
 import TimeGrids from "./components/timeGrids";
 
+import "./css/App.css";
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            <Route
+              path="/"
+              render={() => (
+                <Fragment>
+                  <Navbar />
+                </Fragment>
+              )}
+            />
             <Switch>
               <Route
                 exact

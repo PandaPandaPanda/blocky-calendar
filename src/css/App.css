@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "cubicfive";
+  src: url("./cubicfive/cubicfive10.ttf") format("truetype");
+}
+
+body {
+  font-family: cubicfive;
+}

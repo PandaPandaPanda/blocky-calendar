@@ -26,9 +26,7 @@ const TimeSlot = ({ setTimeStart, setTimeEnd, index, date }) => {
       onClick={() => onTicked()}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
-    >
-      a
-    </div>
+    ></div>
   );
 };
 

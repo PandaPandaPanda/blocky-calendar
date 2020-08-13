@@ -14,13 +14,46 @@ const DayBlocks = ({
   navbar: { date: selectedDate },
   setDate,
 }) => {
-  const [dayMatrics, setDayMatrics] = useState([
-    <TimeSlotMatrics date={moment(selectedDate).subtract(1, "day")} />,
-    <TimeSlotMatrics date={moment(selectedDate)} />,
-    <TimeSlotMatrics date={moment(selectedDate).add(1, "day")} />,
-  ]);
-
+  // Update Current Viewing Date
   const [currentViewingDate, setCurrentViewingDate] = useState(selectedDate);
+
+  // Handle Scroll to Date
+  const setCurrentView = (viewingDate) => {
+    if (viewingDate !== currentViewingDate) {
+      setCurrentViewingDate(viewingDate);
+      console.log(moment(viewingDate).startOf("day"));
+      setDate(moment(viewingDate).startOf("day"));
+    }
+  };
+  // useEffect(() => {
+  //   // console.log(currentViewingDate, selectedDate);
+  //   if (!currentViewingDate.isSame(selectedDate)) {
+  //     console.log("NOT SAME");
+  //   }
+  // }, [currentViewingDate]);
+
+  const [dayMatrics, setDayMatrics] = useState([
+    <TimeSlotMatrics
+      date={moment(selectedDate).subtract(2, "day")}
+      setCurrentView={setCurrentView}
+    />,
+    <TimeSlotMatrics
+      date={moment(selectedDate).subtract(1, "day")}
+      setCurrentView={setCurrentView}
+    />,
+    <TimeSlotMatrics
+      date={moment(selectedDate)}
+      setCurrentView={setCurrentView}
+    />,
+    <TimeSlotMatrics
+      date={moment(selectedDate).add(1, "day")}
+      setCurrentView={setCurrentView}
+    />,
+    <TimeSlotMatrics
+      date={moment(selectedDate).add(2, "day")}
+      setCurrentView={setCurrentView}
+    />,
+  ]);
 
   // Scrolling Ref
   const containerRef = useRef();
@@ -29,17 +62,32 @@ const DayBlocks = ({
   // Auto Scroll to center
   useEffect(() => {
     wrapperRef.current.scrollTop =
-      (4 * containerRef.current.clientHeight) / 5 + 4;
+      (2 * containerRef.current.clientHeight) / 5 + 4;
   }, [containerRef, selectedDate]);
 
-  // Handle dat changes
+  // Handle date changes
   useEffect(() => {
     setDayMatrics([
-      <TimeSlotMatrics date={moment(selectedDate).subtract(2, "day")} />,
-      <TimeSlotMatrics date={moment(selectedDate).subtract(1, "day")} />,
-      <TimeSlotMatrics date={moment(selectedDate)} />,
-      <TimeSlotMatrics date={moment(selectedDate).add(1, "day")} />,
-      <TimeSlotMatrics date={moment(selectedDate).add(2, "day")} />,
+      <TimeSlotMatrics
+        date={moment(selectedDate).subtract(2, "day")}
+        setCurrentView={setCurrentView}
+      />,
+      <TimeSlotMatrics
+        date={moment(selectedDate).subtract(1, "day")}
+        setCurrentView={setCurrentView}
+      />,
+      <TimeSlotMatrics
+        date={moment(selectedDate)}
+        setCurrentView={setCurrentView}
+      />,
+      <TimeSlotMatrics
+        date={moment(selectedDate).add(1, "day")}
+        setCurrentView={setCurrentView}
+      />,
+      <TimeSlotMatrics
+        date={moment(selectedDate).add(2, "day")}
+        setCurrentView={setCurrentView}
+      />,
     ]);
   }, [selectedDate]);
 
@@ -74,14 +122,6 @@ const DayBlocks = ({
       }
     }
   }, [end]);
-
-  // Update Current Viewing Date
-  const setCurrentView = (viewingDate) => {
-    if (viewingDate !== currentViewingDate) {
-      setCurrentViewingDate(viewingDate);
-      setDate(viewingDate);
-    }
-  };
 
   // useEffect(() => {
   //   console.log(document.getElementById("0").getBoundingClientRect());
