@@ -1,4 +1,4 @@
-import { SET_DRAG, SET_TIME_START, SET_TIME_END } from "../actions/types";
+import { SET_TIME_START, SET_TIME_END } from "../actions/types";
 
 const initialState = {
   start: null,
