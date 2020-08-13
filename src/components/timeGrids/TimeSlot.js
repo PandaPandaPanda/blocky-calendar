@@ -1,6 +1,10 @@
-import React, { useState, Component } from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
-import { setTimeStart, setTimeEnd } from "../../actions/timeActions";
+import {
+  setDragging,
+  setTimeStart,
+  setTimeEnd,
+} from "../../actions/timeActions";
 
 import PropTypes from "prop-types";
 
@@ -9,14 +13,11 @@ const TimeSlot = ({
   time: { start, end },
   setTimeStart,
   setTimeEnd,
+  setDragging,
   index,
   date,
 }) => {
-  const [ticked, setTicked] = useState(false);
-
-  const onTicked = (e) => {
-    setTicked((current) => !current);
-  };
+  const selfRef = useRef();
 
   const onMouseDown = (e) => {
     setTimeStart({ index, date, x: e.clientX, y: e.clientY });
@@ -29,13 +30,14 @@ const TimeSlot = ({
   const checkOnDrag = (e) => {
     if (start !== null && end === null) {
       // Dragging
+      setDragging({ index, date });
     }
   };
 
   return (
     <div
-      className={`timeslot-container ${index} ${ticked && "tick"}`}
-      onClick={() => onTicked()}
+      ref={selfRef}
+      className={`timeslot-container ${index}`}
       onMouseOver={() => checkOnDrag()}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
@@ -50,4 +52,8 @@ const mapStateToProps = (state) => {
 };
 TimeSlot.propTypes = {};
 
-export default connect(mapStateToProps, { setTimeStart, setTimeEnd })(TimeSlot);
+export default connect(mapStateToProps, {
+  setTimeStart,
+  setTimeEnd,
+  setDragging,
+})(TimeSlot);

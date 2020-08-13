@@ -1,4 +1,4 @@
-import { SET_TIME_START, SET_TIME_END } from "./types";
+import { SET_DRAGING, SET_TIME_START, SET_TIME_END } from "./types";
 
 //  export const setDrag = () => {
 //   return {
@@ -17,5 +17,12 @@ export const setTimeEnd = (end) => {
   return {
     type: SET_TIME_END,
     payload: end,
+  };
+};
+
+export const setDragging = (hoveringDate) => {
+  return {
+    type: SET_DRAGING,
+    payload: hoveringDate,
   };
 };

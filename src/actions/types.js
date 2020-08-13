@@ -14,6 +14,6 @@ export const SET_EDITING = "SET_EDITING";
 export const SET_DATE = "SET_DATE";
 
 // timeActions
-export const SET_DRAG = "SET_DRAG";
+export const SET_DRAGING = "SET_DRAGING";
 export const SET_TIME_START = "M";
 export const SET_TIME_END = "SET_TIME_END";

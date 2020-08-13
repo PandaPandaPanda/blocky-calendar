@@ -10,7 +10,7 @@ import "./style.css";
 import PropTypes from "prop-types";
 
 const DayBlocks = ({
-  time: { start, end },
+  time: { start, end, hoveringDate },
   navbar: { date: selectedDate },
   setDate,
 }) => {
@@ -92,9 +92,17 @@ const DayBlocks = ({
 
   // Handling Time Block Selection
   useEffect(() => {
-    if (end !== null) {
-      var day1 = start,
-        day2 = end;
+    if (end !== null || hoveringDate !== null) {
+      var action;
+      if (hoveringDate !== null) {
+        action = "hover";
+        var day1 = start,
+          day2 = hoveringDate;
+      } else {
+        action = "tick";
+        var day1 = start,
+          day2 = end;
+      }
 
       // First check which day comes first? Make day1 always the day before
       if (day1.date.isSameOrAfter(day2.date, "day")) {
@@ -120,7 +128,12 @@ const DayBlocks = ({
         var selectedSlots = [];
         for (var i = day1.index; i <= day2.index; i++) {
           var el = date.getElementsByClassName(i)[0];
-          el.classList.add("tick");
+          if (el.classList.contains("hover")) {
+            el.classList.remove("hover");
+          } else if (el.classList.contains("tick")) {
+            el.classList.remove("tick");
+          }
+          el.classList.add(action);
           selectedSlots.push(el);
         }
       } else {
@@ -129,7 +142,12 @@ const DayBlocks = ({
         selectedSlots = [];
         for (i = day1.index; i < 96; i++) {
           const el = date.getElementsByClassName(i)[0];
-          el.classList.add("tick");
+          if (el.classList.contains("hover")) {
+            el.classList.remove("hover");
+          } else if (el.classList.contains("tick")) {
+            el.classList.remove("tick");
+          }
+          el.classList.add(action);
           selectedSlots.push(el);
         }
 
@@ -141,7 +159,12 @@ const DayBlocks = ({
           selectedSlots = [];
           for (i = 0; i < 96; i++) {
             el = date.getElementsByClassName(i)[0];
-            el.classList.add("tick");
+            if (el.classList.contains("hover")) {
+              el.classList.remove("hover");
+            } else if (el.classList.contains("tick")) {
+              el.classList.remove("tick");
+            }
+            el.classList.add(action);
             selectedSlots.push(el);
           }
           intervalDate = intervalDate.add(1, "day");
@@ -152,12 +175,17 @@ const DayBlocks = ({
         selectedSlots = [];
         for (i = 0; i <= day2.index; i++) {
           el = date.getElementsByClassName(i)[0];
-          el.classList.add("tick");
+          if (el.classList.contains("hover")) {
+            el.classList.remove("hover");
+          } else if (el.classList.contains("tick")) {
+            el.classList.remove("tick");
+          }
+          el.classList.add(action);
           selectedSlots.push(el);
         }
       }
     }
-  }, [end]);
+  }, [end, hoveringDate]);
 
   // useEffect(() => {
   //   console.log(document.getElementById("0").getBoundingClientRect());
