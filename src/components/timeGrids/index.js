@@ -33,22 +33,27 @@ const DayBlocks = ({
 
   const [dayMatrics, setDayMatrics] = useState([
     <TimeSlotMatrics
+      id={moment(selectedDate).subtract(2, "day")}
       date={moment(selectedDate).subtract(2, "day")}
       setCurrentView={setCurrentView}
     />,
     <TimeSlotMatrics
+      id={moment(selectedDate).subtract(1, "day")}
       date={moment(selectedDate).subtract(1, "day")}
       setCurrentView={setCurrentView}
     />,
     <TimeSlotMatrics
+      id={moment(selectedDate)}
       date={moment(selectedDate)}
       setCurrentView={setCurrentView}
     />,
     <TimeSlotMatrics
+      id={moment(selectedDate).add(1, "day")}
       date={moment(selectedDate).add(1, "day")}
       setCurrentView={setCurrentView}
     />,
     <TimeSlotMatrics
+      id={moment(selectedDate).add(2, "day")}
       date={moment(selectedDate).add(2, "day")}
       setCurrentView={setCurrentView}
     />,
@@ -68,22 +73,27 @@ const DayBlocks = ({
   useEffect(() => {
     setDayMatrics([
       <TimeSlotMatrics
+        id={moment(selectedDate).subtract(2, "day")}
         date={moment(selectedDate).subtract(2, "day")}
         setCurrentView={setCurrentView}
       />,
       <TimeSlotMatrics
+        id={moment(selectedDate).subtract(1, "day")}
         date={moment(selectedDate).subtract(1, "day")}
         setCurrentView={setCurrentView}
       />,
       <TimeSlotMatrics
+        id={moment(selectedDate)}
         date={moment(selectedDate)}
         setCurrentView={setCurrentView}
       />,
       <TimeSlotMatrics
+        id={moment(selectedDate).add(1, "day")}
         date={moment(selectedDate).add(1, "day")}
         setCurrentView={setCurrentView}
       />,
       <TimeSlotMatrics
+        id={moment(selectedDate).add(2, "day")}
         date={moment(selectedDate).add(2, "day")}
         setCurrentView={setCurrentView}
       />,

@@ -4,10 +4,7 @@ import TimeSlot from "./TimeSlot";
 
 import VisibilitySensor from "react-visibility-sensor";
 
-// import DragSelect from "../../utils/DragSelect";
-
 import PropTypes from "prop-types";
-import { Collapsible } from "materialize-css";
 
 const TimeSlotMatrics = ({ date, setCurrentView }) => {
   const d = date.format("DD"),
@@ -16,8 +13,6 @@ const TimeSlotMatrics = ({ date, setCurrentView }) => {
 
   var times = [],
     timeslots = [];
-
-  const positionRef = useRef();
 
   // Display the time in a day
   for (let i = 0; i < 24; i++) {

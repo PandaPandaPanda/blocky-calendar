@@ -35,35 +35,26 @@
 .timeslots-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(24, 1fr);
   grid-gap: 0.5%;
   height: 90vh;
   width: 20rem;
   position: relative;
+  margin: 0;
 }
-
-/* .day-wrapper:after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: repeating-linear-gradient(
-    grey 0%,
-    grey 0.15%,
-    white 0.15%,
-    white 0.55%,
-    transparent 0.55%,
-    transparent 4.167%
-  );
-  z-index: 2;
-} */
 
 .timeslot-container {
   /* display: block; */
   /* border: 2rem white; */
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   background-color: #ececec;
   border-bottom: 1px solid #d6d6d6;
+}
+
+.timeslot-container:hover {
+  border: 0.2rem solid #d6d6d6;
 }
 
 .tick {

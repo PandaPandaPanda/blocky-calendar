@@ -2,6 +2,11 @@
   font-family: "Gamepixies";
   src: url("./Gamepixies-8MO6n.ttf");
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 body {
   font-family: "Gamepixies";
   font-size: 1.1rem;

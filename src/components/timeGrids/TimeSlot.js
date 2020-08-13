@@ -5,7 +5,13 @@ import { setTimeStart, setTimeEnd } from "../../actions/timeActions";
 import PropTypes from "prop-types";
 
 // index ranges from 0 to 95 representing different times in a day
-const TimeSlot = ({ setTimeStart, setTimeEnd, index, date }) => {
+const TimeSlot = ({
+  time: { start, end },
+  setTimeStart,
+  setTimeEnd,
+  index,
+  date,
+}) => {
   const [ticked, setTicked] = useState(false);
 
   const onTicked = (e) => {
@@ -20,16 +26,28 @@ const TimeSlot = ({ setTimeStart, setTimeEnd, index, date }) => {
     setTimeEnd({ index, date, x: e.clientX, y: e.clientY });
   };
 
+  const checkOnDrag = (e) => {
+    if (start !== null && end === null) {
+      // Dragging
+    }
+  };
+
   return (
     <div
       className={`timeslot-container ${index} ${ticked && "tick"}`}
       onClick={() => onTicked()}
+      onMouseOver={() => checkOnDrag()}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     ></div>
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    time: state.time,
+  };
+};
 TimeSlot.propTypes = {};
 
-export default connect(null, { setTimeStart, setTimeEnd })(TimeSlot);
+export default connect(mapStateToProps, { setTimeStart, setTimeEnd })(TimeSlot);
