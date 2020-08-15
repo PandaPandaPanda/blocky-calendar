@@ -60,8 +60,7 @@ const DayBlocks = ({
 
   // Auto Scroll to center
   useEffect(() => {
-    wrapperRef.current.scrollTop =
-      (2 * containerRef.current.clientHeight) / 5 + 4;
+    wrapperRef.current.scrollTop = (2 * containerRef.current.clientHeight) / 5;
   }, [containerRef, selectedDate]);
 
   // Handle date changes
