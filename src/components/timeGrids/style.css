@@ -1,6 +1,5 @@
 /* index.js */
 .days-wrapper {
-  overflow-y: scroll;
   height: 90vh;
   width: 27rem;
 }
@@ -74,14 +73,4 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
-
-/* Disable ScrollBar */
-::-webkit-scrollbar {
-  width: 0px; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  background: #ff0000;
 }
