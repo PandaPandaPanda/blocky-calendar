@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { setDate } from "../../actions/navbarActions";
 
 import moment from "moment";
+import M from "materialize-css/dist/js/materialize.min.js";
 import "react-datez/dist/css/react-datez.css";
 import { ReactDatez, ReduxReactDatez } from "react-datez";
 

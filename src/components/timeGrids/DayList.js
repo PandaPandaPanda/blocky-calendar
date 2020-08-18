@@ -1,12 +1,16 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import TimeSlotMatrics from "../TimeSlotMatrics";
+import TimeSlotMatrics from "./TimeSlotMatrics";
 
 import { FixedSizeList } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
+import { connect } from "react-redux";
 
-export default class DayList extends PureComponent {
-  _getRef = (instance) => {};
+class DayList extends PureComponent {
+  _getRef = (instance) => {
+    this.FixedSizeList = instance;
+  };
 
   // componentDidMount() {
   //   this.scrollEl = this.VirtualList.rootNode;
@@ -26,6 +30,8 @@ export default class DayList extends PureComponent {
 
   //   return weeks * rowHeight - (height - rowHeight/2) / 2;
   // }
+
+  
 
   renderDay = ({ index, style }) => {
     let { days, TimeSlot } = this.props;
@@ -55,10 +61,17 @@ export default class DayList extends PureComponent {
         height={690}
         width="100%"
         itemCount={days.length}
-        itemSize={690}
-      >
-        {this.renderDay}
-      </FixedSizeList>
+        itemSize={685}
+        children={this.renderDay}
+      ></FixedSizeList>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    navbar: state.date,
+  };
+};
+
+export default connect(mapStateToProps, {})(DayList);
