@@ -2,17 +2,27 @@ import React, { useRef, Component, Fragment } from "react";
 
 import TimeSlot from "./TimeSlot";
 
-import VisibilitySensor from "react-visibility-sensor";
-
-import moment from "moment";
-
 import PropTypes from "prop-types";
 import { render } from "react-dom";
 
 const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
-  let m = moment().month(month).format("MMM");
-  let d = moment().day(day).format("DD");
-  let y = moment().year(year).format("YYYY");
+  const monthsList = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let m = monthsList[month - 1];
+  let d = day;
+  let y = year;
 
   var times = [],
     timeslots = [];

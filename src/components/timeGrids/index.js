@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from "react";
 import { connect, useSelector } from "react-redux";
-import moment from "moment";
+import moment, { min } from "moment";
 
 import TimeSlot from "./TimeSlot";
 
@@ -15,22 +15,26 @@ class DayBlocks extends Component {
   constructor(props) {
     super(...arguments);
 
-    this.updateDays(props);
+    this.updateDays();
 
-    this.state = { TimeSlot };
+    this.state = {
+      TimeSlot,
+
+      // width= 400, };
+    };
   }
 
-  updateDays() {
-    const min = moment().startOf().subtract(1, "year");
-    const max = moment().startOf().add(1, "year");
-
+  updateDays(props = this.props) {
     const days = [];
+    var min = moment().startOf("year").subtract(1, "year");
+    var max = moment().startOf("year").add(1, "year");
+    console.log(min, max);
     let year, month, day;
     for (year = min.year(); year <= max.year(); year++) {
       for (month = 1; month <= 12; month++) {
         for (
           day = 1;
-          day <= moment(year + month, "YYYYMM").daysInMonth();
+          day <= moment(year + ":" + month, "YYYY:MM").daysInMonth();
           day++
         ) {
           days.push({ day, month, year });
@@ -39,6 +43,10 @@ class DayBlocks extends Component {
     }
 
     this.days = days;
+    this.min = min;
+    this.max = max;
+    this.height = 690;
+    this.rowHeight = 685;
   }
 
   render() {
@@ -50,7 +58,11 @@ class DayBlocks extends Component {
               this._DayList = instance;
             }}
             days={this.days}
-            TimeSlot={TimeSlot}
+            TimeSlot={this.TimeSlot}
+            min={this.min}
+            max={this.max}
+            height={this.height}
+            rowHeight={this.rowHeight}
           />
         </div>
       </div>

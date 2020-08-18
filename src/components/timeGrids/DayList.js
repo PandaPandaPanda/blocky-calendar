@@ -1,47 +1,33 @@
-import React, { PureComponent } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import TimeSlotMatrics from "./TimeSlotMatrics";
 
 import { FixedSizeList } from "react-window";
+import moment from "moment";
 import AutoSizer from "react-virtualized-auto-sizer";
+
 import { connect } from "react-redux";
 
-class DayList extends PureComponent {
-  _getRef = (instance) => {
-    this.FixedSizeList = instance;
-  };
+const DayList = ({
+  navbar: { date },
+  days,
+  TimeSlot,
+  min,
+  max,
+  height,
+  rowHeight,
+}) => {
+  const listRef = useRef();
 
-  // componentDidMount() {
-  //   this.scrollEl = this.VirtualList.rootNode;
-  // }
+  useEffect(() => {
+    scrollToDate(moment(date));
+  }, [date]);
 
-  // componentWillReceiveProps({scrollDate}) {
-  //   if (scrollDate !== this.props.scrollDate) {
-  //     this.setState({
-  //       scrollTop: this.getDateOffset(scrollDate),
-  //     });
-  //   }
-  // }
-
-  // getDateOffset(date) {
-  //   const {min, rowHeight, locale: {weekStartsOn}, height} = this.props;
-  //   const weeks = getWeek(startOfMonth(min), parse(date), weekStartsOn);
-
-  //   return weeks * rowHeight - (height - rowHeight/2) / 2;
-  // }
-
-  
-
-  renderDay = ({ index, style }) => {
-    let { days, TimeSlot } = this.props;
-
+  const renderDay = ({ index, style }) => {
     let { day, month, year } = days[index];
     let key = `${year}:${month}:${day}`;
     return (
-      // <div style={style} index={index}>
-      //   {key}
-      // </div>
       <TimeSlotMatrics
         key={key}
         style={style}
@@ -51,26 +37,36 @@ class DayList extends PureComponent {
     );
   };
 
-  render() {
-    let { days } = this.props;
+  const getDateOffset = (date) => {
+    // const {min, rowHeight, locale: {weekStartsOn}, height} = this.props;
+    // const weeks = getWeek(startOfMonth(min), parse(date), weekStartsOn);
 
-    return (
-      <FixedSizeList
-        className="List"
-        ref={this._getRef}
-        height={690}
-        width="100%"
-        itemCount={days.length}
-        itemSize={685}
-        children={this.renderDay}
-      ></FixedSizeList>
-    );
-  }
-}
+    // return date.diff(min, "days") * rowHeight - (height - rowHeight / 2) / 2;
+    return date.diff(min, "days");
+  };
+
+  const scrollToDate = (date = 0, ...rest) => {
+    let offsetTop = getDateOffset(date);
+    console.log(offsetTop);
+    listRef.current.scrollToItem(offsetTop, "center");
+  };
+
+  return (
+    <FixedSizeList
+      className="List"
+      ref={listRef}
+      height={height}
+      width="100%"
+      itemCount={days.length}
+      itemSize={rowHeight}
+      children={renderDay}
+    />
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
-    navbar: state.date,
+    navbar: state.navbar,
   };
 };
 
