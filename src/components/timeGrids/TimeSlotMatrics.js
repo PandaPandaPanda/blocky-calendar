@@ -33,20 +33,22 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
   }
 
   // Individual 15min timeslots
-  for (let j = 0; j < 96; j++) {
+  for (let j = 1; j <= 96; j++) {
     timeslots.push(<TimeSlot index={j} />);
   }
 
   return (
-    <div className="day-wrapper" style={style}>
-      <div className="date-label">
-        <span>{m}</span>
-        <span>{d}</span>
-        <span>{y}</span>
-      </div>
-      <div className="time-label">{times.map((time) => time)}</div>
-      <div className="timeslots-wrapper">
-        {timeslots.map((timeslot) => timeslot)}
+    <div style={style} id={year + ":" + month + ":" + day}>
+      <div className="day-wrapper">
+        <div className="date-label">
+          <span>{m}</span>
+          <span>{d}</span>
+          <span>{y}</span>
+        </div>
+        <div className="time-label">{times.map((time) => time)}</div>
+        <div className="timeslots-wrapper">
+          {timeslots.map((timeslot) => timeslot)}
+        </div>
       </div>
     </div>
   );

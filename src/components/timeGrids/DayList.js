@@ -37,18 +37,41 @@ const DayList = ({
     );
   };
 
-  const getDateOffset = (date) => {
-    // const {min, rowHeight, locale: {weekStartsOn}, height} = this.props;
-    // const weeks = getWeek(startOfMonth(min), parse(date), weekStartsOn);
+  // Find the current timeslot and append class "current" to it
+  const renderTodayPointer = () => {
+    // Remove previous pointer if there is any
+    if (document.getElementsByClassName("current")[0]) {
+      document.getElementsByClassName("current")[0].remove();
+    }
 
-    // return date.diff(min, "days") * rowHeight - (height - rowHeight / 2) / 2;
+    // Add a pointer
+    var overlay = document.createElement("div");
+    overlay.className = "current";
+
+    const matricsElm = document.getElementById(moment().format("YYYY:M:D"));
+
+    const current = matricsElm.getElementsByClassName(
+      Math.ceil(moment().diff(moment().startOf("day"), "minutes") / 15)
+    )[0];
+    current.appendChild(overlay);
+    current.getElementsByClassName(
+      "current"
+    )[0].style.transform = `translatex(-${
+      ((moment().diff(moment().startOf("day"), "minutes") % 15) / 15) * 100
+    }%)`;
+  };
+
+  const getDateOffset = (date) => {
     return date.diff(min, "days");
   };
 
-  const scrollToDate = (date = 0, ...rest) => {
+  const scrollToDate = async (date = 0, ...rest) => {
     let offsetTop = getDateOffset(date);
-    console.log(offsetTop);
-    listRef.current.scrollToItem(offsetTop, "center");
+    await listRef.current.scrollToItem(offsetTop, "center");
+    renderTodayPointer();
+    window.setInterval(() => {
+      renderTodayPointer();
+    }, 60000);
   };
 
   return (

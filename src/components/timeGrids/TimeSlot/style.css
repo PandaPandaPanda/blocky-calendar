@@ -1,0 +1,34 @@
+.timeslot-container {
+  /* display: block; */
+  /* border: 2rem white; */
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: #ececec;
+  border-bottom: 1px solid #d6d6d6;
+  position: relative;
+}
+
+.timeslot-container:hover {
+  border: 0.2rem solid #d6d6d6;
+}
+
+.tick {
+  background-color: #add8e6;
+}
+
+.hover {
+  border: 0.2rem solid #d6d6d6;
+}
+
+.current {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #f00;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+}
