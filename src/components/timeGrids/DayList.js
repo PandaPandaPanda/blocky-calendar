@@ -27,6 +27,12 @@ const DayList = ({
   const renderDay = ({ index, style }) => {
     let { day, month, year } = days[index];
     let key = `${year}:${month}:${day}`;
+
+    renderTodayPointer();
+    setInterval(() => {
+      renderTodayPointer();
+    }, 60000);
+
     return (
       <TimeSlotMatrics
         key={key}
@@ -45,20 +51,21 @@ const DayList = ({
     }
 
     // Add a pointer
-    var overlay = document.createElement("div");
-    overlay.className = "current";
-
     const matricsElm = document.getElementById(moment().format("YYYY:M:D"));
 
-    const current = matricsElm.getElementsByClassName(
-      Math.ceil(moment().diff(moment().startOf("day"), "minutes") / 15)
-    )[0];
-    current.appendChild(overlay);
-    current.getElementsByClassName(
-      "current"
-    )[0].style.transform = `translatex(-${
-      ((moment().diff(moment().startOf("day"), "minutes") % 15) / 15) * 100
-    }%)`;
+    if (matricsElm !== null) {
+      var overlay = document.createElement("div");
+      overlay.className = "current";
+
+      const time = moment().diff(moment().startOf("day"), "minutes");
+      const current = matricsElm.getElementsByClassName(
+        Math.ceil(time / 15)
+      )[0];
+      current.appendChild(overlay);
+      current.getElementsByClassName(
+        "current"
+      )[0].style.transform = `translatex(${((time % 15) / 15) * 640}%)`;
+    }
   };
 
   const getDateOffset = (date) => {
@@ -69,9 +76,6 @@ const DayList = ({
     let offsetTop = getDateOffset(date);
     await listRef.current.scrollToItem(offsetTop, "center");
     renderTodayPointer();
-    window.setInterval(() => {
-      renderTodayPointer();
-    }, 60000);
   };
 
   return (
