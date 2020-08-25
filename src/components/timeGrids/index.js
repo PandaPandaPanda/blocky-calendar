@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect, useRef } from "react";
 import { connect, useSelector } from "react-redux";
 import moment, { min } from "moment";
 
-import TimeSlot from "./TimeSlot";
+import TimeSlot from "./DayList/TimeSlot";
 
 import DayList from "./DayList";
 
@@ -45,8 +45,8 @@ class DayBlocks extends Component {
     this.days = days;
     this.min = min;
     this.max = max;
-    this.height = 690;
-    this.rowHeight = 690;
+    this.height = 680;
+    this.rowHeight = 680;
   }
 
   render() {

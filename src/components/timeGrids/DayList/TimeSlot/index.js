@@ -3,7 +3,7 @@ import {
   setDragging,
   setTimeStart,
   setTimeEnd,
-} from "../../../actions/timeActions";
+} from "../../../../actions/timeActions";
 
 import "./style.css";
 

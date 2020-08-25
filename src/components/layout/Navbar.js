@@ -16,6 +16,10 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
   const [day, setDay] = useState(moment().format());
 
   useEffect(() => {
+    M.AutoInit();
+  }, []);
+
+  useEffect(() => {
     setDay(selectedDate);
   }, [selectedDate]);
 
