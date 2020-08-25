@@ -15,9 +15,6 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import M from "materialize-css/dist/js/materialize.min.js";
-import "materialize-css/dist/css/materialize.min.css";
-
 import "./styles.css";
 
 const localizer = momentLocalizer(moment);
@@ -30,11 +27,6 @@ const CalendarView = ({
   setCurrentEvent,
   setEditing,
 }) => {
-  useEffect(() => {
-    // Initializes Materialize js
-    M.AutoInit();
-  }, []);
-
   // Resize event
   const onEventResize = ({ event, start, end }) => {
     resizeEvent({ event, start, end });
