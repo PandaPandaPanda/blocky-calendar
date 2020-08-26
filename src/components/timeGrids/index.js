@@ -1,10 +1,11 @@
 import React, { Component, useState, useEffect, useRef } from "react";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import moment, { min } from "moment";
 
 import TimeSlot from "./DayList/TimeSlot";
 
 import DayList from "./DayList";
+import EventTypesList from "./EventTypesList";
 
 import { setDate } from "../../actions/navbarActions";
 
@@ -45,8 +46,8 @@ class DayBlocks extends Component {
     this.days = days;
     this.min = min;
     this.max = max;
-    this.height = 680;
-    this.rowHeight = 680;
+    this.height = 690;
+    this.rowHeight = 690;
   }
 
   render() {
@@ -65,6 +66,7 @@ class DayBlocks extends Component {
             rowHeight={this.rowHeight}
           />
         </div>
+        <EventTypesList height={this.height} />
       </div>
     );
   }

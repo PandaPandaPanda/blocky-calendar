@@ -1,0 +1,11 @@
+.event-types-list-wrapper {
+  height: 100%;
+  width: 10rem;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+/* ::-webkit-scrollbar {
+  width: 0px; 
+  background: transparent; 
+} */

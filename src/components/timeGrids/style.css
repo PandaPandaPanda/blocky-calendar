@@ -1,14 +1,18 @@
 /* index.js */
 .days-wrapper {
   height: 90vh;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
+  margin: 0 1rem 0;
+  position: relative;
 }
 
 .timeGrids-container {
   height: 90vh;
   width: 27rem;
+  display: flex;
+  flex-direction: row;
 }
 
 /* DayWrapper.js */

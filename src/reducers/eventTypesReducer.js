@@ -21,7 +21,7 @@ const initialState = {
     {
       _id: "2",
       title: "English",
-      color: "#ffff99",
+      color: "#00FFFF",
     },
   ],
 
