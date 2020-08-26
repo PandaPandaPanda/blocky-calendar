@@ -6,6 +6,7 @@ import store from "./store";
 import Navbar from "./components/layout/Navbar";
 import CalendarView from "./components/Calendar";
 import TimeGrids from "./components/TimeGrids";
+import EventTypes from "./components/EventTypes";
 
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -45,6 +46,15 @@ const App = () => {
               render={() => (
                 <Fragment>
                   <TimeGrids />
+                </Fragment>
+              )}
+            />
+            <Route
+              exact
+              path="/event-types"
+              render={() => (
+                <Fragment>
+                  <EventTypes />
                 </Fragment>
               )}
             />

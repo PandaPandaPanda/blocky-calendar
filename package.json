@@ -7,6 +7,7 @@
     "moment": "2.26.0",
     "react": "16.13.1",
     "react-big-calendar": "^0.26.0",
+    "react-color": "^2.18.1",
     "react-datez": "^1.4.1",
     "react-dnd": "10.0.2",
     "react-dnd-html5-backend": "10.0.2",

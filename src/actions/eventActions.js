@@ -62,7 +62,7 @@ export const updateEvent = ({ _id, title, hour, start, end }) => async (
   }
 };
 
-// Update existing event
+// Delete existing event
 export const deleteEvent = (_id) => async (dispatch) => {
   try {
     // Implement REST API Here
