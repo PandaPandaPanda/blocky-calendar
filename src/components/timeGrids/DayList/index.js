@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import TimeSlotMatrics from "./TimeSlotMatrics";
@@ -18,11 +18,30 @@ const DayList = ({
   height,
   rowHeight,
 }) => {
-  const listRef = useRef();
+  var listRef = useRef();
+
+  // Scroll to current day
+  const todayObserver = useCallback((node) => {
+    listRef.current = node;
+    scrollToDate(moment(date));
+  });
 
   useEffect(() => {
-    scrollToDate(moment(date));
+    if (listRef.current) {
+      scrollToDate(moment(date));
+    }
   }, [date]);
+
+  const getDateOffset = (date) => {
+    return date.diff(min, "days");
+  };
+
+  const scrollToDate = async (date = 0, ...rest) => {
+    let offsetTop = getDateOffset(date);
+
+    await listRef.current.scrollToItem(offsetTop, "center");
+    renderTodayPointer();
+  };
 
   const renderDay = ({ index, style }) => {
     let { day, month, year } = days[index];
@@ -68,26 +87,20 @@ const DayList = ({
     }
   };
 
-  const getDateOffset = (date) => {
-    return date.diff(min, "days");
-  };
-
-  const scrollToDate = async (date = 0, ...rest) => {
-    let offsetTop = getDateOffset(date);
-    await listRef.current.scrollToItem(offsetTop, "center");
-    renderTodayPointer();
-  };
-
   return (
-    <FixedSizeList
-      className="List"
-      ref={listRef}
-      height={height}
-      width="100%"
-      itemCount={days.length}
-      itemSize={rowHeight}
-      children={renderDay}
-    />
+    <AutoSizer>
+      {({ height, width }) => (
+        <FixedSizeList
+          ref={todayObserver}
+          className="List"
+          height={height}
+          width={width}
+          itemCount={days.length}
+          itemSize={height * 1.01}
+          children={renderDay}
+        />
+      )}
+    </AutoSizer>
   );
 };
 
