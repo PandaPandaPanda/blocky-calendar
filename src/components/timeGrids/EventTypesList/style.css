@@ -5,6 +5,10 @@
   overflow-x: auto;
 }
 
+h6 {
+  margin: 0.4rem 1rem 0.4rem !important;
+}
+
 /* ::-webkit-scrollbar {
   width: 0px; 
   background: transparent; 

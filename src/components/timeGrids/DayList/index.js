@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import TimeSlotMatrics from "./TimeSlotMatrics";
 
+import { setViewingDate } from "../../../actions/navbarActions";
+
 import { FixedSizeList } from "react-window";
 import moment from "moment";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -10,7 +12,8 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { connect } from "react-redux";
 
 const DayList = ({
-  navbar: { date },
+  navbar: { date, viewingDate },
+  setViewingDate,
   days,
   TimeSlot,
   min,
@@ -18,16 +21,7 @@ const DayList = ({
   height,
   rowHeight,
 }) => {
-  var listRef;
-
-  // Scroll to current day
-  const todayObserver = useCallback((node) => {
-    console.log(node);
-    if (node) {
-      listRef = node;
-      scrollToDate(moment(date));
-    }
-  });
+  var listRef = useRef();
 
   useEffect(() => {
     if (listRef) {
@@ -35,14 +29,19 @@ const DayList = ({
     }
   }, [date]);
 
+  const getDateFromOffset = (offset) => {
+    return moment(min).add(offset, "day");
+  };
+
   const getDateOffset = (date) => {
+    console.log(date.diff(min, "days"));
     return date.diff(min, "days");
   };
 
   const scrollToDate = async (date = 0, ...rest) => {
     let offsetTop = getDateOffset(date);
 
-    await listRef.scrollToItem(offsetTop, "center");
+    await listRef.current.scrollToItem(offsetTop, "center");
     renderTodayPointer();
   };
 
@@ -91,19 +90,24 @@ const DayList = ({
   };
 
   return (
-    <AutoSizer>
-      {({ height, width }) => (
-        <FixedSizeList
-          ref={todayObserver}
-          className="List"
-          height={height}
-          width={width}
-          itemCount={days.length}
-          itemSize={height * 1.01}
-          children={renderDay}
-        />
-      )}
-    </AutoSizer>
+    <FixedSizeList
+      ref={listRef}
+      className="List"
+      height={height}
+      width="100%"
+      itemCount={days.length}
+      itemSize={height * 1.01}
+      children={renderDay}
+      onScroll={(scrollTop) => {
+        let temp = getDateFromOffset(
+          Math.round(scrollTop.scrollOffset / (height * 1.01))
+        );
+
+        if (temp.diff(viewingDate, "day") != 0) {
+          setViewingDate(temp.startOf("day"));
+        }
+      }}
+    />
   );
 };
 
@@ -113,4 +117,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(DayList);
+export default connect(mapStateToProps, { setViewingDate })(DayList);

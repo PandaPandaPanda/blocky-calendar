@@ -12,6 +12,7 @@ export const SET_EDITING = "SET_EDITING";
 
 // navbarActions
 export const SET_DATE = "SET_DATE";
+export const SET_VIEWING_DATE = "SET_VIEWING_DATE";
 
 // timeActions
 export const SET_DRAGING = "SET_DRAGING";

@@ -71,6 +71,7 @@ const EditEventModal = ({
 
       const newEvent = {
         _id: event._id,
+        color: event.color,
         title,
         start: moment(refStart.current.value, "MMM DD, YYYY").toDate(),
         end: moment(refEnd.current.value, "MMM DD, YYYY").toDate(),

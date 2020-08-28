@@ -7,12 +7,28 @@ import "./style.css";
 
 import PropTypes from "prop-types";
 
-const EventTypesList = ({ eventTypes: { eventTypes }, height }) => {
+const EventTypesList = ({
+  event: { events },
+  eventTypes: { eventTypes },
+  navbar: { viewingDate },
+  height,
+}) => {
   return (
     <div className="event-types-list-wrapper">
-      {eventTypes.map((item) => (
-        <EventTypesListItem title={item.title} color={item.color} />
-      ))}
+      <div>
+        <h6>Temporary</h6>
+        {events.map((item) => {
+          if (viewingDate.isBetween(item.start, item.end, "day", "[)")) {
+            return <EventTypesListItem title={item.title} color={item.color} />;
+          }
+        })}
+      </div>
+      <div>
+        <h6>Recurring</h6>
+        {eventTypes.map((item) => (
+          <EventTypesListItem title={item.title} color={item.color} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -20,6 +36,8 @@ const EventTypesList = ({ eventTypes: { eventTypes }, height }) => {
 const mapStateToProps = (state) => {
   return {
     eventTypes: state.eventTypes,
+    event: state.event,
+    navbar: state.navbar,
   };
 };
 

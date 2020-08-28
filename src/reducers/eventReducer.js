@@ -21,12 +21,14 @@ const initialState = {
       start: moment().startOf("day").toDate(),
       end: moment().startOf("day").add(2, "days").toDate(),
       title: "Some title",
+      color: "#99E6E6",
     },
     {
       _id: 2,
-      start: moment().toDate(),
-      end: moment().add(1, "days").toDate(),
+      start: moment().startOf("day").toDate(),
+      end: moment().startOf("day").add(1, "days").toDate(),
       title: "Some title",
+      color: "#4DB380",
     },
   ],
 
