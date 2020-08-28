@@ -18,16 +18,19 @@ const DayList = ({
   height,
   rowHeight,
 }) => {
-  var listRef = useRef();
+  var listRef;
 
   // Scroll to current day
   const todayObserver = useCallback((node) => {
-    listRef.current = node;
-    scrollToDate(moment(date));
+    console.log(node);
+    if (node) {
+      listRef = node;
+      scrollToDate(moment(date));
+    }
   });
 
   useEffect(() => {
-    if (listRef.current) {
+    if (listRef) {
       scrollToDate(moment(date));
     }
   }, [date]);
@@ -39,7 +42,7 @@ const DayList = ({
   const scrollToDate = async (date = 0, ...rest) => {
     let offsetTop = getDateOffset(date);
 
-    await listRef.current.scrollToItem(offsetTop, "center");
+    await listRef.scrollToItem(offsetTop, "center");
     renderTodayPointer();
   };
 
