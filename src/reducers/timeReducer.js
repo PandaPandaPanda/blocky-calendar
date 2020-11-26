@@ -3,7 +3,7 @@ import { SET_DRAGING, SET_TIME_START, SET_TIME_END } from "../actions/types";
 const initialState = {
   start: null,
   end: null,
-  hoveringDate: null,
+  final: false,
 };
 
 export default (state = initialState, action) => {
@@ -14,19 +14,18 @@ export default (state = initialState, action) => {
         start: action.payload,
         // Reset end
         end: null,
+        final: false,
       };
     case SET_TIME_END:
       return {
         ...state,
-        dragging: false,
-        hoveringDate: null,
         end: action.payload,
+        final: true,
       };
     case SET_DRAGING:
       return {
         ...state,
-        dragging: true,
-        hoveringDate: action.payload,
+        end: action.payload,
       };
     default:
       return state;

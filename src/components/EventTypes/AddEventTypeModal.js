@@ -11,10 +11,6 @@ import M from "materialize-css";
 import "./style.css";
 
 const AddEventTypeModal = ({ eventTypes: { eventTypes }, addEventType }) => {
-  useEffect(() => {
-    M.AutoInit();
-  }, []);
-
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("#e6ff80");
 

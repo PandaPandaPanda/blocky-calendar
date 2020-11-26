@@ -34,7 +34,9 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
 
   // Individual 15min timeslots
   for (let j = 1; j <= 96; j++) {
-    timeslots.push(<TimeSlot index={j} />);
+    timeslots.push(
+      <TimeSlot index={j} date={year + ":" + month + ":" + day} />
+    );
   }
 
   return (

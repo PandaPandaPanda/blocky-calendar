@@ -14,10 +14,6 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import "./css/App.css";
 
 const App = () => {
-  useEffect(() => {
-    M.AutoInit();
-  }, []);
-
   return (
     <Provider store={store}>
       <Router>

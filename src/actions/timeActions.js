@@ -1,28 +1,30 @@
 import { SET_DRAGING, SET_TIME_START, SET_TIME_END } from "./types";
 
+import moment from "moment";
+
 //  export const setDrag = () => {
 //   return {
 //     type: SET_DRAG,
 //   };
 // };
 
-export const setTimeStart = (start) => {
+export const setTimeStart = ({ date, index }) => {
   return {
     type: SET_TIME_START,
-    payload: start,
+    payload: { date: moment(date, "YYYY:MM:DD"), index },
   };
 };
 
-export const setTimeEnd = (end) => {
+export const setTimeEnd = ({ date, index }) => {
   return {
     type: SET_TIME_END,
-    payload: end,
+    payload: { date: moment(date, "YYYY:MM:DD"), index },
   };
 };
 
-export const setDragging = (hoveringDate) => {
+export const setDragging = ({ date, index }) => {
   return {
     type: SET_DRAGING,
-    payload: hoveringDate,
+    payload: { date: moment(date, "YYYY:MM:DD"), index },
   };
 };

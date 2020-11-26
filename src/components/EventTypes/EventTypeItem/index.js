@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { setCurrentEventType } from "../../../actions/eventTypesActions";
+
+import M from "materialize-css";
 
 import PropTypes from "prop-types";
 
 import "./style.css";
 
 const EventTypeItem = ({ title, color, _id, setCurrentEventType }) => {
+  useEffect(() => {
+    M.AutoInit();
+  }, []);
+
   return (
     <li class="collection-item">
       <div>

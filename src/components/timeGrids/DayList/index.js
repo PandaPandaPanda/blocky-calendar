@@ -79,9 +79,9 @@ const DayList = ({
       overlay.className = "current";
 
       const time = moment().diff(moment().startOf("day"), "minutes");
-      const current = matricsElm.getElementsByClassName(
-        Math.ceil(time / 15)
-      )[0];
+      const current = matricsElm
+        .getElementsByClassName("timeslots-wrapper")[0]
+        .children.item(Math.ceil(time / 15));
       current.appendChild(overlay);
       current.getElementsByClassName(
         "current"

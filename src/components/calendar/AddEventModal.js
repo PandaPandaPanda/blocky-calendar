@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 import { addEvent } from "../../actions/eventActions";
 
-import M from "materialize-css";
+import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 import moment from "moment";
 
