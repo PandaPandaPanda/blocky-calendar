@@ -1,3 +1,3 @@
 # Blocky Calendar Made With React
 
-Aiming to combine the functionality of Calender,Reminder, Porject Management sites.
+Aiming to combine the functionality of Calendar,Reminder, Porject Management sites.
