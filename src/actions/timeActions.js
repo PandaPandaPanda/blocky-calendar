@@ -2,12 +2,6 @@ import { SET_TIME } from "./types";
 
 import moment from "moment";
 
-//  export const setDrag = () => {
-//   return {
-//     type: SET_DRAG,
-//   };
-// };
-
 export const setTime = ({ date, index }) => {
   return {
     type: SET_TIME,
