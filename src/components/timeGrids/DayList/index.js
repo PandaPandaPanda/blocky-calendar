@@ -50,7 +50,7 @@ const DayList = ({
 
   useEffect(() => {
     scrollToDate(moment(date));
-    renderTodayPointer();
+    // renderTodayPointer();
   }, [date]);
 
   const getDateFromOffset = (offset) => {
@@ -65,17 +65,17 @@ const DayList = ({
     let offsetTop = getDateOffset(date);
 
     await listRef.current.scrollToItem(offsetTop, "center");
-    renderTodayPointer();
+    // renderTodayPointer();
   };
 
   const renderDay = ({ index, style }) => {
     let { day, month, year, isSelected, startDate, endDate } = days[index];
     let key = `${year}:${month}:${day}`;
 
-    renderTodayPointer();
-    setInterval(() => {
-      renderTodayPointer();
-    }, 60000);
+    // renderTodayPointer();
+    // setInterval(() => {
+    //   renderTodayPointer();
+    // }, 60000);
 
     return (
       <TimeSlotMatrics
@@ -90,30 +90,31 @@ const DayList = ({
     );
   };
 
+  // BUGGED
   // Find the current timeslot and append class "current" to it
-  const renderTodayPointer = () => {
-    // Remove previous pointer if there is any
-    if (document.getElementsByClassName("current")[0]) {
-      document.getElementsByClassName("current")[0].remove();
-    }
+  // const renderTodayPointer = () => {
+  //   // Remove previous pointer if there is any
+  //   if (document.getElementsByClassName("current")[0]) {
+  //     document.getElementsByClassName("current")[0].remove();
+  //   }
 
-    // Add a pointer
-    const matricsElm = document.getElementById(moment().format("YYYY:M:D"));
+  //   // Add a pointer
+  //   const matricsElm = document.getElementById(moment().format("YYYY:M:D"));
 
-    if (matricsElm !== null) {
-      var overlay = document.createElement("div");
-      overlay.className = "current";
+  //   if (matricsElm !== null) {
+  //     var overlay = document.createElement("div");
+  //     overlay.className = "current";
 
-      const time = moment().diff(moment().startOf("day"), "minutes");
-      const current = matricsElm
-        .getElementsByClassName("timeslots-wrapper")[0]
-        .children.item(Math.ceil(time / 15));
-      current.appendChild(overlay);
-      current.getElementsByClassName(
-        "current"
-      )[0].style.transform = `translatex(${((time % 15) / 15) * 640}%)`;
-    }
-  };
+  //     const time = moment().diff(moment().startOf("day"), "minutes");
+  //     const current = matricsElm
+  //       .getElementsByClassName("timeslots-wrapper")[0]
+  //       .children.item(Math.ceil(time / 15));
+  //     current.appendChild(overlay);
+  //     current.getElementsByClassName(
+  //       "current"
+  //     )[0].style.transform = `translatex(${((time % 15) / 15) * 640}%)`;
+  //   }
+  // };
 
   return (
     <div style={{ height: "93.5vh" }} ref={parentRef}>
