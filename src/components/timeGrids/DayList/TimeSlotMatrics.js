@@ -52,7 +52,7 @@ const TimeSlotMatrics = ({
   //   );
   // }
   // Individual 15min timeslots
-  if (isSelected) {
+  if (startDate && endDate) {
     if (startDate.date.diff(endDate.date, "days") == 0) {
       for (let j = 1; j <= 96; j++) {
         timeslots.push(
@@ -61,7 +61,7 @@ const TimeSlotMatrics = ({
             index={j}
             date={year + ":" + month + ":" + day}
             isSelected={
-              j <= endDate.index && j >= startDate.index ? true : false
+              j <= endDate.index && j >= startDate.index ? isSelected : false
             }
           />
         );
@@ -75,7 +75,7 @@ const TimeSlotMatrics = ({
               key={j}
               index={j}
               date={year + ":" + month + ":" + day}
-              isSelected={j >= startDate.index ? true : false}
+              isSelected={j >= startDate.index ? isSelected : false}
             />
           );
         }
@@ -86,7 +86,7 @@ const TimeSlotMatrics = ({
               key={j}
               index={j}
               date={year + ":" + month + ":" + day}
-              isSelected={j <= endDate.index ? true : false}
+              isSelected={j <= endDate.index ? isSelected : false}
             />
           );
         }
@@ -97,7 +97,7 @@ const TimeSlotMatrics = ({
               key={j}
               index={j}
               date={year + ":" + month + ":" + day}
-              isSelected={true}
+              isSelected={isSelected}
             />
           );
         }
