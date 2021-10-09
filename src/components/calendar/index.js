@@ -35,13 +35,7 @@ const CalendarView = ({
 
   useEffect(() => {
     M.AutoInit();
-  });
-
-  useEffect(() => {
-    if (editing) {
-      editEventModalRef.current.click();
-    }
-  }, [editing]);
+  }, []);
 
   // Resize event
   const onEventResize = ({ event, start, end }) => {
@@ -64,6 +58,7 @@ const CalendarView = ({
   const updateEvent = (event) => {
     setCurrentEvent(event);
 
+    editEventModalRef.current.click();
     setEditing();
   };
 
@@ -87,7 +82,7 @@ const CalendarView = ({
           onNavigate={() => {}}
           resizable
           selectable
-          style={{ height: "90vh" }}
+          style={{ height: "94vh" }}
           // messages={{
           //   showMore: (target) => (
           //     <div

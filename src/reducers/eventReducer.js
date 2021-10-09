@@ -100,7 +100,7 @@ export default (state = initialState, action) => {
     case SET_EDITING:
       return {
         ...state,
-        editing: true,
+        editing: !state.editing,
       };
     default:
       return state;
