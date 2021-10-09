@@ -1,15 +1,15 @@
-import { SET_TIME } from "../actions/types";
+import { SET_TIME, SET_HOVER } from "../actions/types";
 
 const initialState = {
   start: null,
   end: null,
-  final: false,
+  final: true,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_TIME:
-      if (state.end != null && state.start != null) {
+      if (state.final == true) {
         return {
           ...state,
           start: action.payload,
@@ -30,6 +30,17 @@ export default (state = initialState, action) => {
           // Reset end
           end: null,
           final: false,
+        };
+      }
+    case SET_HOVER:
+      if (state.final == false && state.start != null) {
+        return {
+          ...state,
+          end: action.payload,
+        };
+      } else {
+        return {
+          ...state,
         };
       }
     default:

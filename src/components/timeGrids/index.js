@@ -46,20 +46,13 @@ class DayBlocks extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
-    if (this.props.time.final && this.props.time != prevProps.time) {
-      // let startDate, endDate;
-      // if (
-      //   this.props.time.start.date.diff(this.props.time.end.date, "days") > 0
-      // ) {
-      //   startDate = this.props.time.end;
-      //   endDate = this.props.time.start;
-      // } else {
-      //   startDate = this.props.time.start;
-      //   endDate = this.props.time.end;
-      // }
-
+    if (
+      this.props.time.final &&
+      this.props.time != prevProps.time &&
+      this.props.time.start != null &&
+      this.props.time.end != null
+    ) {
       this.paintRange(this.props.time.start, this.props.time.end, true);
-      // this.paintRange(this.props.time.start, this.props.time.end, true);
       this.setState({ prevTime: this.props.time });
     } else if (!this.props.time.final && this.state.prevTime != null) {
       this.paintRange(
@@ -69,6 +62,15 @@ class DayBlocks extends Component {
       );
       this.setState({ prevTime: null });
     }
+    // else if (
+    //   !this.props.time.final &&
+    //   this.props.time != prevProps.time &&
+    //   this.props.time.start != null &&
+    //   this.props.time.end != null
+    // ) {
+    //   this.paintRange(this.props.time.start, this.props.time.end, true);
+    //   this.setState({ prevTime: this.props.time });
+    // }
     if (this.state.days != prevState.days) {
       // console.log(this.state.days);
     }

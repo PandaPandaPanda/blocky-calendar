@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import { isBetween } from "moment";
 import { connect } from "react-redux";
 
-import { setTime } from "../../../../actions/timeActions";
+import { setTime, setHover } from "../../../../actions/timeActions";
 
 import "./style.css";
 
 // index ranges from 0 to 95 representing different times in a day
 
-const TimeSlot = ({ setTime, index, date, isSelected }) => {
+const TimeSlot = ({
+  // time: { final },
+  setTime,
+  setHover,
+  index,
+  date,
+  isSelected,
+}) => {
   return (
     <div
       className={`timeslot-container`}
@@ -16,15 +23,14 @@ const TimeSlot = ({ setTime, index, date, isSelected }) => {
       onMouseUp={() => {
         setTime({ date, index });
       }}
+      onMouseEnter={() => {
+        setHover({ date, index });
+      }}
     ></div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    // time: state.time,
-  };
-};
-export default connect(mapStateToProps, {
+export default connect(null, {
   setTime,
+  setHover,
 })(TimeSlot);

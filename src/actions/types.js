@@ -16,6 +16,7 @@ export const SET_VIEWING_DATE = "SET_VIEWING_DATE";
 
 // timeActions
 export const SET_TIME = "SET_TIME";
+export const SET_HOVER = "SET_HOVER";
 
 // eventTypesActions
 export const ADD_EVENT_TYPE = "ADD_EVENT_TYPE";
