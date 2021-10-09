@@ -55,9 +55,6 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
               paddingLeft: "1rem",
             }}
           />
-          <a href="#!" className="brand-logo center">
-            Logo
-          </a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </a>
