@@ -14,14 +14,6 @@ class DayBlocks extends Component {
   constructor(props) {
     super(...arguments);
 
-    this.updateDays();
-
-    this.state = {
-      TimeSlot,
-    };
-  }
-
-  updateDays(props = this.props) {
     const days = [];
     var min = moment().startOf("year").subtract(1, "year");
     var max = moment().startOf("year").add(1, "year");
@@ -42,9 +34,16 @@ class DayBlocks extends Component {
         }
       }
     }
-    this.days = days;
-    this.min = min;
-    this.max = max;
+    this.setState({ days: days });
+    this.setState({ min: min });
+    this.setState({ max: max });
+
+    this.state = {
+      TimeSlot,
+      days,
+      min,
+      max,
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -68,10 +67,10 @@ class DayBlocks extends Component {
         endDate = this.props.time.end;
       }
 
-      const newDays = this.days.slice();
+      var newDays = [...this.state.days];
       for (
-        var i = startDate.date.diff(this.min, "days");
-        i <= endDate.date.diff(this.min, "days");
+        var i = startDate.date.diff(this.state.min, "days");
+        i <= endDate.date.diff(this.state.min, "days");
         i++
       ) {
         newDays[i] = {
@@ -81,9 +80,10 @@ class DayBlocks extends Component {
           endDate: endDate,
         };
       }
-
       this.setState({ days: newDays });
-      console.log(this.days[i]);
+    }
+    if (this.state.days != prevState.days) {
+      console.log(this.state.days);
     }
   }
 
@@ -92,13 +92,13 @@ class DayBlocks extends Component {
       <div className="days-wrapper">
         <div className="timeGrids-container">
           <DayList
-            days={this.days}
-            TimeSlot={this.TimeSlot}
-            min={this.min}
-            max={this.max}
+            days={this.state.days}
+            TimeSlot={this.state.TimeSlot}
+            min={this.state.min}
+            max={this.state.max}
           />
         </div>
-        <EventTypesList height={this.height} />
+        <EventTypesList height={"100%"} />
       </div>
     );
   }

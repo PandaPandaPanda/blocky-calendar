@@ -126,7 +126,7 @@ const DayList = ({
         children={renderDay}
         onScroll={(scrollTop) => {
           let temp = getDateFromOffset(
-            Math.round(scrollTop.scrollOffset / height) + 1
+            Math.round(scrollTop.scrollOffset / height)
           );
 
           if (temp.diff(viewingDate, "day") != 0) {
