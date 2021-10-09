@@ -15,9 +15,7 @@ export const SET_DATE = "SET_DATE";
 export const SET_VIEWING_DATE = "SET_VIEWING_DATE";
 
 // timeActions
-export const SET_DRAGING = "SET_DRAGING";
-export const SET_TIME_START = "SET_TIME_START";
-export const SET_TIME_END = "SET_TIME_END";
+export const SET_TIME = "SET_TIME";
 
 // eventTypesActions
 export const ADD_EVENT_TYPE = "ADD_EVENT_TYPE";

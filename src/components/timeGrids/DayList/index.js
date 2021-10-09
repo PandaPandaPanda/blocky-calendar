@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -26,8 +26,9 @@ const DayList = ({
   var listRef = useRef();
   var parentRef = useRef();
 
-  const [height, setHeight] = React.useState(0);
-  const [width, setWidth] = React.useState(0);
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [loaded, setLoaded] = useState(0);
 
   const updateSize = () => {
     if (parentRef.current) {
@@ -37,12 +38,18 @@ const DayList = ({
   };
 
   useEffect(() => {
+    setLoaded(true);
     updateSize();
     window.addEventListener("resize", () => updateSize());
   }, []);
 
   useEffect(() => {
     scrollToDate(moment(date));
+  }, [loaded]);
+
+  useEffect(() => {
+    scrollToDate(moment(date));
+    renderTodayPointer();
   }, [date]);
 
   const getDateFromOffset = (offset) => {
@@ -73,7 +80,7 @@ const DayList = ({
       <TimeSlotMatrics
         key={key}
         style={style}
-        date={{ year, month, day }}
+        date={{ year, month, date }}
         TimeSlot={TimeSlot}
       />
     );
@@ -105,7 +112,7 @@ const DayList = ({
   };
 
   return (
-    <div style={{ height: "93vh" }} ref={parentRef}>
+    <div style={{ height: "93.5vh" }} ref={parentRef}>
       <FixedSizeList
         className="infiniteList"
         ref={listRef}
