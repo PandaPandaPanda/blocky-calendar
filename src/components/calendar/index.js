@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useRef, useState, Fragment } from "react";
 
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -24,15 +24,24 @@ const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
 const CalendarView = ({
-  event: { events },
+  event: { events, editing },
   navbar: { date },
   resizeEvent,
   setCurrentEvent,
   setEditing,
 }) => {
+  var editEventModalRef = useRef();
+  var addEventModalRef = useRef();
+
   useEffect(() => {
     M.AutoInit();
   });
+
+  useEffect(() => {
+    if (editing) {
+      editEventModalRef.current.click();
+    }
+  }, [editing]);
 
   // Resize event
   const onEventResize = ({ event, start, end }) => {
@@ -48,16 +57,14 @@ const CalendarView = ({
   const newEvent = (event) => {
     setCurrentEvent(event);
 
-    document.getElementById("addEventModalTrigger").click();
+    addEventModalRef.current.click();
   };
 
   // Update selected event
-  const onSelectEvent = (event) => {
+  const updateEvent = (event) => {
     setCurrentEvent(event);
 
     setEditing();
-
-    document.getElementById("editEventModalTrigger").click();
   };
 
   return (
@@ -72,7 +79,7 @@ const CalendarView = ({
           onEventDrop={onEventDrop}
           onEventResize={onEventResize}
           onSelectSlot={newEvent}
-          onSelectEvent={onSelectEvent}
+          onSelectEvent={updateEvent}
           toolbar={false}
           // components={{ toolbar: CustomToolbar }}
           date={moment(date).toDate()}
@@ -117,11 +124,13 @@ const CalendarView = ({
           //         handleDragStart={this.handleDragStart}
         />
         <a
+          ref={editEventModalRef}
           id="editEventModalTrigger"
           href="#edit-event-modal"
           className="modal-trigger"
         ></a>
         <a
+          ref={addEventModalRef}
           id="addEventModalTrigger"
           href="#add-event-modal"
           className="modal-trigger"

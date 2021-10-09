@@ -8,7 +8,7 @@ import { setViewingDate } from "../../../actions/navbarActions";
 
 import { FixedSizeList } from "react-window";
 import moment from "moment";
-import AutoSizer from "react-virtualized-auto-sizer";
+import M from "materialize-css";
 
 import { connect } from "react-redux";
 
@@ -38,6 +38,7 @@ const DayList = ({
 
   useEffect(() => {
     console.log("Rendered once");
+    M.AutoInit();
     setLoaded(true);
     updateSize();
     window.addEventListener("resize", () => updateSize());
