@@ -8,18 +8,21 @@ import "./style.css";
 
 // index ranges from 0 to 95 representing different times in a day
 
-const TimeSlot = ({ index, date, time: { start, end, final }, setTime }) => {
+const TimeSlot = ({ setTime, index, date, isSelected }) => {
   return (
     <div
       className={`timeslot-container`}
-      onMouseUp={() => setTime({ date, index })}
+      style={{ filter: isSelected ? "brightness(0.8)" : "brightness(1)" }}
+      onMouseUp={() => {
+        setTime({ date, index });
+      }}
     ></div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    time: state.time,
+    // time: state.time,
   };
 };
 export default connect(mapStateToProps, {

@@ -1,11 +1,18 @@
 import React, { useRef, Component, Fragment } from "react";
+import moment from "moment";
 
 import TimeSlot from "./TimeSlot";
 
 import PropTypes from "prop-types";
 import { render } from "react-dom";
 
-const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
+const TimeSlotMatrics = ({
+  date: { year, month, day },
+  style,
+  isSelected,
+  startDate,
+  endDate,
+}) => {
   const monthsList = [
     "Jan",
     "Feb",
@@ -32,11 +39,81 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
     times.push(<div key={i}>{i + ":00"}</div>);
   }
 
+  // if (isSelected) {
+  //   if () {
+
+  //   } else if(startDate.diff(endDate, "days") == 0)
+  //   timeslots.push(
+  //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {true}/>
+  //   );
+  // } else {
+  //   timeslots.push(
+  //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {false}/>
+  //   );
+  // }
   // Individual 15min timeslots
-  for (let j = 1; j <= 96; j++) {
-    timeslots.push(
-      <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} />
-    );
+  if (isSelected) {
+    if (startDate.date.diff(endDate.date, "days") == 0) {
+      for (let j = 1; j <= 96; j++) {
+        timeslots.push(
+          <TimeSlot
+            key={j}
+            index={j}
+            date={year + ":" + month + ":" + day}
+            isSelected={
+              j <= endDate.index && j >= startDate.index ? true : false
+            }
+          />
+        );
+      }
+    } else {
+      var today = moment(year + ":" + month + ":" + day, "YYYY:MM:DD");
+      if (startDate.date.diff(today, "days") == 0) {
+        for (let j = 1; j <= 96; j++) {
+          timeslots.push(
+            <TimeSlot
+              key={j}
+              index={j}
+              date={year + ":" + month + ":" + day}
+              isSelected={j >= startDate.index ? true : false}
+            />
+          );
+        }
+      } else if (endDate.date.diff(today, "days") == 0) {
+        for (let j = 1; j <= 96; j++) {
+          timeslots.push(
+            <TimeSlot
+              key={j}
+              index={j}
+              date={year + ":" + month + ":" + day}
+              isSelected={j <= endDate.index ? true : false}
+            />
+          );
+        }
+      } else {
+        for (let j = 1; j <= 96; j++) {
+          timeslots.push(
+            <TimeSlot
+              key={j}
+              index={j}
+              date={year + ":" + month + ":" + day}
+              isSelected={true}
+            />
+          );
+        }
+      }
+    }
+  } else {
+    for (let j = 1; j <= 96; j++) {
+      timeslots.push(
+        <TimeSlot
+          key={j}
+          index={j}
+          date={year + ":" + month + ":" + day}
+          isSelected={false}
+        />
+      );
+    }
   }
 
   return (

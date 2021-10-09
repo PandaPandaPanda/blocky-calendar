@@ -21,7 +21,6 @@ const DayList = ({
   TimeSlot,
   min,
   max,
-  rowHeight,
 }) => {
   var listRef = useRef();
   var parentRef = useRef();
@@ -38,6 +37,7 @@ const DayList = ({
   };
 
   useEffect(() => {
+    console.log("Rendered once");
     setLoaded(true);
     updateSize();
     window.addEventListener("resize", () => updateSize());
@@ -68,7 +68,7 @@ const DayList = ({
   };
 
   const renderDay = ({ index, style }) => {
-    let { day, month, year } = days[index];
+    let { day, month, year, isSelected, startDate, endDate } = days[index];
     let key = `${year}:${month}:${day}`;
 
     renderTodayPointer();
@@ -80,7 +80,10 @@ const DayList = ({
       <TimeSlotMatrics
         key={key}
         style={style}
-        date={{ year, month, date }}
+        date={{ year, month, day }}
+        isSelected={isSelected}
+        startDate={startDate}
+        endDate={endDate}
         TimeSlot={TimeSlot}
       />
     );
@@ -123,7 +126,7 @@ const DayList = ({
         children={renderDay}
         onScroll={(scrollTop) => {
           let temp = getDateFromOffset(
-            Math.round(scrollTop.scrollOffset / height)
+            Math.round(scrollTop.scrollOffset / height) + 1
           );
 
           if (temp.diff(viewingDate, "day") != 0) {

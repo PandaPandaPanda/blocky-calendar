@@ -7,8 +7,6 @@ import TimeSlot from "./DayList/TimeSlot";
 import DayList from "./DayList";
 import EventTypesList from "./EventTypesList";
 
-import { setDate } from "../../actions/navbarActions";
-
 import "./style.css";
 import PropTypes from "prop-types";
 
@@ -20,8 +18,6 @@ class DayBlocks extends Component {
 
     this.state = {
       TimeSlot,
-
-      // width= 400, };
     };
   }
 
@@ -29,8 +25,12 @@ class DayBlocks extends Component {
     const days = [];
     var min = moment().startOf("year").subtract(1, "year");
     var max = moment().startOf("year").add(1, "year");
-    console.log(min, max);
-    let year, month, day;
+    let year,
+      month,
+      day,
+      isSelected = false,
+      startDate = null,
+      endDate = null;
     for (year = min.year(); year <= max.year(); year++) {
       for (month = 1; month <= 12; month++) {
         for (
@@ -38,16 +38,53 @@ class DayBlocks extends Component {
           day <= moment(year + ":" + month, "YYYY:MM").daysInMonth();
           day++
         ) {
-          days.push({ day, month, year });
+          days.push({ year, month, day, isSelected, startDate, endDate });
         }
       }
     }
-
     this.days = days;
     this.min = min;
     this.max = max;
-    this.height = 800;
-    this.rowHeight = 690;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.time.final && this.props.time != prevProps.time) {
+      console.log("New");
+      console.log(this.props.time);
+      console.log("prev");
+      console.log(prevProps.time);
+      console.log(this.props.time.start.date);
+      console.log(this.props.time.end.date);
+
+      let startDate, endDate;
+      if (
+        this.props.time.start.date.diff(this.props.time.end.date, "days") > 0
+      ) {
+        startDate = this.props.time.end;
+        endDate = this.props.time.start;
+      } else {
+        startDate = this.props.time.start;
+        endDate = this.props.time.end;
+      }
+
+      const newDays = this.days.slice();
+      for (
+        var i = startDate.date.diff(this.min, "days");
+        i <= endDate.date.diff(this.min, "days");
+        i++
+      ) {
+        newDays[i] = {
+          ...newDays[i],
+          isSelected: true,
+          startDate: startDate,
+          endDate: endDate,
+        };
+      }
+
+      this.setState({ days: newDays });
+      console.log(this.days[i]);
+    }
   }
 
   render() {
@@ -59,8 +96,6 @@ class DayBlocks extends Component {
             TimeSlot={this.TimeSlot}
             min={this.min}
             max={this.max}
-            height={this.height}
-            rowHeight={this.rowHeight}
           />
         </div>
         <EventTypesList height={this.height} />
@@ -69,4 +104,10 @@ class DayBlocks extends Component {
   }
 }
 
-export default DayBlocks;
+const mapStateToProps = (state) => {
+  return {
+    time: state.time,
+  };
+};
+
+export default connect(mapStateToProps, {})(DayBlocks);
