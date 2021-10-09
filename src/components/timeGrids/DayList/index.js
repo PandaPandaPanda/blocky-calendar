@@ -1,4 +1,5 @@
 import React, { useRef, useCallback, useEffect } from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
 import TimeSlotMatrics from "./TimeSlotMatrics";
@@ -20,13 +21,28 @@ const DayList = ({
   TimeSlot,
   min,
   max,
-  height,
-  width,
   rowHeight,
 }) => {
   var listRef = useRef();
+  var parentRef = useRef();
+
+  const [height, setHeight] = React.useState(0);
+  const [width, setWidth] = React.useState(0);
+
+  const updateSize = () => {
+    if (parentRef.current) {
+      setHeight(parentRef.current.offsetHeight);
+      setWidth(parentRef.current.offsetWidth);
+    }
+  };
 
   useEffect(() => {
+    updateSize();
+    window.addEventListener("resize", () => updateSize());
+  }, []);
+
+  useEffect(() => {
+    console.log();
     if (listRef) {
       scrollToDate(moment(date));
     }
@@ -42,9 +58,10 @@ const DayList = ({
   };
 
   const scrollToDate = async (date = 0, ...rest) => {
-    // let offsetTop = getDateOffset(date);
-    // await listRef.current.scrollToItem(offsetTop, "center");
-    // renderTodayPointer();
+    let offsetTop = getDateOffset(date);
+
+    await listRef.current.scrollToItem(offsetTop, "center");
+    renderTodayPointer();
   };
 
   const renderDay = ({ index, style }) => {
@@ -92,28 +109,26 @@ const DayList = ({
   };
 
   return (
-    <AutoSizer>
-      {({ height, width }) => (
-        <FixedSizeList
-          ref={listRef}
-          id="list"
-          height={height}
-          width="100%"
-          itemCount={days.length}
-          itemSize={height * 1.01}
-          children={renderDay}
-          onScroll={(scrollTop) => {
-            let temp = getDateFromOffset(
-              Math.round(scrollTop.scrollOffset / (height * 1.01))
-            );
+    <div style={{ height: "100vh" }} ref={parentRef}>
+      <FixedSizeList
+        className="infiniteList"
+        ref={listRef}
+        height={height}
+        width={width}
+        itemCount={days.length}
+        itemSize={height * 0.91}
+        children={renderDay}
+        onScroll={(scrollTop) => {
+          let temp = getDateFromOffset(
+            Math.round(scrollTop.scrollOffset / (height * 0.91))
+          );
 
-            if (temp.diff(viewingDate, "day") != 0) {
-              setViewingDate(temp.startOf("day"));
-            }
-          }}
-        />
-      )}
-    </AutoSizer>
+          if (temp.diff(viewingDate, "day") != 0) {
+            setViewingDate(temp.startOf("day"));
+          }
+        }}
+      />
+    </div>
   );
 };
 

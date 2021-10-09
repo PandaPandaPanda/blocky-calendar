@@ -46,7 +46,7 @@ class DayBlocks extends Component {
     this.days = days;
     this.min = min;
     this.max = max;
-    this.height = 690;
+    this.height = 800;
     this.rowHeight = 690;
   }
 
