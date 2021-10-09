@@ -29,13 +29,13 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style }) => {
 
   // Display the time in a day
   for (let i = 0; i < 24; i++) {
-    times.push(<div>{i + ":00"}</div>);
+    times.push(<div key={i}>{i + ":00"}</div>);
   }
 
   // Individual 15min timeslots
   for (let j = 1; j <= 96; j++) {
     timeslots.push(
-      <TimeSlot index={j} date={year + ":" + month + ":" + day} />
+      <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} />
     );
   }
 

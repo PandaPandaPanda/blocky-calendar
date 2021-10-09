@@ -55,9 +55,6 @@ class DayBlocks extends Component {
       <div className="days-wrapper">
         <div className="timeGrids-container">
           <DayList
-            ref={(instance) => {
-              this._DayList = instance;
-            }}
             days={this.days}
             TimeSlot={this.TimeSlot}
             min={this.min}

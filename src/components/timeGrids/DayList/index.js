@@ -42,10 +42,7 @@ const DayList = ({
   }, []);
 
   useEffect(() => {
-    console.log();
-    if (listRef) {
-      scrollToDate(moment(date));
-    }
+    scrollToDate(moment(date));
   }, [date]);
 
   const getDateFromOffset = (offset) => {
@@ -53,7 +50,6 @@ const DayList = ({
   };
 
   const getDateOffset = (date) => {
-    console.log(date.diff(min, "days"));
     return date.diff(min, "days");
   };
 

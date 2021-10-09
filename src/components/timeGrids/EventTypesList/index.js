@@ -19,14 +19,24 @@ const EventTypesList = ({
         <h6>Temporary</h6>
         {events.map((item) => {
           if (viewingDate.isBetween(item.start, item.end, "day", "[)")) {
-            return <EventTypesListItem title={item.title} color={item.color} />;
+            return (
+              <EventTypesListItem
+                key={item.title + "0"}
+                title={item.title}
+                color={item.color}
+              />
+            );
           }
         })}
       </div>
       <div>
         <h6>Recurring</h6>
         {eventTypes.map((item) => (
-          <EventTypesListItem title={item.title} color={item.color} />
+          <EventTypesListItem
+            key={item.title + "1"}
+            title={item.title}
+            color={item.color}
+          />
         ))}
       </div>
     </div>
