@@ -23,9 +23,9 @@ const TimeSlot = ({
       onMouseUp={() => {
         setTime({ date, index });
       }}
-      onMouseEnter={() => {
-        setHover({ date, index });
-      }}
+      // onMouseEnter={() => {
+      //   setHover({ date, index });
+      // }}
     ></div>
   );
 };
