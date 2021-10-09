@@ -25,7 +25,11 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
 
   return (
     <Fragment>
-      <nav className="" style={{ position: "relative", zIndex: "100" }}>
+      <nav
+        className=""
+        id="navbar"
+        style={{ position: "relative", zIndex: "100" }}
+      >
         <div className="nav-wrapper">
           <ReactDatez
             allowPast

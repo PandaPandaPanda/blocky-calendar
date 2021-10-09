@@ -11,6 +11,8 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 import { connect } from "react-redux";
 
+import "./style.css";
+
 const DayList = ({
   navbar: { date, viewingDate },
   setViewingDate,
@@ -19,6 +21,7 @@ const DayList = ({
   min,
   max,
   height,
+  width,
   rowHeight,
 }) => {
   var listRef = useRef();
@@ -39,10 +42,9 @@ const DayList = ({
   };
 
   const scrollToDate = async (date = 0, ...rest) => {
-    let offsetTop = getDateOffset(date);
-
-    await listRef.current.scrollToItem(offsetTop, "center");
-    renderTodayPointer();
+    // let offsetTop = getDateOffset(date);
+    // await listRef.current.scrollToItem(offsetTop, "center");
+    // renderTodayPointer();
   };
 
   const renderDay = ({ index, style }) => {
@@ -90,24 +92,28 @@ const DayList = ({
   };
 
   return (
-    <FixedSizeList
-      ref={listRef}
-      className="List"
-      height={height}
-      width="100%"
-      itemCount={days.length}
-      itemSize={height * 1.01}
-      children={renderDay}
-      onScroll={(scrollTop) => {
-        let temp = getDateFromOffset(
-          Math.round(scrollTop.scrollOffset / (height * 1.01))
-        );
+    <AutoSizer>
+      {({ height, width }) => (
+        <FixedSizeList
+          ref={listRef}
+          id="list"
+          height={height}
+          width="100%"
+          itemCount={days.length}
+          itemSize={height * 1.01}
+          children={renderDay}
+          onScroll={(scrollTop) => {
+            let temp = getDateFromOffset(
+              Math.round(scrollTop.scrollOffset / (height * 1.01))
+            );
 
-        if (temp.diff(viewingDate, "day") != 0) {
-          setViewingDate(temp.startOf("day"));
-        }
-      }}
-    />
+            if (temp.diff(viewingDate, "day") != 0) {
+              setViewingDate(temp.startOf("day"));
+            }
+          }}
+        />
+      )}
+    </AutoSizer>
   );
 };
 

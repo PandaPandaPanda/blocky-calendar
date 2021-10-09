@@ -1,6 +1,6 @@
 /* index.js */
 .days-wrapper {
-  height: 90vh;
+  height: 93vh;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -9,10 +9,9 @@
 }
 
 .timeGrids-container {
-  height: 90vh;
+  height: 100%;
   width: 27rem;
-  display: flex;
-  flex-direction: row;
+  display: block;
 }
 
 /* DayWrapper.js */
