@@ -1,3 +1,3 @@
-# React Big Calendar with Drag and Drop
+# Blocky Calendar Made With React
 
-A simple starter for using react-big-calendar with drag and drop addon.
+Aiming to combine the functionality of Calendar,Reminder, Porject Management sites.
