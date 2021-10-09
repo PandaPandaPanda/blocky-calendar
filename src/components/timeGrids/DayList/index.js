@@ -109,18 +109,18 @@ const DayList = ({
   };
 
   return (
-    <div style={{ height: "100vh" }} ref={parentRef}>
+    <div style={{ height: "93vh" }} ref={parentRef}>
       <FixedSizeList
         className="infiniteList"
         ref={listRef}
         height={height}
         width={width}
         itemCount={days.length}
-        itemSize={height * 0.91}
+        itemSize={height}
         children={renderDay}
         onScroll={(scrollTop) => {
           let temp = getDateFromOffset(
-            Math.round(scrollTop.scrollOffset / (height * 0.91))
+            Math.round(scrollTop.scrollOffset / height)
           );
 
           if (temp.diff(viewingDate, "day") != 0) {
