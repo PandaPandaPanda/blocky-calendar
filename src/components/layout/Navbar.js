@@ -43,7 +43,7 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
                 setDate(date);
               }
             }}
-            value={`$(day)`}
+            value={day}
             wrapperStyle={{
               display: "inline-block",
               margin: " 0.15rem 1rem 0rem 1rem",
