@@ -1,9 +1,10 @@
 import React, { Component, useState, useEffect, useRef } from "react";
-import { connect } from "react-redux";
 import moment, { min } from "moment";
 
-import TimeSlot from "./DayList/TimeSlot";
+import { connect } from "react-redux";
+import { setCurrentEventTypesListItem } from "../../actions/eventTypesListItemActions";
 
+import TimeSlot from "./DayList/TimeSlot";
 import DayList from "./DayList";
 import EventTypesList from "./EventTypesList";
 
@@ -63,25 +64,92 @@ class DayBlocks extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
-    if (
-      this.props.time.final &&
-      this.props.time != prevProps.time &&
-      this.props.time.start != null &&
-      this.props.time.end != null
-    ) {
-      this.paintRange(this.props.time.start, this.props.time.end, true);
-      this.setState({ prevTime: this.props.time });
-    } else if (!this.props.time.final && this.state.prevTime != null) {
-      this.paintRange(
-        this.state.prevTime.start,
-        this.state.prevTime.end,
-        false
-      );
-      this.setState({ prevTime: null });
+    const { time, eventTypesListItem } = this.props;
+    if (time != prevProps.time) {
+      if (time.final && time.start != null && time.end != null) {
+        console.log("select once");
+        this.selectRange(time.start, time.end, true);
+        this.setState({ prevTime: time });
+      } else if (!time.final && this.state.prevTime != null) {
+        this.selectRange(
+          this.state.prevTime.start,
+          this.state.prevTime.end,
+          false
+        );
+        this.setState({ prevTime: null });
+      }
+    } else if (eventTypesListItem != prevProps.eventTypesListItem) {
+      if (
+        eventTypesListItem.currentEventTypesListItem !=
+          prevProps.eventTypesListItem.currentEventTypesListItem &&
+        time.final &&
+        time.start != null &&
+        time.end != null
+      ) {
+        console.log("paint once");
+        this.paintRange(
+          time.start,
+          time.end,
+          eventTypesListItem.currentEventTypesListItem
+        );
+        this.selectRange(
+          this.state.prevTime.start,
+          this.state.prevTime.end,
+          false
+        );
+        this.setState({ prevTime: null });
+      }
     }
   }
 
-  paintRange(date1, date2, isTrue) {
+  paintRange(date1, date2, property) {
+    let startDate, endDate;
+    if (date1.date.diff(date2.date, "days") > 0) {
+      startDate = date2;
+      endDate = date1;
+    } else if (date1.date.diff(date2.date, "days") < 0) {
+      startDate = date1;
+      endDate = date2;
+    } else {
+      if (date1.index > date2.index) {
+        startDate = date2;
+        endDate = date1;
+      } else {
+        startDate = date1;
+        endDate = date2;
+      }
+    }
+
+    let newDays = deepCopy(this.state.days);
+
+    let startIndex = startDate.date.diff(this.state.min, "days");
+    let endIndex = endDate.date.diff(this.state.min, "days");
+    for (let i = startIndex; i <= endIndex; i++) {
+      if (startIndex == endIndex) {
+        for (let j = startDate.index; j <= endDate.index; j++) {
+          newDays[i].timeslots[j].property = property;
+        }
+      } else {
+        if (i == startIndex) {
+          for (let j = startDate.index; j < 96; j++) {
+            newDays[i].timeslots[j].property = property;
+          }
+        } else if (i == endIndex) {
+          for (let j = 0; j <= endDate.index; j++) {
+            newDays[i].timeslots[j].property = property;
+          }
+        } else {
+          for (let j = 0; j < 96; j++) {
+            newDays[i].timeslots[j].property = property;
+          }
+        }
+      }
+    }
+    console.log(newDays);
+    this.setState({ days: newDays });
+  }
+
+  selectRange(date1, date2, isTrue) {
     let startDate, endDate;
     if (date1.date.diff(date2.date, "days") > 0) {
       startDate = date2;
@@ -124,7 +192,6 @@ class DayBlocks extends Component {
         }
       }
     }
-    console.log(newDays);
     this.setState({ days: newDays });
   }
 
@@ -148,7 +215,10 @@ class DayBlocks extends Component {
 const mapStateToProps = (state) => {
   return {
     time: state.time,
+    eventTypesListItem: state.eventTypesListItem,
   };
 };
 
-export default connect(mapStateToProps, {})(DayBlocks);
+export default connect(mapStateToProps, { setCurrentEventTypesListItem })(
+  DayBlocks
+);

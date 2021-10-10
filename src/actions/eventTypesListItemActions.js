@@ -1,8 +1,8 @@
 import { SET_CURRENT_EVENT_TYPE_LIST_ITEM } from "./types";
 
-export const setCurrentEventTypesListItem = ({ _id, title, color }) => {
+export const setCurrentEventTypesListItem = (property) => {
   return {
     type: SET_CURRENT_EVENT_TYPE_LIST_ITEM,
-    payload: { _id, title, color },
+    payload: property, // { _id, title, color }
   };
 };

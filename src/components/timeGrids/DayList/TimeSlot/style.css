@@ -11,10 +11,6 @@
   opacity: 60%;
 }
 
-.tick {
-  background-color: #add8e6;
-}
-
 .current {
   width: 0;
   height: 0;

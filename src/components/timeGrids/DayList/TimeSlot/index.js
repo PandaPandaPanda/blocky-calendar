@@ -15,11 +15,15 @@ const TimeSlot = ({
   index,
   date,
   isSelected,
+  property,
 }) => {
   return (
     <div
       className={`timeslot-container`}
-      style={{ filter: isSelected ? "brightness(0.8)" : "brightness(1)" }}
+      style={{
+        filter: isSelected ? "brightness(0.7)" : "brightness(1)",
+        backgroundColor: property != null ? property.color : "#ececec",
+      }}
       onMouseUp={() => {
         setTimeRange({ date, index });
       }}

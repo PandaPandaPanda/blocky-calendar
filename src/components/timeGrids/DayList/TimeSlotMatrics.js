@@ -48,14 +48,26 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
   // Individual 15min TimeslotItems
 
   for (let j = 0; j < 96; j++) {
-    TimeslotItems.push(
-      <TimeSlot
-        key={j}
-        date={year + ":" + month + ":" + day}
-        index={j}
-        isSelected={timeslots[j].isSelected}
-      />
-    );
+    if (timeslots[j].property != null) {
+      TimeslotItems.push(
+        <TimeSlot
+          key={j}
+          date={year + ":" + month + ":" + day}
+          index={j}
+          isSelected={timeslots[j].isSelected}
+          property={timeslots[j].property}
+        />
+      );
+    } else {
+      TimeslotItems.push(
+        <TimeSlot
+          key={j}
+          date={year + ":" + month + ":" + day}
+          index={j}
+          isSelected={timeslots[j].isSelected}
+        />
+      );
+    }
   }
 
   return (

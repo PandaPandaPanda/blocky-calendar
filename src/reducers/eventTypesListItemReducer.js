@@ -1,7 +1,7 @@
 import { SET_CURRENT_EVENT_TYPE_LIST_ITEM } from "../actions/types";
 
 const initialState = {
-  currentEventTypeListItem: null,
+  currentEventTypesListItem: null,
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case SET_CURRENT_EVENT_TYPE_LIST_ITEM:
       return {
         ...state,
-        currentEventTypeListItem: action.payload,
+        currentEventTypesListItem: action.payload,
       };
     default:
       return state;
