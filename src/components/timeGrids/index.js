@@ -2,7 +2,10 @@ import React, { Component, useState, useEffect, useRef } from "react";
 import moment, { min } from "moment";
 
 import { connect } from "react-redux";
-import { setCurrentEventTypesListItem } from "../../actions/eventTypesListItemActions";
+import {
+  setCurrentEventTypesListItem,
+  setErasing,
+} from "../../actions/eventTypesListItemActions";
 
 import TimeSlot from "./DayList/TimeSlot";
 import DayList from "./DayList";
@@ -98,6 +101,14 @@ class DayBlocks extends Component {
           false
         );
         this.setState({ prevTime: null });
+      } else if (
+        eventTypesListItem.erasing != prevProps.eventTypesListItem.erasing &&
+        time.final &&
+        time.start != null &&
+        time.end != null
+      ) {
+        this.eraseRange(time.start, time.end);
+        setErasing();
       }
     }
   }
@@ -188,6 +199,56 @@ class DayBlocks extends Component {
         } else {
           for (let j = 0; j < 96; j++) {
             newDays[i].timeslots[j].isSelected = isTrue;
+          }
+        }
+      }
+    }
+    this.setState({ days: newDays });
+  }
+
+  eraseRange(date1, date2) {
+    let startDate, endDate;
+    if (date1.date.diff(date2.date, "days") > 0) {
+      startDate = date2;
+      endDate = date1;
+    } else if (date1.date.diff(date2.date, "days") < 0) {
+      startDate = date1;
+      endDate = date2;
+    } else {
+      if (date1.index > date2.index) {
+        startDate = date2;
+        endDate = date1;
+      } else {
+        startDate = date1;
+        endDate = date2;
+      }
+    }
+
+    let newDays = deepCopy(this.state.days);
+
+    let startIndex = startDate.date.diff(this.state.min, "days");
+    let endIndex = endDate.date.diff(this.state.min, "days");
+    for (let i = startIndex; i <= endIndex; i++) {
+      if (startIndex == endIndex) {
+        for (let j = startDate.index; j <= endDate.index; j++) {
+          newDays[i].timeslots[j].isSelected = false;
+          newDays[i].timeslots[j].property = null;
+        }
+      } else {
+        if (i == startIndex) {
+          for (let j = startDate.index; j < 96; j++) {
+            newDays[i].timeslots[j].isSelected = false;
+            newDays[i].timeslots[j].property = null;
+          }
+        } else if (i == endIndex) {
+          for (let j = 0; j <= endDate.index; j++) {
+            newDays[i].timeslots[j].isSelected = false;
+            newDays[i].timeslots[j].property = null;
+          }
+        } else {
+          for (let j = 0; j < 96; j++) {
+            newDays[i].timeslots[j].isSelected = false;
+            newDays[i].timeslots[j].property = null;
           }
         }
       }

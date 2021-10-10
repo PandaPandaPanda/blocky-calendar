@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setCurrentEventTypesListItem } from "../../../actions/eventTypesListItemActions.js";
+import {
+  setCurrentEventTypesListItem,
+  setErasing,
+} from "../../../actions/eventTypesListItemActions.js";
 import EventTypesListItem from "./EventTypesListItem";
 import "./style.css";
 
@@ -13,6 +16,7 @@ const EventTypesList = ({
   navbar: { viewingDate },
   time: { start, end, final },
   setCurrentEventTypesListItem,
+  setErasing,
   height,
 }) => {
   const onEventTypesListItemClick = (_id, title, color) => {
@@ -50,6 +54,13 @@ const EventTypesList = ({
             onEventTypesListItemClick={onEventTypesListItemClick}
           />
         ))}
+        <h5>Tools</h5>
+        <EventTypesListItem
+          _id={"eraser"}
+          title={"Eraser"}
+          color={"#000000"}
+          onEventTypesListItemClick={setErasing}
+        />
       </div>
     </div>
   );
@@ -66,6 +77,7 @@ const mapStateToProps = (state) => {
 
 EventTypesList.propTypes = {};
 
-export default connect(mapStateToProps, { setCurrentEventTypesListItem })(
-  EventTypesList
-);
+export default connect(mapStateToProps, {
+  setCurrentEventTypesListItem,
+  setErasing,
+})(EventTypesList);
