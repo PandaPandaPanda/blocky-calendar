@@ -41,7 +41,7 @@
   font-size: 0.8rem;
 }
 
-.timeslots-wrapper {
+.timeslotItems-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(24, 1fr);

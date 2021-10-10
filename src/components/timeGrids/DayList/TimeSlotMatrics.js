@@ -6,13 +6,7 @@ import TimeSlot from "./TimeSlot";
 import PropTypes from "prop-types";
 import { render } from "react-dom";
 
-const TimeSlotMatrics = ({
-  date: { year, month, day },
-  style,
-  isSelected,
-  startDate,
-  endDate,
-}) => {
+const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
   const monthsList = [
     "Jan",
     "Feb",
@@ -32,7 +26,7 @@ const TimeSlotMatrics = ({
   let y = year;
 
   var times = [],
-    timeslots = [];
+    TimeslotItems = [];
 
   // Display the time in a day
   for (let i = 0; i < 24; i++) {
@@ -43,77 +37,25 @@ const TimeSlotMatrics = ({
   //   if () {
 
   //   } else if(startDate.diff(endDate, "days") == 0)
-  //   timeslots.push(
+  //   TimeslotItems.push(
   //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {true}/>
   //   );
   // } else {
-  //   timeslots.push(
+  //   TimeslotItems.push(
   //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {false}/>
   //   );
   // }
-  // Individual 15min timeslots
-  if (startDate && endDate) {
-    if (startDate.date.diff(endDate.date, "days") == 0) {
-      for (let j = 1; j <= 96; j++) {
-        timeslots.push(
-          <TimeSlot
-            key={j}
-            index={j}
-            date={year + ":" + month + ":" + day}
-            isSelected={
-              j <= endDate.index && j >= startDate.index ? isSelected : false
-            }
-          />
-        );
-      }
-    } else {
-      var today = moment(year + ":" + month + ":" + day, "YYYY:MM:DD");
-      if (startDate.date.diff(today, "days") == 0) {
-        for (let j = 1; j <= 96; j++) {
-          timeslots.push(
-            <TimeSlot
-              key={j}
-              index={j}
-              date={year + ":" + month + ":" + day}
-              isSelected={j >= startDate.index ? isSelected : false}
-            />
-          );
-        }
-      } else if (endDate.date.diff(today, "days") == 0) {
-        for (let j = 1; j <= 96; j++) {
-          timeslots.push(
-            <TimeSlot
-              key={j}
-              index={j}
-              date={year + ":" + month + ":" + day}
-              isSelected={j <= endDate.index ? isSelected : false}
-            />
-          );
-        }
-      } else {
-        for (let j = 1; j <= 96; j++) {
-          timeslots.push(
-            <TimeSlot
-              key={j}
-              index={j}
-              date={year + ":" + month + ":" + day}
-              isSelected={isSelected}
-            />
-          );
-        }
-      }
-    }
-  } else {
-    for (let j = 1; j <= 96; j++) {
-      timeslots.push(
-        <TimeSlot
-          key={j}
-          index={j}
-          date={year + ":" + month + ":" + day}
-          isSelected={false}
-        />
-      );
-    }
+  // Individual 15min TimeslotItems
+
+  for (let j = 0; j < 96; j++) {
+    TimeslotItems.push(
+      <TimeSlot
+        key={j}
+        date={year + ":" + month + ":" + day}
+        index={j}
+        isSelected={timeslots[j].isSelected}
+      />
+    );
   }
 
   return (
@@ -125,8 +67,8 @@ const TimeSlotMatrics = ({
           <span>{y}</span>
         </div>
         <div className="time-label">{times.map((time) => time)}</div>
-        <div className="timeslots-wrapper">
-          {timeslots.map((timeslot) => timeslot)}
+        <div className="timeslotItems-wrapper">
+          {TimeslotItems.map((timeslot) => timeslot)}
         </div>
       </div>
     </div>

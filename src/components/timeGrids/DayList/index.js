@@ -69,7 +69,7 @@ const DayList = ({
   };
 
   const renderDay = ({ index, style }) => {
-    let { day, month, year, isSelected, startDate, endDate } = days[index];
+    let { day, month, year, timeslots } = days[index];
     let key = `${year}:${month}:${day}`;
 
     // renderTodayPointer();
@@ -82,9 +82,7 @@ const DayList = ({
         key={key}
         style={style}
         date={{ year, month, day }}
-        isSelected={isSelected}
-        startDate={startDate}
-        endDate={endDate}
+        timeslots={timeslots}
         TimeSlot={TimeSlot}
       />
     );

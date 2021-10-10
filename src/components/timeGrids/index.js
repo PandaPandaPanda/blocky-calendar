@@ -10,6 +10,18 @@ import EventTypesList from "./EventTypesList";
 import "./style.css";
 import PropTypes from "prop-types";
 
+const deepCopy = (arr) => {
+  let copy = [];
+  arr.forEach((elem) => {
+    if (Array.isArray(elem)) {
+      copy.push(deepCopy(elem));
+    } else {
+      copy.push(elem);
+    }
+  });
+  return copy;
+};
+
 class DayBlocks extends Component {
   constructor(props) {
     super(...arguments);
@@ -17,20 +29,25 @@ class DayBlocks extends Component {
     const days = [];
     var min = moment().startOf("year").subtract(1, "year");
     var max = moment().startOf("year").add(1, "year");
-    let year,
-      month,
-      day,
-      isSelected = false,
-      startDate = null,
-      endDate = null;
-    for (year = min.year(); year <= max.year(); year++) {
-      for (month = 1; month <= 12; month++) {
+    for (let year = min.year(); year <= max.year(); year++) {
+      for (let month = 1; month <= 12; month++) {
         for (
-          day = 1;
+          let day = 1;
           day <= moment(year + ":" + month, "YYYY:MM").daysInMonth();
           day++
         ) {
-          days.push({ year, month, day, isSelected, startDate, endDate });
+          let timeslots = [];
+          let isSelected = false;
+          let property = null;
+          for (let index = 0; index < 96; index++) {
+            timeslots.push({ index, isSelected, property });
+          }
+          days.push({
+            year,
+            month,
+            day,
+            timeslots,
+          });
         }
       }
     }
@@ -62,23 +79,10 @@ class DayBlocks extends Component {
       );
       this.setState({ prevTime: null });
     }
-    // else if (
-    //   !this.props.time.final &&
-    //   this.props.time != prevProps.time &&
-    //   this.props.time.start != null &&
-    //   this.props.time.end != null
-    // ) {
-    //   this.paintRange(this.props.time.start, this.props.time.end, true);
-    //   this.setState({ prevTime: this.props.time });
-    // }
-    if (this.state.days != prevState.days) {
-      // console.log(this.state.days);
-    }
   }
 
   paintRange(date1, date2, isTrue) {
     let startDate, endDate;
-    console.log({ date1, date2 });
     if (date1.date.diff(date2.date, "days") > 0) {
       startDate = date2;
       endDate = date1;
@@ -95,18 +99,30 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = [...this.state.days];
-    for (
-      let i = startDate.date.diff(this.state.min, "days");
-      i <= endDate.date.diff(this.state.min, "days");
-      i++
-    ) {
-      newDays[i] = {
-        ...newDays[i],
-        isSelected: isTrue,
-        startDate: isTrue ? startDate : null,
-        endDate: isTrue ? endDate : null,
-      };
+    let newDays = deepCopy(this.state.days);
+
+    let startIndex = startDate.date.diff(this.state.min, "days");
+    let endIndex = endDate.date.diff(this.state.min, "days");
+    for (let i = startIndex; i <= endIndex; i++) {
+      if (startIndex == endIndex) {
+        for (let j = startDate.index; j <= endDate.index; j++) {
+          newDays[i].timeslots[j].isSelected = isTrue;
+        }
+      } else {
+        if (i == startIndex) {
+          for (let j = startDate.index; j < 96; j++) {
+            newDays[i].timeslots[j].isSelected = isTrue;
+          }
+        } else if (i == endIndex) {
+          for (let j = 0; j <= endDate.index; j++) {
+            newDays[i].timeslots[j].isSelected = isTrue;
+          }
+        } else {
+          for (let j = 0; j < 96; j++) {
+            newDays[i].timeslots[j].isSelected = isTrue;
+          }
+        }
+      }
     }
     console.log(newDays);
     this.setState({ days: newDays });
