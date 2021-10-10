@@ -4,7 +4,12 @@ import "./style.css";
 
 import PropTypes from "prop-types";
 
-const EventTypesListItem = ({ title, color }) => {
+const EventTypesListItem = ({
+  _id,
+  title,
+  color,
+  onEventTypesListItemClick,
+}) => {
   const [hover, setHover] = useState(false);
 
   const itemStyle = {
@@ -45,6 +50,9 @@ const EventTypesListItem = ({ title, color }) => {
         style={style}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
+        onClick={() => {
+          onEventTypesListItemClick(_id, title, color);
+        }}
       >
         {title}
       </a>
