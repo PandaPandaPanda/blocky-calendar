@@ -21,7 +21,7 @@
 
 ## App Screenshots
 
-|                                                                                    Calendar                                                                                     |                                                                                   Day Blocks                                                                                   |                                                                                Event Types                                                                                |
+|                                                                                    Calendar                                                                                     |                                                                                   Day Block                                                                                   |                                                                                Event Types                                                                                |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | ![image](https://user-images.githubusercontent.com/34975856/136697183-23009d01-5112-4380-a370-cf7e7777b794.png) | ![image](https://user-images.githubusercontent.com/34975856/136697168-aa2d2d24-ec57-4eea-9ac3-66e49ae41ce1.png) | ![image](https://user-images.githubusercontent.com/34975856/136697200-35802998-f067-4638-bdcc-2ee996e13de0.png) |
 
@@ -39,6 +39,8 @@ Blocky Calendar will present you a brand new experience on time management. <br 
 
 All usage instruction and information update is below.
 
+![image](https://user-images.githubusercontent.com/34975856/136698258-8e3411e5-0f6e-404b-a56d-c8a54effbe8c.png)
+
 ## Developing
 
 ### Progress
@@ -53,10 +55,12 @@ All usage instruction and information update is below.
 |   -- Statistics View | Pending |
 | Backend             | Pending    |
 
+![image](https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png)
+
 
 ## Usage Guide
 
-### Setting up Angular Project
+### 🔸&nbsp; Add One-time Event
 
 ```shell
     cd thisMyPCWeb
@@ -67,23 +71,62 @@ All usage instruction and information update is below.
 
 
 
-### Setting up Electron Project
+### 🔸 Edit One-time Event
 
 ```shell
-cd thisMyPCApp
-npm i
+    cd thisMyPCWeb
+    npm i
 ```
 
-![ Setting up Electron Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/electronSetup.gif)
+![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
 
 
+### 🔸 Add Recurring Event
 
-## ❤️&nbsp; Community and Contributions
+```shell
+    cd thisMyPCWeb
+    npm i
+```
+
+![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+
+### 🔸 Edit Recurring Event
+
+```shell
+    cd thisMyPCWeb
+    npm i
+```
+
+![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+
+### 🔸 Jump to Date
+
+```shell
+    cd thisMyPCWeb
+    npm i
+```
+
+![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+
+
+### 🔸 Plan/Record Your Day with Day Block 
+
+```shell
+    cd thisMyPCWeb
+    npm i
+```
+
+![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+
+
+![image](https://user-images.githubusercontent.com/34975856/136698248-f81b6302-8ea1-43b2-a720-0fa1c8b67f2d.png)
+
+## ❤️ Community and Contributions
 
 We are committed to a fully transparent development process and **highly appreciate any contributions**.
 
 
-## 📫&nbsp; Have a question? Want to chat? Ran into a problem?
+## 📫 Have a question? Want to chat? Ran into a problem?
 
 We are happy to answer your questions via [GitHub Discussions](https://github.com/PandaPandaPanda/blocky-calendar/issues)! 
 
@@ -96,6 +139,9 @@ Feel free to **file a new issue** with a respective title and description on the
 ## 📘&nbsp; License
 
 The Blocky Calendar is released under the under terms of the MIT License.
+
+![image](https://user-images.githubusercontent.com/34975856/136698276-573d2177-3b87-4339-90ec-8da7376d029a.png)
+
 
 ## Folder Structure
 ```
