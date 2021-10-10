@@ -15,13 +15,18 @@ const initialState = {
   eventTypes: [
     {
       _id: "1",
-      title: "Math",
+      title: "Gym",
       color: "#33991a",
     },
     {
       _id: "2",
-      title: "English",
+      title: "Guitar",
       color: "#00FFFF",
+    },
+    {
+      _id: "3",
+      title: "Reading",
+      color: "#4D80CC",
     },
   ],
 
