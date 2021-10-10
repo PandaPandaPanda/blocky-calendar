@@ -17,7 +17,7 @@
 
 > Currently it only has frontend ready, so it will not save your progress, but you can fiddle around with the features. The Day Block page will lose its state when you switch route, but teh Calendar and Even Types page will temporarily store your edits.
 
-![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136709676-4b542d78-47d0-4930-aa8d-61840963a223.gif" /></div>
 
 ## App Screenshots
 
@@ -39,7 +39,7 @@ Blocky Calendar will present you a brand new experience on time management. <br 
 
 All usage instruction and information update is below.
 
-![image](https://user-images.githubusercontent.com/34975856/136698258-8e3411e5-0f6e-404b-a56d-c8a54effbe8c.png)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## Developing
 
@@ -55,7 +55,7 @@ All usage instruction and information update is below.
 |   -- Statistics View | Pending |
 | Backend             | Pending    |
 
-![image](https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 
 ## Usage Guide
@@ -67,8 +67,7 @@ All usage instruction and information update is below.
     npm i
 ```
 
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
-
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136709117-4b8ce600-9ac9-4b2a-b931-ba6e69bfded6.gif" /></div>
 
 
 ### 🔸 Edit One-time Event
@@ -78,8 +77,7 @@ All usage instruction and information update is below.
     npm i
 ```
 
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
-
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708793-e636e979-b1c3-4a63-8048-93d89791ccb6.gif" /></div>
 
 ### 🔸 Add Recurring Event
 
@@ -88,7 +86,8 @@ All usage instruction and information update is below.
     npm i
 ```
 
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708796-f9d27d67-5f61-4398-926f-fe64b00db44c.gif" /></div>
+
 
 ### 🔸 Edit Recurring Event
 
@@ -97,7 +96,8 @@ All usage instruction and information update is below.
     npm i
 ```
 
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708801-56af2ab4-fd7d-4dbc-982f-bada56d74b53.gif" /></div>
+
 
 ### 🔸 Jump to Date
 
@@ -105,8 +105,7 @@ All usage instruction and information update is below.
     cd thisMyPCWeb
     npm i
 ```
-
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708820-dcabf893-f4af-46d4-97db-c469ebd210e2.gif" /></div>
 
 
 ### 🔸 Plan/Record Your Day with Day Block 
@@ -115,11 +114,10 @@ All usage instruction and information update is below.
     cd thisMyPCWeb
     npm i
 ```
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708889-cec3d2ed-a354-4bf1-a31b-97da0a0c82e2.gif" /></div>
 
-![Setting up Angular Project](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/angularSetup.gif)
 
-
-![image](https://user-images.githubusercontent.com/34975856/136698248-f81b6302-8ea1-43b2-a720-0fa1c8b67f2d.png)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## ❤️ Community and Contributions
 
@@ -140,7 +138,7 @@ Feel free to **file a new issue** with a respective title and description on the
 
 The Blocky Calendar is released under the under terms of the MIT License.
 
-![image](https://user-images.githubusercontent.com/34975856/136698276-573d2177-3b87-4339-90ec-8da7376d029a.png)
+<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 
 ## Folder Structure
