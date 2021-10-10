@@ -66,13 +66,13 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
           </a>
           <ul className="right hide-on-med-and-down">
             <li>
-              <Link to="/calendar">Monthly Calendar</Link>
+              <Link to="/blocky-calendar/calendar">Monthly Calendar</Link>
             </li>
             <li>
-              <Link to="/day">Day Block</Link>
+              <Link to="/blocky-calendar/day">Day Block</Link>
             </li>
             <li>
-              <Link to="/event-types">Event Types</Link>
+              <Link to="/blocky-calendar/event-types">Event Types</Link>
             </li>
           </ul>
         </div>
@@ -80,13 +80,13 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
 
       <ul className="sidenav" id="mobile-demo">
         <li>
-          <Link to="/calendar">Monthly Calendar</Link>
+          <Link to="/blocky-calendar/calendar">Monthly Calendar</Link>
         </li>
         <li>
-          <Link to="/day">Day Block</Link>
+          <Link to="/blocky-calendar/day">Day Block</Link>
         </li>
         <li>
-          <Link to="/event-types">Event Types</Link>
+          <Link to="/blocky-calendar/event-types">Event Types</Link>
         </li>
       </ul>
     </Fragment>

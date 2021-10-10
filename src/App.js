@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import { Provider } from "react-redux";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import store from "./store";
 
 import Navbar from "./components/layout/Navbar";
@@ -19,7 +19,7 @@ const App = () => {
       <Router>
         <div className="App">
           <Route
-            path="/"
+            path="/blocky-calendar"
             render={() => (
               <Fragment>
                 <Navbar />
@@ -29,7 +29,7 @@ const App = () => {
           <Switch>
             <Route
               exact
-              path="/calendar"
+              path="/blocky-calendar/calendar"
               render={() => (
                 <Fragment>
                   <CalendarView />
@@ -38,7 +38,7 @@ const App = () => {
             />
             <Route
               exact
-              path={["/", "/day"]}
+              path={["/blocky-calendar/", "/blocky-calendar/day"]}
               render={() => (
                 <Fragment>
                   <TimeGrids />
@@ -47,7 +47,7 @@ const App = () => {
             />
             <Route
               exact
-              path="/event-types"
+              path="/blocky-calendar/event-types"
               render={() => (
                 <Fragment>
                   <EventTypes />
