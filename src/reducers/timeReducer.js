@@ -1,4 +1,4 @@
-import { SET_TIME, SET_HOVER } from "../actions/types";
+import { SET_TIME, SET_HOVER, SET_TIME_RANGE } from "../actions/types";
 
 const initialState = {
   start: null,
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_TIME:
+    case SET_TIME_RANGE:
       if (state.final == true) {
         return {
           ...state,

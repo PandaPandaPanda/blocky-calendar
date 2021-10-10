@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { isBetween } from "moment";
 import { connect } from "react-redux";
 
-import { setTime, setHover } from "../../../../actions/timeActions";
+import { setTimeRange, setHover } from "../../../../actions/timeActions";
 
 import "./style.css";
 
@@ -10,7 +10,7 @@ import "./style.css";
 
 const TimeSlot = ({
   // time: { final },
-  setTime,
+  setTimeRange,
   setHover,
   index,
   date,
@@ -21,7 +21,7 @@ const TimeSlot = ({
       className={`timeslot-container`}
       style={{ filter: isSelected ? "brightness(0.8)" : "brightness(1)" }}
       onMouseUp={() => {
-        setTime({ date, index });
+        setTimeRange({ date, index });
       }}
       // onMouseEnter={() => {
       //   setHover({ date, index });
@@ -31,6 +31,6 @@ const TimeSlot = ({
 };
 
 export default connect(null, {
-  setTime,
+  setTimeRange,
   setHover,
 })(TimeSlot);
