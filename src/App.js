@@ -38,7 +38,7 @@ const App = () => {
             />
             <Route
               exact
-              path="/day"
+              path={["/", "/day"]}
               render={() => (
                 <Fragment>
                   <TimeGrids />
