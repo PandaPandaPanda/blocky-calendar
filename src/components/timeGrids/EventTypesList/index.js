@@ -24,7 +24,7 @@ const EventTypesList = ({
   return (
     <div className="event-types-list-wrapper">
       <div>
-        <h6>Temporary</h6>
+        <h5>Temporary</h5>
         {events.map((item) => {
           if (viewingDate.isBetween(item.start, item.end, "day", "[)")) {
             return (
@@ -40,7 +40,7 @@ const EventTypesList = ({
         })}
       </div>
       <div>
-        <h6>Recurring</h6>
+        <h5>Recurring</h5>
         {eventTypes.map((item) => (
           <EventTypesListItem
             key={item._id + "r"}

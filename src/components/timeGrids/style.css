@@ -37,8 +37,8 @@
   width: 2.5rem;
   position: relative;
   text-align: right;
-  margin: 0.1rem;
-  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
 }
 
 .timeslotItems-wrapper {
@@ -60,4 +60,13 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
 }

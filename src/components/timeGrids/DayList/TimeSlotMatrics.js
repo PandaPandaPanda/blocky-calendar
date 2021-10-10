@@ -33,20 +33,6 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
     times.push(<div key={i}>{i + ":00"}</div>);
   }
 
-  // if (isSelected) {
-  //   if () {
-
-  //   } else if(startDate.diff(endDate, "days") == 0)
-  //   TimeslotItems.push(
-  //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {true}/>
-  //   );
-  // } else {
-  //   TimeslotItems.push(
-  //     <TimeSlot key={j} index={j} date={year + ":" + month + ":" + day} isSelected = {false}/>
-  //   );
-  // }
-  // Individual 15min TimeslotItems
-
   for (let j = 0; j < 96; j++) {
     if (timeslots[j].property != null) {
       TimeslotItems.push(
