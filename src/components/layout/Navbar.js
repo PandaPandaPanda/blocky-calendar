@@ -7,12 +7,16 @@ import { setDate } from "../../actions/navbarActions";
 import moment from "moment";
 import M from "materialize-css/dist/js/materialize.min.js";
 import "react-datez/dist/css/react-datez.css";
-import { ReactDatez, ReduxReactDatez } from "react-datez";
+import { ReactDatez } from "react-datez";
 
 import "./style.css";
 import PropTypes from "prop-types";
 
 const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
+  // For now hardcoded the date range, congruen to DayList/index.js
+  var min = moment().startOf("year").subtract(1, "year");
+  var max = moment().startOf("year").add(1, "year");
+
   const [day, setDay] = useState(moment().format());
 
   useEffect(() => {
@@ -54,6 +58,8 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
               borderRadius: "1rem",
               paddingLeft: "1rem",
             }}
+            startDate={min.format("MMM DD, YYYY")}
+            endDate={max.format("MMM DD, YYYY")}
           />
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
