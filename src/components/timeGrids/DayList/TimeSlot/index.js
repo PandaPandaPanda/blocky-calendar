@@ -30,7 +30,9 @@ const TimeSlot = ({
       // onMouseEnter={() => {
       //   setHover({ date, index });
       // }}
-    ></div>
+    >
+      {property && property.title}
+    </div>
   );
 };
 

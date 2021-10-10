@@ -5,6 +5,9 @@
   background-color: #ececec;
   border-bottom: 2px solid #d6d6d6;
   position: relative;
+  text-align: center;
+  display: table-cell;
+  color: white;
 }
 
 .timeslot-container:hover {
