@@ -15,7 +15,7 @@ const EventTypes = ({ eventTypes: { eventTypes } }) => {
     <div className="container">
       <ul class="collection with-header">
         <li class="collection-header">
-          <h4>Event Types</h4>
+          <h4>Recurring Event Types</h4>
         </li>
         {eventTypes.map((eventType) => (
           <EventTypeItem
