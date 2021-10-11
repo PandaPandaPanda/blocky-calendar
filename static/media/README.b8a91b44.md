@@ -61,25 +61,49 @@ All usage instruction and information update is below.
 
 ### 🔸&nbsp; Add One-time Event
 
+> Go to Monthly Calendar<br>
+> Drag and select the time range of the event<br>
+> Enter the event and save
+
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136709117-4b8ce600-9ac9-4b2a-b931-ba6e69bfded6.gif" /></div>
 
 ### 🔸 Edit One-time Event
+
+> Go to Monthly Calendar<br>
+> Drag event or extend event to edit time<br>
+> Click on the event to edit in detail<br>
+> Click enter to save
 
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708793-e636e979-b1c3-4a63-8048-93d89791ccb6.gif" /></div>
 
 ### 🔸 Add Recurring Event
 
+> Go to Event Types<br>
+> Click on lower right button to add a recurring event<br>
+> Enter the event and save<br>
+
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708796-f9d27d67-5f61-4398-926f-fe64b00db44c.gif" /></div>
 
 ### 🔸 Edit Recurring Event
+
+> Go to Event Types<br>
+> Click on the pen icon of the event to edit <br>
+> Enter the update and save<br>
 
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708801-56af2ab4-fd7d-4dbc-982f-bada56d74b53.gif" /></div>
 
 ### 🔸 Jump to Date
 
+> Click on the upper right calendar on Nvbar<br>
+> Click on the desired date <br>
+
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708820-dcabf893-f4af-46d4-97db-c469ebd210e2.gif" /></div>
 
 ### 🔸 Plan/Record Your Day with Day Block
+
+> Click once to select start date<br>
+> Click again to select end date<bar>
+> Click on a event to record it<br>
 
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708889-cec3d2ed-a354-4bf1-a31b-97da0a0c82e2.gif" /></div>
 
