@@ -1,4 +1,5 @@
 .event-types-list-wrapper {
+  width: 10rem;
   height: 100%;
   margin: 0 0.5rem;
   overflow-y: scroll;

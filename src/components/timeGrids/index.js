@@ -7,6 +7,7 @@ import {
   setErasing,
 } from "../../actions/eventTypesListItemActions";
 
+import MarkDown from "./MarkDown";
 import TimeSlot from "./DayList/TimeSlot";
 import DayList from "./DayList";
 import EventTypesList from "./EventTypesList";

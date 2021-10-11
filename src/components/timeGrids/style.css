@@ -1,16 +1,14 @@
 /* index.js */
 .days-wrapper {
   height: 93vh;
-  width: auto;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 27rem 10rem 1fr;
   margin: 0 0.5rem 0;
   position: relative;
 }
 
 .timeGrids-container {
   height: 100%;
-  width: 27rem;
   display: block;
 }
 
@@ -69,4 +67,14 @@
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
   background: #ff0000;
+}
+
+@media screen and (max-width: 500px) {
+  .days-wrapper {
+    grid-template-columns: 1fr 10rem;
+  }
+
+  .timeGrids-container {
+    max-width: 27rem;
+  }
 }

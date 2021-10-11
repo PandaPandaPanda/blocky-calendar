@@ -26,13 +26,13 @@ const DayList = ({
   var parentRef = useRef();
 
   const [height, setHeight] = useState(0);
-  const [width, setWidth] = useState(0);
+  // const [width, setWidth] = useState(0);
   const [loaded, setLoaded] = useState(0);
 
   const updateSize = () => {
     if (parentRef.current) {
       setHeight(parentRef.current.offsetHeight);
-      setWidth(parentRef.current.offsetWidth);
+      // setWidth(parentRef.current.offsetWidth);
     }
   };
 
@@ -120,7 +120,7 @@ const DayList = ({
         className="infiniteList"
         ref={listRef}
         height={height}
-        width={width}
+        width={"100%"}
         itemCount={days.length}
         itemSize={height}
         children={renderDay}

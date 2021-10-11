@@ -1,0 +1,81 @@
+.markdown {
+  left: 34rem;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.result {
+  position: relative;
+  top: 3vh;
+  bottom: 0;
+  overflow: auto;
+  right: 0;
+  left: 50%;
+  background-color: var(--gray-0);
+  padding: calc(1em + 1ex);
+}
+
+.CodeMirror {
+  width: 100%;
+  height: 100%;
+}
+
+.editor textarea {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  border: 0;
+  resize: none;
+  padding: calc(1em + 1ex);
+  background-color: var(--gray-10);
+  color: var(--gray-0);
+}
+
+.controls {
+  color: var(--gray-0);
+  background-color: var(--gray-10);
+  padding: calc(1ex);
+  padding-top: 0;
+}
+
+.controls label {
+  font-size: smaller;
+  display: block;
+}
+
+.github-corner svg {
+  z-index: 1;
+  width: calc(6.5 * (1em + 1ex));
+  height: calc(6.5 * (1em + 1ex));
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+.show-big {
+  display: none;
+}
+
+/* Fix too low contrast on code */
+.cm-s-nord span.cm-comment {
+  color: var(--gray-4) !important;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
