@@ -58,18 +58,25 @@ export default (state = initialState, action) => {
         ),
         eventType: {},
       };
-    case (ADD_EVENT_TYPE_ERROR,
-    UPDATE_EVENT_TYPE_ERROR,
-    DELETE_EVENT_TYPE_ERROR):
-      console.log(action.payload);
-      return {
-        ...state,
-        error: action.payload,
-      };
     case SET_CURRENT_EVENT_TYPE:
       return {
         ...state,
         eventType: action.payload,
+      };
+    case ADD_EVENT_TYPE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case UPDATE_EVENT_TYPE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case DELETE_EVENT_TYPE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;
