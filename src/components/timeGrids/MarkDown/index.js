@@ -14,9 +14,10 @@ const MarkDown = () => {
       .then((res) => res.text())
       .then((text) => setMarkdown(text));
   }, []);
+
   return (
     <div className="markdown">
-      {/* <div className="result">
+      <div className="result">
         <ReactMarkdown
           className="markdown-body"
           remarkPlugins={remarkGfm}
@@ -24,7 +25,7 @@ const MarkDown = () => {
         >
           {markdown}
         </ReactMarkdown>
-      </div> */}
+      </div>
     </div>
   );
 };

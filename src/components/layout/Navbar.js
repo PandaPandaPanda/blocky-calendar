@@ -30,7 +30,7 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
   return (
     <Fragment>
       <nav
-        className=""
+        className="z-depth-0"
         id="navbar"
         style={{ position: "relative", zIndex: "100" }}
       >

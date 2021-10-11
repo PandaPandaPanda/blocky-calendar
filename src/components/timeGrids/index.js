@@ -269,6 +269,7 @@ class DayBlocks extends Component {
           />
         </div>
         <EventTypesList height={"100%"} />
+        <MarkDown />
       </div>
     );
   }

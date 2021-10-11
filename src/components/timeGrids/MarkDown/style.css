@@ -1,19 +1,18 @@
 .markdown {
-  left: 34rem;
   width: 100%;
   position: relative;
   display: block;
+  overflow: scroll;
+  border: 1rem #ee6e73 solid;
+  border-top: none;
 }
 
-.result {
+.markdown .result {
+  width: 90%;
+  margin: auto;
   position: relative;
-  top: 3vh;
-  bottom: 0;
   overflow: auto;
-  right: 0;
-  left: 50%;
   background-color: var(--gray-0);
-  padding: calc(1em + 1ex);
 }
 
 .CodeMirror {

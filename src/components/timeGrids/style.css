@@ -3,11 +3,11 @@
   height: 93vh;
   display: grid;
   grid-template-columns: 27rem 10rem 1fr;
-  margin: 0 0.5rem 0;
   position: relative;
 }
 
 .timeGrids-container {
+  margin-left: 1.5rem;
   height: 100%;
   display: block;
 }
