@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "34e5e35821d8f4b38da48dd4a8fd5938",
+    "revision": "5a9b5de7de85628795560e12d3113a89",
     "url": "/blocky-calendar/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/blocky-calendar/static/css/2.0f07b481.chunk.css"
   },
   {
-    "revision": "a4b7207f4b843be47978",
+    "revision": "d2c53d61cbbd0e6e582e",
     "url": "/blocky-calendar/static/css/main.8909c8fa.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a4b7207f4b843be47978",
-    "url": "/blocky-calendar/static/js/main.2046607c.chunk.js"
+    "revision": "d2c53d61cbbd0e6e582e",
+    "url": "/blocky-calendar/static/js/main.ab27c038.chunk.js"
   },
   {
     "revision": "2dacf1b8653e916604f7",
