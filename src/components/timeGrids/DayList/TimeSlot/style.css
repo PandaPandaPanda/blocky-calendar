@@ -1,4 +1,7 @@
 .timeslot-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
