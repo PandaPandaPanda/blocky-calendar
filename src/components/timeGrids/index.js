@@ -128,7 +128,6 @@ class DayBlocks extends Component {
         }
       }
     }
-    console.log(newDays);
     this.props.setDays(newDays);
   }
 
