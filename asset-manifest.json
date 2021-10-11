@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/blocky-calendar/static/css/main.a8c5c7c8.chunk.css",
-    "main.js": "/blocky-calendar/static/js/main.1ccaaabe.chunk.js",
-    "main.js.map": "/blocky-calendar/static/js/main.1ccaaabe.chunk.js.map",
+    "main.css": "/blocky-calendar/static/css/main.7ca78b3a.chunk.css",
+    "main.js": "/blocky-calendar/static/js/main.8bd20adf.chunk.js",
+    "main.js.map": "/blocky-calendar/static/js/main.8bd20adf.chunk.js.map",
     "runtime-main.js": "/blocky-calendar/static/js/runtime-main.150cdfae.js",
     "runtime-main.js.map": "/blocky-calendar/static/js/runtime-main.150cdfae.js.map",
     "static/css/2.0f07b481.chunk.css": "/blocky-calendar/static/css/2.0f07b481.chunk.css",
-    "static/js/2.ec972b72.chunk.js": "/blocky-calendar/static/js/2.ec972b72.chunk.js",
-    "static/js/2.ec972b72.chunk.js.map": "/blocky-calendar/static/js/2.ec972b72.chunk.js.map",
+    "static/js/2.3a39a00c.chunk.js": "/blocky-calendar/static/js/2.3a39a00c.chunk.js",
+    "static/js/2.3a39a00c.chunk.js.map": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.map",
     "index.html": "/blocky-calendar/index.html",
-    "precache-manifest.dd4d96538fa97522d15c7398d2aec44c.js": "/blocky-calendar/precache-manifest.dd4d96538fa97522d15c7398d2aec44c.js",
+    "precache-manifest.9b58fa827a5527627505b5bcbe6ee4e6.js": "/blocky-calendar/precache-manifest.9b58fa827a5527627505b5bcbe6ee4e6.js",
     "service-worker.js": "/blocky-calendar/service-worker.js",
     "static/css/2.0f07b481.chunk.css.map": "/blocky-calendar/static/css/2.0f07b481.chunk.css.map",
-    "static/css/main.a8c5c7c8.chunk.css.map": "/blocky-calendar/static/css/main.a8c5c7c8.chunk.css.map",
-    "static/js/2.ec972b72.chunk.js.LICENSE.txt": "/blocky-calendar/static/js/2.ec972b72.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/blocky-calendar/static/media/Gamepixies-8MO6n.aff79bda.ttf"
+    "static/css/main.7ca78b3a.chunk.css.map": "/blocky-calendar/static/css/main.7ca78b3a.chunk.css.map",
+    "static/js/2.3a39a00c.chunk.js.LICENSE.txt": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/blocky-calendar/static/media/Gamepixies-8MO6n.aff79bda.ttf",
+    "static/media/README.md": "/blocky-calendar/static/media/README.7abe9846.md"
   },
   "entrypoints": [
     "static/js/runtime-main.150cdfae.js",
     "static/css/2.0f07b481.chunk.css",
-    "static/js/2.ec972b72.chunk.js",
-    "static/css/main.a8c5c7c8.chunk.css",
-    "static/js/main.1ccaaabe.chunk.js"
+    "static/js/2.3a39a00c.chunk.js",
+    "static/css/main.7ca78b3a.chunk.css",
+    "static/js/main.8bd20adf.chunk.js"
   ]
 }
