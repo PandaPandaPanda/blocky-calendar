@@ -69,7 +69,7 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
               <Link to="/blocky-calendar/calendar">Monthly Calendar</Link>
             </li>
             <li>
-              <Link to="/blocky-calendar/day">Day Block</Link>
+              <Link to="/blocky-calendar/">Day Block</Link>
             </li>
             <li>
               <Link to="/blocky-calendar/event-types">Event Types</Link>
@@ -83,7 +83,7 @@ const Navbar = ({ navbar: { date: selectedDate }, setDate }) => {
           <Link to="/blocky-calendar/calendar">Monthly Calendar</Link>
         </li>
         <li>
-          <Link to="/blocky-calendar/day">Day Block</Link>
+          <Link to="/blocky-calendar/">Day Block</Link>
         </li>
         <li>
           <Link to="/blocky-calendar/event-types">Event Types</Link>
