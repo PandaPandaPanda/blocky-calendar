@@ -6,6 +6,7 @@ import {
   setCurrentEventTypesListItem,
   setErasing,
 } from "../../actions/eventTypesListItemActions";
+import { setDays, setPrevTime } from "../../actions/timeActions";
 
 import MarkDown from "./MarkDown";
 import TimeSlot from "./DayList/TimeSlot";
@@ -31,56 +32,31 @@ class DayBlocks extends Component {
   constructor(props) {
     super(...arguments);
 
-    const days = [];
     var min = moment().startOf("year").subtract(1, "year");
     var max = moment().startOf("year").add(1, "year");
-    for (let year = min.year(); year <= max.year(); year++) {
-      for (let month = 1; month <= 12; month++) {
-        for (
-          let day = 1;
-          day <= moment(year + ":" + month, "YYYY:MM").daysInMonth();
-          day++
-        ) {
-          let timeslots = [];
-          let isSelected = false;
-          let property = null;
-          for (let index = 0; index < 96; index++) {
-            timeslots.push({ index, isSelected, property });
-          }
-          days.push({
-            year,
-            month,
-            day,
-            timeslots,
-          });
-        }
-      }
-    }
 
     this.state = {
       TimeSlot,
-      days: days,
+
       min: min,
       max: max,
-      prevTime: null,
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
     const { time, eventTypesListItem } = this.props;
-    if (time != prevProps.time) {
+    if (
+      time.final != prevProps.time.final ||
+      time.end != prevProps.time.end ||
+      time.start != prevProps.time.start
+    ) {
       if (time.final && time.start != null && time.end != null) {
-        console.log("select once");
         this.selectRange(time.start, time.end, true);
-        this.setState({ prevTime: time });
-      } else if (!time.final && this.state.prevTime != null) {
-        this.selectRange(
-          this.state.prevTime.start,
-          this.state.prevTime.end,
-          false
-        );
-        this.setState({ prevTime: null });
+        this.props.setPrevTime(time);
+      } else if (!time.final && time.prevTime != null) {
+        this.selectRange(time.prevTime.start, time.prevTime.end, false);
+        this.props.setPrevTime(null);
       }
     } else if (eventTypesListItem != prevProps.eventTypesListItem) {
       if (
@@ -90,18 +66,13 @@ class DayBlocks extends Component {
         time.start != null &&
         time.end != null
       ) {
-        console.log("paint once");
         this.paintRange(
           time.start,
           time.end,
           eventTypesListItem.currentEventTypesListItem
         );
-        this.selectRange(
-          this.state.prevTime.start,
-          this.state.prevTime.end,
-          false
-        );
-        this.setState({ prevTime: null });
+        this.selectRange(time.prevTime.start, time.prevTime.end, false);
+        this.props.setPrevTime(null);
       } else if (
         eventTypesListItem.erasing != prevProps.eventTypesListItem.erasing &&
         time.final &&
@@ -132,7 +103,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.state.days);
+    let newDays = deepCopy(this.props.time.days);
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -158,7 +129,7 @@ class DayBlocks extends Component {
       }
     }
     console.log(newDays);
-    this.setState({ days: newDays });
+    this.props.setDays(newDays);
   }
 
   selectRange(date1, date2, isTrue) {
@@ -179,7 +150,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.state.days);
+    let newDays = deepCopy(this.props.time.days);
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -204,7 +175,7 @@ class DayBlocks extends Component {
         }
       }
     }
-    this.setState({ days: newDays });
+    this.props.setDays(newDays);
   }
 
   eraseRange(date1, date2) {
@@ -225,7 +196,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.state.days);
+    let newDays = deepCopy(this.props.time.days);
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -254,7 +225,7 @@ class DayBlocks extends Component {
         }
       }
     }
-    this.setState({ days: newDays });
+    this.props.setDays(newDays);
   }
 
   render() {
@@ -262,7 +233,7 @@ class DayBlocks extends Component {
       <div className="days-wrapper">
         <div className="timeGrids-container">
           <DayList
-            days={this.state.days}
+            days={this.props.time.days}
             TimeSlot={this.state.TimeSlot}
             min={this.state.min}
             max={this.state.max}
@@ -282,6 +253,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setCurrentEventTypesListItem })(
-  DayBlocks
-);
+export default connect(mapStateToProps, {
+  setCurrentEventTypesListItem,
+  setDays,
+  setPrevTime,
+})(DayBlocks);

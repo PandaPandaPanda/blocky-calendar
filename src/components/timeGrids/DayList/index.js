@@ -37,7 +37,6 @@ const DayList = ({
   };
 
   useEffect(() => {
-    console.log("Rendered once");
     M.AutoInit();
     setLoaded(true);
     updateSize();

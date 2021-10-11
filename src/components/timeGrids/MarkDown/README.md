@@ -15,7 +15,7 @@
 
 > This app is aiming to combine the functionality of Calendar,Reminder, and Porject Management sites.
 
-> Currently it only has frontend ready, so it will not save your progress, but you can fiddle around with the features. The Day Block page will lose its state when you switch route, but teh Calendar and Even Types page will temporarily store your edits.
+> Currently it only has frontend ready, so it will not save your progress, but you can fiddle around with the features. Since redux holds all the important data, the app will temporarily store your edits.
 
 <div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136709676-4b542d78-47d0-4930-aa8d-61840963a223.gif" /></div>
 
