@@ -13,7 +13,7 @@
 
 </div>
 
-> This app is aiming to combine the functionality of Calendar,Reminder, and Porject Management sites.
+> This app is aiming to combine the functionality of Calendar, Reminder, and Project Management sites.
 
 > Currently it only has frontend ready, so it will not save your progress, but you can fiddle around with the features. Since redux holds all the important data, the app will temporarily store your edits.
 
