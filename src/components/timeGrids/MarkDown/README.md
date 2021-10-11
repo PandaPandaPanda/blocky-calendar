@@ -17,13 +17,13 @@
 
 > Currently it only has frontend ready, so it will not save your progress, but you can fiddle around with the features. The Day Block page will lose its state when you switch route, but teh Calendar and Even Types page will temporarily store your edits.
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136709676-4b542d78-47d0-4930-aa8d-61840963a223.gif" /></div>
+<div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136709676-4b542d78-47d0-4930-aa8d-61840963a223.gif" /></div>
 
 ## App Screenshots
 
-|                                                                                    Calendar                                                                                     |                                                                                   Day Block                                                                                   |                                                                                Event Types                                                                                |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| ![image](https://user-images.githubusercontent.com/34975856/136697183-23009d01-5112-4380-a370-cf7e7777b794.png) | ![image](https://user-images.githubusercontent.com/34975856/136697168-aa2d2d24-ec57-4eea-9ac3-66e49ae41ce1.png) | ![image](https://user-images.githubusercontent.com/34975856/136697200-35802998-f067-4638-bdcc-2ee996e13de0.png) |
+|                                                                               Calendar                                                                                |                                                                               Day Block                                                                               |                                                                              Event Types                                                                              |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136697183-23009d01-5112-4380-a370-cf7e7777b794.png" /></div> | <div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136697168-aa2d2d24-ec57-4eea-9ac3-66e49ae41ce1.png" /></div> | <div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136697200-35802998-f067-4638-bdcc-2ee996e13de0.png" /></div> |
 
 ## What (Blocky Calendar) ?
 
@@ -39,84 +39,72 @@ Blocky Calendar will present you a brand new experience on time management. <br 
 
 All usage instruction and information update is below.
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## Developing
 
 ### Progress
 
-| Platform          | Status     |
-| ----------------- | ---------- |
-| Frontend | Developing |
-|   -- Calendar | Complete |
-|   -- Day Block | Complete |
-|   -- Event Type | Complete |
-|   -- Mobile Friendly | Developing |
-|   -- Statistics View | Pending |
-| Backend             | Pending    |
+| Platform           | Status     |
+| ------------------ | ---------- |
+| Frontend           | Developing |
+| -- Calendar        | Complete   |
+| -- Day Block       | Complete   |
+| -- Event Type      | Complete   |
+| -- Mobile Friendly | Developing |
+| -- Statistics View | Pending    |
+| Backend            | Pending    |
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
-
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## Usage Guide
 
 ### 🔸&nbsp; Add One-time Event
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136709117-4b8ce600-9ac9-4b2a-b931-ba6e69bfded6.gif" /></div>
-
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136709117-4b8ce600-9ac9-4b2a-b931-ba6e69bfded6.gif" /></div>
 
 ### 🔸 Edit One-time Event
 
-
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708793-e636e979-b1c3-4a63-8048-93d89791ccb6.gif" /></div>
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708793-e636e979-b1c3-4a63-8048-93d89791ccb6.gif" /></div>
 
 ### 🔸 Add Recurring Event
 
-
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708796-f9d27d67-5f61-4398-926f-fe64b00db44c.gif" /></div>
-
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708796-f9d27d67-5f61-4398-926f-fe64b00db44c.gif" /></div>
 
 ### 🔸 Edit Recurring Event
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708801-56af2ab4-fd7d-4dbc-982f-bada56d74b53.gif" /></div>
-
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708801-56af2ab4-fd7d-4dbc-982f-bada56d74b53.gif" /></div>
 
 ### 🔸 Jump to Date
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708820-dcabf893-f4af-46d4-97db-c469ebd210e2.gif" /></div>
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708820-dcabf893-f4af-46d4-97db-c469ebd210e2.gif" /></div>
 
+### 🔸 Plan/Record Your Day with Day Block
 
-### 🔸 Plan/Record Your Day with Day Block 
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136708889-cec3d2ed-a354-4bf1-a31b-97da0a0c82e2.gif" /></div>
 
-
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136708889-cec3d2ed-a354-4bf1-a31b-97da0a0c82e2.gif" /></div>
-
-
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## ❤️ Community and Contributions
 
 We are committed to a fully transparent development process and **highly appreciate any contributions**.
 
-
 ## 📫 Have a question? Want to chat? Ran into a problem?
 
-We are happy to answer your questions via [GitHub Discussions](https://github.com/PandaPandaPanda/blocky-calendar/issues)! 
-
+We are happy to answer your questions via [GitHub Discussions](https://github.com/PandaPandaPanda/blocky-calendar/issues)!
 
 ## 🤝&nbsp; Found a bug? Missing a specific feature?
 
 Feel free to **file a new issue** with a respective title and description on the the [GitHub Discussions](https://github.com/PandaPandaPanda/blocky-calendar/issues) repository. If you already found a solution to your problem, **we would love to review your pull request**!
 
-
 ## 📘&nbsp; License
 
 The Blocky Calendar is released under the under terms of the MIT License.
 
-<div align="center"><img src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
-
+<div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
 ## Folder Structure
+
 ```
 📦 blocky-calendar
 ├─ .gitignore
