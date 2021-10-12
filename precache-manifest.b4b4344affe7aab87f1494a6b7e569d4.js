@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "02d486556946af41114a623d7b0b854d",
+    "revision": "a71644556d7bebe6bb7a25c733d0adc5",
     "url": "/blocky-calendar/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/blocky-calendar/static/css/2.0f07b481.chunk.css"
   },
   {
-    "revision": "a82bf0b07a30578b5d33",
+    "revision": "3bb6d2eeaef46a76a981",
     "url": "/blocky-calendar/static/css/main.38cd77a4.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a82bf0b07a30578b5d33",
-    "url": "/blocky-calendar/static/js/main.8511f679.chunk.js"
+    "revision": "3bb6d2eeaef46a76a981",
+    "url": "/blocky-calendar/static/js/main.3bf860d2.chunk.js"
   },
   {
     "revision": "2dacf1b8653e916604f7",
@@ -32,7 +32,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/blocky-calendar/static/media/Gamepixies-8MO6n.aff79bda.ttf"
   },
   {
-    "revision": "10ff2dd0fc7107f24329d7044213a998",
-    "url": "/blocky-calendar/static/media/README.10ff2dd0.md"
+    "revision": "51c10fa3ca468101c22ba286e5845392",
+    "url": "/blocky-calendar/static/media/README.51c10fa3.md"
   }
 ]);
