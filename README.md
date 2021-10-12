@@ -6,10 +6,9 @@
 
 <div align="center">
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://thismypc.com/)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://pandapandapanda.github.io/blocky-calendar)
 <br />
-![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/supunlakmal/thismypc/graphs/commit-activity) [![Website thismypc.com](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://thismypc.com/) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/supunlakmal/thismypc/blob/master/LICENSE)
-[![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/Thismypc/community)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/PandaPandaPanda/blocky-calendar/graphs/commit-activity) [![Website Blocky Calendar](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://pandapandapanda.github.io/blocky-calendar) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/PandaPandaPanda/blocky-calendar/blob/main/LICENSE)
 
 </div>
 
