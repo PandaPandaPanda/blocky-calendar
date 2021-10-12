@@ -50,9 +50,9 @@ All usage instruction and information update is below.
 | -- Calendar        | Complete   |
 | -- Day Block       | Complete   |
 | -- Event Type      | Complete   |
-| -- Mobile Friendly | Developing |
+| -- Mobile Friendly | Complete   |
 | -- Statistics View | Pending    |
-| Backend            | Pending    |
+| Backend            | Developing |
 
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
