@@ -6,10 +6,9 @@
 
 <div align="center">
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://thismypc.com/)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://pandapandapanda.github.io/blocky-calendar)
 <br />
-![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/supunlakmal/thismypc/graphs/commit-activity) [![Website thismypc.com](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://thismypc.com/) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/supunlakmal/thismypc/blob/master/LICENSE)
-[![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/Thismypc/community)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/PandaPandaPanda/blocky-calendar/graphs/commit-activity) [![Website Blocky Calendar](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://pandapandapanda.github.io/blocky-calendar) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/PandaPandaPanda/blocky-calendar/blob/main/LICENSE)
 
 </div>
 
@@ -51,9 +50,9 @@ All usage instruction and information update is below.
 | -- Calendar        | Complete   |
 | -- Day Block       | Complete   |
 | -- Event Type      | Complete   |
-| -- Mobile Friendly | Developing |
+| -- Mobile Friendly | Complete   |
 | -- Statistics View | Pending    |
-| Backend            | Pending    |
+| Backend            | Developing |
 
 <div align="center"><img style="width: 100%;" src="https://user-images.githubusercontent.com/34975856/136698255-9a66fe43-5e16-4a31-baf5-3050c5947bdc.png" /></div>
 
