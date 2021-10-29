@@ -1,6 +1,6 @@
 # Blocky Calendar
 
-![image](https://user-images.githubusercontent.com/34975856/136696789-df826547-ffce-41d2-9e82-f7015c7805ab.png)
+<div align="center"><img style="  width: 100%; " src="https://user-images.githubusercontent.com/34975856/136696789-df826547-ffce-41d2-9e82-f7015c7805ab.png" /></div>
 
 <br />
 

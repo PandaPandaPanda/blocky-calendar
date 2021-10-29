@@ -82,7 +82,7 @@ const CalendarView = ({
           onNavigate={() => {}}
           resizable
           selectable
-          style={{ height: "93.6vh" }}
+          style={{ height: "94vh" }}
           // messages={{
           //   showMore: (target) => (
           //     <div
