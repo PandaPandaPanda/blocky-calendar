@@ -7,7 +7,12 @@
   box-sizing: border-box;
   margin: 0;
 }
+
 body {
   font-family: "Gamepixies";
   font-size: 1.2rem;
+}
+
+#App {
+  height: 100vh;
 }

@@ -1,0 +1,9 @@
+#calendar {
+  height: calc(100% - 56px);
+}
+
+@media only screen and (min-width: 601px) {
+  #calendar {
+    height: calc(100% - 64px);
+  }
+}

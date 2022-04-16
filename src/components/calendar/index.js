@@ -64,7 +64,7 @@ const CalendarView = ({
 
   return (
     <Fragment>
-      <div className="App">
+      <div id="calendar">
         <DnDCalendar
           defaultDate={moment().toDate()}
           defaultView="month"
@@ -82,7 +82,6 @@ const CalendarView = ({
           onNavigate={() => {}}
           resizable
           selectable
-          style={{ height: "94vh" }}
           // messages={{
           //   showMore: (target) => (
           //     <div

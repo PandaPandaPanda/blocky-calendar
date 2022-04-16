@@ -114,9 +114,8 @@ const DayList = ({
   // };
 
   return (
-    <div style={{ height: "94vh" }} ref={parentRef}>
+    <div id="infiniteList" ref={parentRef}>
       <FixedSizeList
-        className="infiniteList"
         ref={listRef}
         height={height}
         width={"100%"}

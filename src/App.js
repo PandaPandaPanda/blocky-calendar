@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
+        <div id="App">
           <Route
             path="/blocky-calendar"
             render={() => (
