@@ -8,11 +8,17 @@
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Gamepixies";
   font-size: 1.2rem;
+  height: 100%;
 }
 
 #App {
   height: 100vh;
+  max-height: -webkit-fill-available;
 }

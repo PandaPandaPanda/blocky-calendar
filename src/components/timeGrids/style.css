@@ -1,6 +1,6 @@
 /* index.js */
 .days-wrapper {
-  height: 93vh;
+  height: calc(100% - 56px);
   display: grid;
   grid-template-columns: 27rem 10rem 1fr;
   position: relative;
@@ -14,6 +14,7 @@
 
 /* DayWrapper.js */
 .day-wrapper {
+  height: 98%;
   display: flex;
   flex-direction: row;
   padding-top: 0.3rem;
@@ -30,8 +31,8 @@
 .time-label {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(24, 1fr);
   grid-gap: 0.5%;
-  height: 90vh;
   width: 2.5rem;
   position: relative;
   text-align: right;
@@ -44,7 +45,6 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(24, 1fr);
   grid-gap: 0.5%;
-  height: 90vh;
   width: 20rem;
   position: relative;
 }
@@ -65,5 +65,11 @@
 
   .timeGrids-container {
     max-width: 27rem;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .days-wrapper {
+    height: calc(100% - 64px);
   }
 }
