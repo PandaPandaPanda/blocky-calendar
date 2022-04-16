@@ -9,13 +9,19 @@
 }
 
 html {
+  position: fixed;
   height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 body {
+  position: fixed;
   font-family: "Gamepixies";
   font-size: 1.2rem;
   height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 #App {
