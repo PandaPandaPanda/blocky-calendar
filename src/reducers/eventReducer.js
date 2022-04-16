@@ -35,14 +35,14 @@ const initialState = {
       start: moment().startOf("day").add(7, "days").toDate(),
       end: moment().startOf("day").add(14, "days").toDate(),
       title: "Frontend Design",
-      color: "#99E6E6",
+      color: "#e666b3",
     },
     {
       _id: 4,
       start: moment().startOf("day").add(4, "days").toDate(),
       end: moment().startOf("day").add(6, "days").toDate(),
       title: "UI/UX Design",
-      color: "#99E6E6",
+      color: "#6666ff",
     },
   ],
 

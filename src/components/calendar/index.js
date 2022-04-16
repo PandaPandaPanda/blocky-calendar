@@ -62,6 +62,13 @@ const CalendarView = ({
     setEditing();
   };
 
+  // Custom event color
+  const eventPropGetter = (event) => {
+    console.log(event);
+    const backgroundColor = event.color;
+    return { style: { backgroundColor } };
+  };
+
   return (
     <Fragment>
       <div id="calendar">
@@ -80,6 +87,7 @@ const CalendarView = ({
           date={moment(date).toDate()}
           // No use, just to dismiss the alert, date selection is handled by datepicker
           onNavigate={() => {}}
+          eventPropGetter={eventPropGetter}
           resizable
           selectable
           // messages={{
