@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/blocky-calendar/static/css/main.0fcd137a.chunk.css",
+    "main.css": "/blocky-calendar/static/css/main.3605ef06.chunk.css",
     "main.js": "/blocky-calendar/static/js/main.d687b145.chunk.js",
     "main.js.map": "/blocky-calendar/static/js/main.d687b145.chunk.js.map",
     "runtime-main.js": "/blocky-calendar/static/js/runtime-main.150cdfae.js",
@@ -9,10 +9,10 @@
     "static/js/2.3a39a00c.chunk.js": "/blocky-calendar/static/js/2.3a39a00c.chunk.js",
     "static/js/2.3a39a00c.chunk.js.map": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.map",
     "index.html": "/blocky-calendar/index.html",
-    "precache-manifest.dc93bbbd1a67069d7ca78a36460bc134.js": "/blocky-calendar/precache-manifest.dc93bbbd1a67069d7ca78a36460bc134.js",
+    "precache-manifest.8b6b1c0e8032751b1dd06366e5f0486c.js": "/blocky-calendar/precache-manifest.8b6b1c0e8032751b1dd06366e5f0486c.js",
     "service-worker.js": "/blocky-calendar/service-worker.js",
     "static/css/2.0f07b481.chunk.css.map": "/blocky-calendar/static/css/2.0f07b481.chunk.css.map",
-    "static/css/main.0fcd137a.chunk.css.map": "/blocky-calendar/static/css/main.0fcd137a.chunk.css.map",
+    "static/css/main.3605ef06.chunk.css.map": "/blocky-calendar/static/css/main.3605ef06.chunk.css.map",
     "static/js/2.3a39a00c.chunk.js.LICENSE.txt": "/blocky-calendar/static/js/2.3a39a00c.chunk.js.LICENSE.txt",
     "static/media/App.css": "/blocky-calendar/static/media/Gamepixies-8MO6n.aff79bda.ttf",
     "static/media/README.md": "/blocky-calendar/static/media/README.9836ce4f.md"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.150cdfae.js",
     "static/css/2.0f07b481.chunk.css",
     "static/js/2.3a39a00c.chunk.js",
-    "static/css/main.0fcd137a.chunk.css",
+    "static/css/main.3605ef06.chunk.css",
     "static/js/main.d687b145.chunk.js"
   ]
 }
