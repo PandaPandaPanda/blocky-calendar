@@ -16,18 +16,6 @@ import EventTypesList from "./EventTypesList";
 import "./style.css";
 import PropTypes from "prop-types";
 
-const deepCopy = (arr) => {
-  let copy = [];
-  arr.forEach((elem) => {
-    if (Array.isArray(elem)) {
-      copy.push(deepCopy(elem));
-    } else {
-      copy.push(elem);
-    }
-  });
-  return copy;
-};
-
 class DayBlocks extends Component {
   constructor(props) {
     super(...arguments);
@@ -44,8 +32,6 @@ class DayBlocks extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.time);
-    console.log(this.props.eventTypesListItem);
     // Typical usage (don't forget to compare props):
     const { time, eventTypesListItem } = this.props;
     if (
@@ -84,8 +70,6 @@ class DayBlocks extends Component {
 
       clearInterval();
     }
-    console.log(this.props.time);
-    console.log(this.props.eventTypesListItem);
   }
 
   paintRange(date1, date2, property) {
@@ -106,7 +90,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.props.time.days);
+    let newDays = [...this.props.time.days]; // shallow copy
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -156,7 +140,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.props.time.days);
+    let newDays = [...this.props.time.days]; // shallow copy
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -202,7 +186,7 @@ class DayBlocks extends Component {
       }
     }
 
-    let newDays = deepCopy(this.props.time.days);
+    let newDays = [...this.props.time.days]; // shallow copy
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
