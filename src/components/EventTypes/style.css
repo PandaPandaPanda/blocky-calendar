@@ -2,3 +2,7 @@
   max-height: 100% !important;
   overflow: visible;
 }
+
+.modal .modal-content {
+  padding: 24px 24px 0 24px;
+}

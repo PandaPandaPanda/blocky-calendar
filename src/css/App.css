@@ -28,3 +28,7 @@ body {
   height: 100vh;
   max-height: -webkit-fill-available;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
