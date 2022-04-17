@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/blocky-calendar/precache-manifest.d6e182b2a52ee668afb955cf54ad8009.js"
+  "/blocky-calendar/precache-manifest.c7d6c38355c8f83543d81f4d752de62b.js"
 );
 
 self.addEventListener('message', (event) => {
