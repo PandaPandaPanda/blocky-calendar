@@ -118,6 +118,7 @@ const DayList = ({
   return (
     <div
       id="infiniteList"
+      className="noselect"
       ref={parentRef}
       onMouseDown={() => setDragSelect(true)}
       onMouseUp={() => setDragSelect(false)}
