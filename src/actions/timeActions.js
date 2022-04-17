@@ -1,6 +1,6 @@
 import {
   SET_TIME_RANGE,
-  SET_HOVER,
+  SET_DRAG_SELECT,
   SET_DAYS,
   SET_PREVTIME,
   CLEAR_INTERVAL,
@@ -27,10 +27,10 @@ export const setPrevTime = (time) => {
   };
 };
 
-export const setHover = ({ date, index }) => {
+export const setDragSelect = (isTrue) => {
   return {
-    type: SET_HOVER,
-    payload: { date: moment(date, "YYYY:MM:DD"), index },
+    type: SET_DRAG_SELECT,
+    payload: isTrue,
   };
 };
 

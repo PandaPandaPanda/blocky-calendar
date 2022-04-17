@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import { isBetween } from "moment";
 import { connect } from "react-redux";
 
-import { setTimeRange, setHover } from "../../../../actions/timeActions";
+import { setTimeRange } from "../../../../actions/timeActions";
 
 import "./style.css";
 
 // index ranges from 0 to 95 representing different times in a day
 
 const TimeSlot = ({
-  // time: { final },
+  time: { isDragSelect },
   setTimeRange,
-  setHover,
   index,
   date,
   isSelected,
@@ -24,19 +23,23 @@ const TimeSlot = ({
         filter: isSelected ? "brightness(0.7)" : "brightness(1)",
         backgroundColor: property != null ? property.color : "#ececec",
       }}
-      onMouseUp={() => {
-        setTimeRange({ date, index });
+      onMouseEnter={() => {
+        if (isDragSelect) {
+          setTimeRange({ date, index });
+        }
       }}
-      // onMouseEnter={() => {
-      //   setHover({ date, index });
-      // }}
     >
       {property && property.title}
     </div>
   );
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  return {
+    time: state.time,
+  };
+};
+
+export default connect(mapStateToProps, {
   setTimeRange,
-  setHover,
 })(TimeSlot);

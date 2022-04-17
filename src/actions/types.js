@@ -18,7 +18,7 @@ export const SET_VIEWING_DATE = "SET_VIEWING_DATE";
 export const SET_TIME_RANGE = "SET_TIME_RANGE";
 export const SET_DAYS = "SET_DAYS";
 export const SET_PREVTIME = "SET_PREVTIME";
-export const SET_HOVER = "SET_HOVER";
+export const SET_DRAG_SELECT = "SET_DRAG_SELECT";
 export const CLEAR_INTERVAL = "CLEAR_INTERVAL";
 
 // eventTypesActions

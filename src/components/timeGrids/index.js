@@ -48,20 +48,18 @@ class DayBlocks extends Component {
     console.log(this.props.eventTypesListItem);
     // Typical usage (don't forget to compare props):
     const { time, eventTypesListItem } = this.props;
-    if (
-      time.final != prevProps.time.final ||
-      time.end != prevProps.time.end ||
-      time.start != prevProps.time.start
-    ) {
-      if (time.final && time.start != null && time.end != null) {
+
+    if (time.end != prevProps.time.end || time.start != prevProps.time.start) {
+      console.log(time);
+      if (time.isDragSelect && time.start != null && time.end != null) {
         this.selectRange(time.start, time.end, true);
         this.props.setPrevTime({ start: time.start, end: time.end });
-      } else if (!time.final && time.prevTime != null) {
+      } else if (time.isDragSelect && time.prevTime != null) {
         this.selectRange(time.prevTime.start, time.prevTime.end, false);
         this.props.setPrevTime(null);
       }
     } else if (eventTypesListItem != prevProps.eventTypesListItem) {
-      if (time.final && time.start != null && time.end != null) {
+      if (!time.isDragSelect && time.start != null && time.end != null) {
         if (
           eventTypesListItem.currentEventTypesListItem !=
             prevProps.eventTypesListItem.currentEventTypesListItem &&
