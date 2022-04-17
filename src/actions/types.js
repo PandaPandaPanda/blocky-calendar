@@ -19,6 +19,7 @@ export const SET_TIME_RANGE = "SET_TIME_RANGE";
 export const SET_DAYS = "SET_DAYS";
 export const SET_PREVTIME = "SET_PREVTIME";
 export const SET_HOVER = "SET_HOVER";
+export const CLEAR_INTERVAL = "CLEAR_INTERVAL";
 
 // eventTypesActions
 export const ADD_EVENT_TYPE = "ADD_EVENT_TYPE";

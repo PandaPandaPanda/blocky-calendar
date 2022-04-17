@@ -5,6 +5,7 @@ import {
   SET_PREVTIME,
   SET_HOVER,
   SET_TIME_RANGE,
+  CLEAR_INTERVAL,
 } from "../actions/types";
 
 const days = [];
@@ -88,6 +89,12 @@ export default (state = initialState, action) => {
           ...state,
         };
       }
+    case CLEAR_INTERVAL:
+      return {
+        ...state,
+        start: null,
+        end: null,
+      };
     default:
       return state;
   }

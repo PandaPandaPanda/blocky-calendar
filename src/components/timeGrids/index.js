@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React, { Component } from "react";
 import moment, { min } from "moment";
 
 import { connect } from "react-redux";
@@ -6,7 +6,7 @@ import {
   setCurrentEventTypesListItem,
   setErasing,
 } from "../../actions/eventTypesListItemActions";
-import { setDays, setPrevTime } from "../../actions/timeActions";
+import { setDays, setPrevTime, clearInterval } from "../../actions/timeActions";
 
 import MarkDown from "./MarkDown";
 import TimeSlot from "./DayList/TimeSlot";
@@ -44,6 +44,8 @@ class DayBlocks extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.time);
+    console.log(this.props.eventTypesListItem);
     // Typical usage (don't forget to compare props):
     const { time, eventTypesListItem } = this.props;
     if (
@@ -53,36 +55,37 @@ class DayBlocks extends Component {
     ) {
       if (time.final && time.start != null && time.end != null) {
         this.selectRange(time.start, time.end, true);
-        this.props.setPrevTime(time);
+        this.props.setPrevTime({ start: time.start, end: time.end });
       } else if (!time.final && time.prevTime != null) {
         this.selectRange(time.prevTime.start, time.prevTime.end, false);
         this.props.setPrevTime(null);
       }
     } else if (eventTypesListItem != prevProps.eventTypesListItem) {
-      if (
-        eventTypesListItem.currentEventTypesListItem !=
-          prevProps.eventTypesListItem.currentEventTypesListItem &&
-        time.final &&
-        time.start != null &&
-        time.end != null
-      ) {
-        this.paintRange(
-          time.start,
-          time.end,
-          eventTypesListItem.currentEventTypesListItem
-        );
-        this.selectRange(time.prevTime.start, time.prevTime.end, false);
-        this.props.setPrevTime(null);
-      } else if (
-        eventTypesListItem.erasing != prevProps.eventTypesListItem.erasing &&
-        time.final &&
-        time.start != null &&
-        time.end != null
-      ) {
-        this.eraseRange(time.start, time.end);
-        setErasing();
+      if (time.final && time.start != null && time.end != null) {
+        if (
+          eventTypesListItem.currentEventTypesListItem !=
+            prevProps.eventTypesListItem.currentEventTypesListItem &&
+          time.prevTime
+        ) {
+          this.paintRange(
+            time.start,
+            time.end,
+            eventTypesListItem.currentEventTypesListItem
+          );
+          this.selectRange(time.prevTime.start, time.prevTime.end, false);
+          this.props.setPrevTime(null);
+        } else if (
+          eventTypesListItem.erasing != prevProps.eventTypesListItem.erasing
+        ) {
+          this.eraseRange(time.start, time.end);
+          setErasing();
+        }
       }
+
+      clearInterval();
     }
+    console.log(this.props.time);
+    console.log(this.props.eventTypesListItem);
   }
 
   paintRange(date1, date2, property) {
@@ -132,6 +135,10 @@ class DayBlocks extends Component {
   }
 
   selectRange(date1, date2, isTrue) {
+    // if (!date1 || !date2 || !isTrue) {
+    //   return;
+    // }
+
     let startDate, endDate;
     if (date1.date.diff(date2.date, "days") > 0) {
       startDate = date2;
@@ -256,4 +263,5 @@ export default connect(mapStateToProps, {
   setCurrentEventTypesListItem,
   setDays,
   setPrevTime,
+  clearInterval,
 })(DayBlocks);
