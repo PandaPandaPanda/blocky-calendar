@@ -36,7 +36,6 @@ class DayBlocks extends Component {
     const { time, eventTypesListItem } = this.props;
 
     if (time.end != prevProps.time.end || time.start != prevProps.time.start) {
-      console.log(time);
       if (time.isDragSelect && time.start != null && time.end != null) {
         this.selectRange(time.start, time.end, true);
         this.props.setPrevTime({ start: time.start, end: time.end });
@@ -72,20 +71,12 @@ class DayBlocks extends Component {
 
   paintRange(date1, date2, property) {
     let startDate, endDate;
-    if (date1.date.diff(date2.date, "days") > 0) {
-      startDate = date2;
-      endDate = date1;
-    } else if (date1.date.diff(date2.date, "days") < 0) {
+    if (this.isBefore(date1, date2)) {
       startDate = date1;
       endDate = date2;
     } else {
-      if (date1.index > date2.index) {
-        startDate = date2;
-        endDate = date1;
-      } else {
-        startDate = date1;
-        endDate = date2;
-      }
+      startDate = date2;
+      endDate = date1;
     }
 
     let newDays = [...this.props.time.days]; // shallow copy
@@ -117,28 +108,55 @@ class DayBlocks extends Component {
   }
 
   selectRange(date1, date2, isTrue) {
-    // if (!date1 || !date2 || !isTrue) {
-    //   return;
-    // }
+    let newDays = [...this.props.time.days]; // shallow copy
 
-    let startDate, endDate;
-    if (date1.date.diff(date2.date, "days") > 0) {
-      startDate = date2;
-      endDate = date1;
-    } else if (date1.date.diff(date2.date, "days") < 0) {
-      startDate = date1;
-      endDate = date2;
-    } else {
-      if (date1.index > date2.index) {
-        startDate = date2;
-        endDate = date1;
+    // clear previous select (handle with user drag to decrease select amount)
+    if (isTrue && this.props.time.prevTime != null) {
+      let prevDate1 = this.props.time.prevTime.start;
+      let prevDate2 = this.props.time.prevTime.end;
+
+      let startDate, endDate;
+      if (this.isBefore(prevDate1, prevDate2)) {
+        startDate = prevDate1;
+        endDate = prevDate2;
       } else {
-        startDate = date1;
-        endDate = date2;
+        startDate = prevDate2;
+        endDate = prevDate1;
+      }
+
+      let startIndex = startDate.date.diff(this.state.min, "days");
+      let endIndex = endDate.date.diff(this.state.min, "days");
+      for (let i = startIndex; i <= endIndex; i++) {
+        if (startIndex == endIndex) {
+          for (let j = startDate.index; j <= endDate.index; j++) {
+            newDays[i].timeslots[j].isSelected = false;
+          }
+        } else {
+          if (i == startIndex) {
+            for (let j = startDate.index; j < 96; j++) {
+              newDays[i].timeslots[j].isSelected = false;
+            }
+          } else if (i == endIndex) {
+            for (let j = 0; j <= endDate.index; j++) {
+              newDays[i].timeslots[j].isSelected = false;
+            }
+          } else {
+            for (let j = 0; j < 96; j++) {
+              newDays[i].timeslots[j].isSelected = false;
+            }
+          }
+        }
       }
     }
 
-    let newDays = [...this.props.time.days]; // shallow copy
+    let startDate, endDate;
+    if (this.isBefore(date1, date2)) {
+      startDate = date1;
+      endDate = date2;
+    } else {
+      startDate = date2;
+      endDate = date1;
+    }
 
     let startIndex = startDate.date.diff(this.state.min, "days");
     let endIndex = endDate.date.diff(this.state.min, "days");
@@ -168,20 +186,12 @@ class DayBlocks extends Component {
 
   eraseRange(date1, date2) {
     let startDate, endDate;
-    if (date1.date.diff(date2.date, "days") > 0) {
-      startDate = date2;
-      endDate = date1;
-    } else if (date1.date.diff(date2.date, "days") < 0) {
+    if (this.isBefore(date1, date2)) {
       startDate = date1;
       endDate = date2;
     } else {
-      if (date1.index > date2.index) {
-        startDate = date2;
-        endDate = date1;
-      } else {
-        startDate = date1;
-        endDate = date2;
-      }
+      startDate = date2;
+      endDate = date1;
     }
 
     let newDays = [...this.props.time.days]; // shallow copy
@@ -214,6 +224,18 @@ class DayBlocks extends Component {
       }
     }
     this.props.setDays(newDays);
+  }
+
+  isBefore(date1, date2) {
+    if (date1.date.diff(date2.date, "days") > 0) {
+      return false;
+    } else if (date1.date.diff(date2.date, "days") < 0) {
+      return true;
+    } else if (date1.index > date2.index) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   render() {

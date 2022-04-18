@@ -45,29 +45,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_TIME_RANGE:
-      // if (state.final == true) {
-      //   return {
-      //     ...state,
-      //     start: action.payload,
-      //     // Reset end
-      //     end: null,
-      //     final: false,
-      //   };
-      // } else if (state.start != null) {
-      //   return {
-      //     ...state,
-      //     end: action.payload,
-      //     final: true,
-      //   };
-      // } else {
-      //   return {
-      //     ...state,
-      //     start: action.payload,
-      //     // Reset end
-      //     end: null,
-      //     final: false,
-      //   };
-      // }
       if (state.start == null) {
         return {
           ...state,
@@ -78,7 +55,6 @@ export default (state = initialState, action) => {
       } else {
         return {
           ...state,
-          // Reset end
           end: action.payload,
         };
       }
