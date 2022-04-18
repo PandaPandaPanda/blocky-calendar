@@ -3,7 +3,7 @@ import moment from "moment";
 import {
   SET_DAYS,
   SET_PREVTIME,
-  SET_HOVER,
+  SET_DRAG_SELECT,
   SET_TIME_RANGE,
   CLEAR_INTERVAL,
 } from "../actions/types";
@@ -37,35 +37,25 @@ for (let year = min.year(); year <= max.year(); year++) {
 const initialState = {
   start: null,
   end: null,
-  final: true,
   days: days,
   prevTime: null,
+  isDragSelect: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_TIME_RANGE:
-      if (state.final == true) {
+      if (state.start == null) {
         return {
           ...state,
           start: action.payload,
           // Reset end
           end: null,
-          final: false,
-        };
-      } else if (state.start != null) {
-        return {
-          ...state,
-          end: action.payload,
-          final: true,
         };
       } else {
         return {
           ...state,
-          start: action.payload,
-          // Reset end
-          end: null,
-          final: false,
+          end: action.payload,
         };
       }
     case SET_DAYS:
@@ -78,17 +68,21 @@ export default (state = initialState, action) => {
         ...state,
         prevTime: action.payload,
       };
-    case SET_HOVER:
-      if (state.final == false && state.start != null) {
+    case SET_DRAG_SELECT:
+      if (action.payload === true) {
         return {
           ...state,
-          end: action.payload,
+          isDragSelect: true,
+          start: null,
+          end: null,
         };
       } else {
         return {
           ...state,
+          isDragSelect: false,
         };
       }
+
     case CLEAR_INTERVAL:
       return {
         ...state,

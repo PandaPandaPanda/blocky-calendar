@@ -1,10 +1,6 @@
-import React, { useRef, Component, Fragment } from "react";
-import moment from "moment";
+import React from "react";
 
 import TimeSlot from "./TimeSlot";
-
-import PropTypes from "prop-types";
-import { render } from "react-dom";
 
 const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
   const monthsList = [

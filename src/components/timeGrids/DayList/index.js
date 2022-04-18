@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import TimeSlotMatrics from "./TimeSlotMatrics";
 
 import { setViewingDate } from "../../../actions/navbarActions";
+import { setDragSelect } from "../../../actions/timeActions";
 
 import { FixedSizeList } from "react-window";
 import moment from "moment";
@@ -17,6 +18,7 @@ import "./style.css";
 const DayList = ({
   navbar: { date, viewingDate },
   setViewingDate,
+  setDragSelect,
   days,
   TimeSlot,
   min,
@@ -114,7 +116,13 @@ const DayList = ({
   // };
 
   return (
-    <div id="infiniteList" ref={parentRef}>
+    <div
+      id="infiniteList"
+      className="noselect"
+      ref={parentRef}
+      // onMouseDown={() => setDragSelect(true)}
+      // onMouseUp={() => setDragSelect(false)}
+    >
       <FixedSizeList
         ref={listRef}
         height={height}
@@ -142,4 +150,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setViewingDate })(DayList);
+export default connect(mapStateToProps, { setViewingDate, setDragSelect })(
+  DayList
+);

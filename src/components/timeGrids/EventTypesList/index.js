@@ -14,13 +14,13 @@ const EventTypesList = ({
   event: { events },
   eventTypes: { eventTypes },
   navbar: { viewingDate },
-  time: { start, end, final },
+  time: { start, end, isDragSelect },
   setCurrentEventTypesListItem,
   setErasing,
   height,
 }) => {
   const onEventTypesListItemClick = (_id, title, color) => {
-    if (final == true && start != null && end != null) {
+    if (isDragSelect == false && start != null && end != null) {
       setCurrentEventTypesListItem({ _id, title, color });
     }
   };
