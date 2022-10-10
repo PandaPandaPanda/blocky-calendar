@@ -17,6 +17,8 @@ import "./style.css";
 
 const DayList = ({
   navbar: { date, viewingDate },
+  event,
+  eventTypes,
   setViewingDate,
   setDragSelect,
   days,
@@ -69,6 +71,32 @@ const DayList = ({
     // renderTodayPointer();
   };
 
+  /**
+   * Search temp event and recurring event to return property of matching id
+   * @param {*} eventId
+   */
+  const getEventIdProperty = (eventId) => {
+    let events = event.events;
+    for (let i = 0; i < events.length; i++) {
+      if (events[i]._id === eventId) {
+        return {
+          title: events[i].title, 
+          color: events[i].color
+        };
+      }
+    }
+
+    events = eventTypes.eventTypes;
+    for (let i = 0; i < events.length; i++) {
+      if (events[i]._id === eventId) {
+        return {
+          title: events[i].title, 
+          color: events[i].color
+        };
+      }
+    }
+  };
+
   const renderDay = ({ index, style }) => {
     let { day, month, year, timeslots } = days[index];
     let key = `${year}:${month}:${day}`;
@@ -85,6 +113,7 @@ const DayList = ({
         date={{ year, month, day }}
         timeslots={timeslots}
         TimeSlot={TimeSlot}
+        getEventIdProperty={getEventIdProperty}
       />
     );
   };
@@ -147,6 +176,8 @@ const DayList = ({
 const mapStateToProps = (state) => {
   return {
     navbar: state.navbar,
+    eventTypes: state.eventTypes,
+    event: state.event,
   };
 };
 

@@ -15,14 +15,16 @@ const TimeSlot = ({
   index,
   date,
   isSelected,
-  property,
+  title, 
+  color
 }) => {
+
   return (
     <div
       className={`timeslot-container`}
       style={{
         filter: isSelected ? "brightness(0.7)" : "brightness(1)",
-        backgroundColor: property != null ? property.color : "#ececec",
+        backgroundColor: color != null ? color : "#ececec",
       }}
       onMouseDown={() => {
         setDragSelect(true);
@@ -37,7 +39,7 @@ const TimeSlot = ({
         }
       }}
     >
-      {property && property.title}
+      {title != null && title}
     </div>
   );
 };
