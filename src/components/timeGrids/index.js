@@ -53,7 +53,7 @@ class DayBlocks extends Component {
           this.paintRange(
             time.start,
             time.end,
-            eventTypesListItem.currentEventTypesListItem
+            eventTypesListItem.currentEventTypesListItem._id
           );
           this.selectRange(time.prevTime.start, time.prevTime.end, false);
           this.props.setPrevTime(null);
@@ -69,7 +69,7 @@ class DayBlocks extends Component {
     }
   }
 
-  paintRange(date1, date2, property) {
+  paintRange(date1, date2, eventId) {
     let startDate, endDate;
     if (this.isBefore(date1, date2)) {
       startDate = date1;
@@ -86,20 +86,20 @@ class DayBlocks extends Component {
     for (let i = startIndex; i <= endIndex; i++) {
       if (startIndex == endIndex) {
         for (let j = startDate.index; j <= endDate.index; j++) {
-          newDays[i].timeslots[j].property = property;
+          newDays[i].timeslots[j].eventId = eventId;
         }
       } else {
         if (i == startIndex) {
           for (let j = startDate.index; j < 96; j++) {
-            newDays[i].timeslots[j].property = property;
+            newDays[i].timeslots[j].eventId = eventId;
           }
         } else if (i == endIndex) {
           for (let j = 0; j <= endDate.index; j++) {
-            newDays[i].timeslots[j].property = property;
+            newDays[i].timeslots[j].eventId = eventId;
           }
         } else {
           for (let j = 0; j < 96; j++) {
-            newDays[i].timeslots[j].property = property;
+            newDays[i].timeslots[j].eventId = eventId;
           }
         }
       }
@@ -202,23 +202,23 @@ class DayBlocks extends Component {
       if (startIndex == endIndex) {
         for (let j = startDate.index; j <= endDate.index; j++) {
           newDays[i].timeslots[j].isSelected = false;
-          newDays[i].timeslots[j].property = null;
+          newDays[i].timeslots[j].eventId = null;
         }
       } else {
         if (i == startIndex) {
           for (let j = startDate.index; j < 96; j++) {
             newDays[i].timeslots[j].isSelected = false;
-            newDays[i].timeslots[j].property = null;
+            newDays[i].timeslots[j].eventId = null;
           }
         } else if (i == endIndex) {
           for (let j = 0; j <= endDate.index; j++) {
             newDays[i].timeslots[j].isSelected = false;
-            newDays[i].timeslots[j].property = null;
+            newDays[i].timeslots[j].eventId = null;
           }
         } else {
           for (let j = 0; j < 96; j++) {
             newDays[i].timeslots[j].isSelected = false;
-            newDays[i].timeslots[j].property = null;
+            newDays[i].timeslots[j].eventId = null;
           }
         }
       }

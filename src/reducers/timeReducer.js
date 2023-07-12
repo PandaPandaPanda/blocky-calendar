@@ -20,9 +20,9 @@ for (let year = min.year(); year <= max.year(); year++) {
     ) {
       let timeslots = [];
       let isSelected = false;
-      let property = null;
+      let eventId = null;
       for (let index = 0; index < 96; index++) {
-        timeslots.push({ index, isSelected, property });
+        timeslots.push({ index, isSelected, eventId });
       }
       days.push({
         year,

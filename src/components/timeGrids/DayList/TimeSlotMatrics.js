@@ -2,7 +2,7 @@ import React from "react";
 
 import TimeSlot from "./TimeSlot";
 
-const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
+const TimeSlotMatrics = ({ getEventIdProperty, date: { year, month, day }, style, timeslots }) => {
   const monthsList = [
     "Jan",
     "Feb",
@@ -30,14 +30,16 @@ const TimeSlotMatrics = ({ date: { year, month, day }, style, timeslots }) => {
   }
 
   for (let j = 0; j < 96; j++) {
-    if (timeslots[j].property != null) {
+    if (timeslots[j].eventId != null) {
+      const {title, color} = getEventIdProperty(timeslots[j].eventId)
       TimeslotItems.push(
         <TimeSlot
           key={j}
           date={year + ":" + month + ":" + day}
           index={j}
           isSelected={timeslots[j].isSelected}
-          property={timeslots[j].property}
+          title={title}
+          color={color}
         />
       );
     } else {

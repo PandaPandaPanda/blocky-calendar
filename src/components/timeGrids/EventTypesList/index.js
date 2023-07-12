@@ -33,8 +33,8 @@ const EventTypesList = ({
           if (viewingDate.isBetween(item.start, item.end, "day", "[)")) {
             return (
               <EventTypesListItem
-                key={item._id + "t"}
-                _id={item._id + "t"}
+                key={item._id}
+                _id={item._id}
                 title={item.title}
                 color={item.color}
                 onEventTypesListItemClick={onEventTypesListItemClick}
@@ -47,8 +47,8 @@ const EventTypesList = ({
         <h5>Recurring</h5>
         {eventTypes.map((item) => (
           <EventTypesListItem
-            key={item._id + "r"}
-            _id={item._id + "r"}
+            key={item._id}
+            _id={item._id}
             title={item.title}
             color={item.color}
             onEventTypesListItemClick={onEventTypesListItemClick}

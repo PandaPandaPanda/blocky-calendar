@@ -17,32 +17,56 @@ const initialState = {
   // Later get these from database
   events: [
     {
-      _id: 1,
+      _id: "1t",
       start: moment().startOf("day").add(2, "days").toDate(),
       end: moment().startOf("day").add(4, "days").toDate(),
       title: "Project Prototyping",
       color: "#99E6E6",
+      occurrence: [
+        {
+          start: moment().startOf("day").add(2, "days").toDate(),
+          duration: 60 // minutes
+        }
+      ]
     },
     {
-      _id: 2,
+      _id: "2t",
       start: moment().startOf("day").toDate(),
       end: moment().startOf("day").add(1, "days").toDate(),
       title: "Interview",
       color: "#4DB380",
+      occurrence: [
+        {
+          start: moment().startOf("day").add(2, "days").toDate(),
+          duration: 60 // minutes
+        }
+      ]
     },
     {
-      _id: 3,
+      _id: "3t",
       start: moment().startOf("day").add(7, "days").toDate(),
       end: moment().startOf("day").add(14, "days").toDate(),
       title: "Frontend Design",
       color: "#e666b3",
+      occurrence: [
+        {
+          start: moment().startOf("day").add(2, "days").toDate(),
+          duration: 60 // minutes
+        }
+      ]
     },
     {
-      _id: 4,
+      _id: "4t",
       start: moment().startOf("day").add(4, "days").toDate(),
       end: moment().startOf("day").add(6, "days").toDate(),
       title: "UI/UX Design",
       color: "#6666ff",
+      occurrence: [
+        {
+          start: moment().startOf("day").add(2, "days").toDate(),
+          duration: 60 // minutes
+        }
+      ]
     },
   ],
 

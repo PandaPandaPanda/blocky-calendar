@@ -14,17 +14,17 @@ const initialState = {
   // Later get these from database
   eventTypes: [
     {
-      _id: "1",
+      _id: "1r",
       title: "Gym",
       color: "#33991a",
     },
     {
-      _id: "2",
+      _id: "2r",
       title: "Guitar",
       color: "#00FFFF",
     },
     {
-      _id: "3",
+      _id: "3r",
       title: "Reading",
       color: "#4D80CC",
     },
